@@ -1,11 +1,11 @@
-# npm-boilerplate
-**npm-boilerplate** boilerplate for creating npm packages.
+# rest-chronicle
+**rest-chronicle** boilerplate for creating npm packages.
 
 [![Version][badge-vers]][npm]
 [![Dependencies][badge-deps]][npm]
 [![Vulnerabilities][badge-vuln]](https://snyk.io/)
 [![Build Status][badge-tests]][travis]
-[![Coverage Status][badge-coverage]](https://coveralls.io/github/pustovitDmytro/npm-boilerplate?branch=master)
+[![Coverage Status][badge-coverage]](https://coveralls.io/github/pustovitDmytro/rest-chronicle?branch=master)
 [![License][badge-lic]][github]
 
 ## Table of Contents
@@ -25,7 +25,7 @@ To use library you need to have [node](https://nodejs.org) and [npm](https://www
 To install the library run following command
 
 ```bash
-  npm i --save npm-boilerplate
+  npm i --save rest-chronicle
 ```
 
 ## Usage
@@ -56,13 +56,13 @@ The Tag is one of the following:
 The message summary should be a one-sentence description of the change. The issue number should be mentioned at the end.
 
 
-[npm]: https://www.npmjs.com/package/npm-boilerplate
-[github]: https://github.com/pustovitDmytro/npm-boilerplate
-[travis]: https://travis-ci.org/pustovitDmytro/npm-boilerplate
-[coveralls]: https://coveralls.io/github/pustovitDmytro/npm-boilerplate?branch=master
-[badge-deps]: https://img.shields.io/david/pustovitDmytro/npm-boilerplate.svg
-[badge-tests]: https://img.shields.io/travis/pustovitDmytro/npm-boilerplate.svg
-[badge-vuln]: https://img.shields.io/snyk/vulnerabilities/npm/npm-boilerplate.svg?style=popout
-[badge-vers]: https://img.shields.io/npm/v/npm-boilerplate.svg
-[badge-lic]: https://img.shields.io/github/license/pustovitDmytro/npm-boilerplate.svg
-[badge-coverage]: https://coveralls.io/repos/github/pustovitDmytro/npm-boilerplate/badge.svg?branch=master
+[npm]: https://www.npmjs.com/package/rest-chronicle
+[github]: https://github.com/pustovitDmytro/rest-chronicle
+[travis]: https://travis-ci.org/pustovitDmytro/rest-chronicle
+[coveralls]: https://coveralls.io/github/pustovitDmytro/rest-chronicle?branch=master
+[badge-deps]: https://img.shields.io/david/pustovitDmytro/rest-chronicle.svg
+[badge-tests]: https://img.shields.io/travis/pustovitDmytro/rest-chronicle.svg
+[badge-vuln]: https://img.shields.io/snyk/vulnerabilities/npm/rest-chronicle.svg?style=popout
+[badge-vers]: https://img.shields.io/npm/v/rest-chronicle.svg
+[badge-lic]: https://img.shields.io/github/license/pustovitDmytro/rest-chronicle.svg
+[badge-coverage]: https://coveralls.io/repos/github/pustovitDmytro/rest-chronicle/badge.svg?branch=master
