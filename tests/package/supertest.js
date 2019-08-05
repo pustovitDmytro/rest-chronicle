@@ -1,46 +1,20 @@
 import { assert } from 'chai';
 import chronicle  from '../entry';
+import app from '../mock';
 
-suite('Actions');
+const request = require('supertest');
 
-test('Simple manual GET request', function () {
-    const action = chronicle.action('get users', 'Users');
 
-    action.url = 'http://localhost:8080/api/users?status=ACTIVE';
+suite('Supertest');
 
-    action.response = {
-        headers : { 'content-type': 'application/json' },
-        code    : 200,
-        body    : []
-    };
-
-    const {
-        request,
-        response,
-        title,
-        group
-    } = action.data;
-
-    assert.equal(title, 'get users');
-    assert.equal(group, 'Users');
-
-    assert.deepEqual(request, {
-        href     : 'http://localhost:8080/api/users?status=ACTIVE',
-        origin   : 'http://localhost:8080',
-        protocol : 'http:',
-        hostname : 'localhost',
-        port     : '8080',
-        path     : '/api/users',
-        query    : { status: 'ACTIVE' },
-        method   : 'GET',
-        headers  : {}
-    });
-
-    assert.deepEqual(response, {
-        headers : { 'content-type': 'application/json' },
-        code    : 200,
-        body    : []
-    });
+test('Simple supertest GET request', async function () {
+    await request(app)
+        .get('/users')
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .expect(res => {
+            console.log('res: ', res);
+        });
 });
 
 

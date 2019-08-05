@@ -1,0 +1,61 @@
+[{
+  "id": 1,
+  "first_name": "Hynda",
+  "last_name": "Elvy",
+  "email": "helvy0@feedburner.com",
+  "gender": "Female"
+}, {
+  "id": 2,
+  "first_name": "Pascal",
+  "last_name": "Ancell",
+  "email": "pancell1@gravatar.com",
+  "gender": "Male"
+}, {
+  "id": 3,
+  "first_name": "Leigh",
+  "last_name": "Conre",
+  "email": "lconre2@ezinearticles.com",
+  "gender": "Male"
+}, {
+  "id": 4,
+  "first_name": "Didi",
+  "last_name": "Plimmer",
+  "email": "dplimmer3@businessweek.com",
+  "gender": "Female"
+}, {
+  "id": 5,
+  "first_name": "Else",
+  "last_name": "Baron",
+  "email": "ebaron4@wp.com",
+  "gender": "Female"
+}, {
+  "id": 6,
+  "first_name": "Bebe",
+  "last_name": "Maffin",
+  "email": "bmaffin5@e-recht24.de",
+  "gender": "Female"
+}, {
+  "id": 7,
+  "first_name": "Clemmie",
+  "last_name": "McGinnis",
+  "email": "cmcginnis6@epa.gov",
+  "gender": "Male"
+}, {
+  "id": 8,
+  "first_name": "Hedi",
+  "last_name": "Coling",
+  "email": "hcoling7@github.com",
+  "gender": "Female"
+}, {
+  "id": 9,
+  "first_name": "Stanislaus",
+  "last_name": "Tufts",
+  "email": "stufts8@last.fm",
+  "gender": "Male"
+}, {
+  "id": 10,
+  "first_name": "Casie",
+  "last_name": "Grason",
+  "email": "cgrason9@biblegateway.com",
+  "gender": "Female"
+}]
