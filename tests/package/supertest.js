@@ -1,19 +1,35 @@
 import { assert } from 'chai';
-import chronicle  from '../entry';
-import app from '../mock';
+import { supertest } from '../entry';
+import app, { users } from '../mock';
 
-const request = require('supertest');
+suite.only('Supertest');
 
+test('Supertest usage without chronicle', async function () {
+    const request = supertest(app);
 
-suite('Supertest');
-
-test('Simple supertest GET request', async function () {
-    await request(app)
+    await request
         .get('/users')
         .expect('Content-Type', /json/)
         .expect(200)
-        .expect(res => {
-            console.log('res: ', res);
+        .expect(({ body }) => {
+            assert.isArray(body);
+            assert.isNotEmpty(body);
+            assert.deepEqual(body, users);
+        });
+});
+
+test('Supertest getOne request with chronicle', async function () {
+    const request = supertest(app);
+
+    await request
+        .with({ title: 'r', group: 1 })
+        .get('/users')
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .expect(({ body }) => {
+            assert.isArray(body);
+            assert.isNotEmpty(body);
+            assert.deepEqual(body, users);
         });
 });
 

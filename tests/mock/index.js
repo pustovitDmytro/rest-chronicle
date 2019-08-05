@@ -1,7 +1,5 @@
+import jsonServer from 'json-server';
 import users from './fixtures/users';
-
-const jsonServer = require('json-server');
-
 
 const server = jsonServer.create();
 const router = jsonServer.router({ users });
@@ -14,3 +12,5 @@ server.listen(3000, () => {
 });
 
 export default server;
+export { users };
+
