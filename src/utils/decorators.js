@@ -26,7 +26,9 @@ function classMethodDecorator({ methodName, descriptor, config }) {
 
 export function inject(methods, target) {
     function _onSuccess({ params, result, method }) {
-        console.log(method, isFunction(methods[method]));
+        if (isFunction(methods[`after_${method}`])) {
+            return methods[`after_${method}`](params, result);
+        }
         if (isFunction(methods[method])) {
             return methods[method](params, result);
         }
@@ -34,26 +36,39 @@ export function inject(methods, target) {
         return result;
     }
 
-    getMethodNames(methods).forEach(methodName => {
-        const descriptor = getMethodDescriptor(methodName, target);
+    function _onParams({ params, method }) {
+        if (isFunction(methods[`before_${method}`])) {
+            return methods[`before_${method}`](params);
+        }
 
-        Object.defineProperty(
-            target,
-            methodName,
-            classMethodDecorator.call(
-                this,
-                {
-                    methodName,
-                    descriptor,
-                    config : {
-                        onError   : console.error,
-                        onSuccess : _onSuccess,
-                        chronicle : methods._chronicle
-                    }
-                },
-            )
-        );
-    });
+        return params;
+    }
+
+    [
+        ...getMethodNames(methods),
+        ...getMethodNames(target)
+    ]
+        .forEach(methodName => {
+            const descriptor = getMethodDescriptor(methodName, target);
+
+            Object.defineProperty(
+                target,
+                methodName,
+                classMethodDecorator.call(
+                    this,
+                    {
+                        methodName,
+                        descriptor,
+                        config : {
+                            onParams  : _onParams,
+                            onError   : console.error,
+                            onSuccess : _onSuccess,
+                            chronicle : methods._chronicle
+                        }
+                    },
+                )
+            );
+        });
 
     return target;
 }
@@ -81,7 +96,8 @@ function functionDecorator(method, { methodName, config }) {
         chronicle : config.chronicle
     };
 
-    return function (...params) {
+    return function (...args) {
+        const params = config.onParams({ params: args, context: this, ...methodData });
         const data = { params, context: this, ...methodData };
 
         try {

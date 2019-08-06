@@ -20,17 +20,40 @@ test('Supertest usage without chronicle', async function () {
 
 test('Supertest getOne request with chronicle', async function () {
     const request = supertest(app);
+    const expected =  users.find(u => u.id === 2);
 
     await request
-        .with({ title: 'r', group: 1 })
-        .get('/users')
+        .with({ title: 'apart', group: 1 })
+        .get('/users/2')
         .expect('Content-Type', /json/)
         .expect(200)
         .expect(({ body }) => {
-            assert.isArray(body);
-            assert.isNotEmpty(body);
-            assert.deepEqual(body, users);
+            assert.deepEqual(body, expected);
         });
+});
+
+test('Supertest with .end resolving', async function () {
+    const request = supertest(app);
+    const data = { 'first_name': 'Gertrude' };
+
+    return new Promise((res, rej) => {
+        request
+            .with({ title: 'support', group: 1 })
+            .patch('/users/4')
+            .send(data)
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .expect(({ body }) => {
+                assert.deepOwnInclude(body, {
+                    id : 4,
+                    ...data
+                });
+            })
+            .end((err, result) => {
+                if (err) rej(err);
+                res(result);
+            });
+    });
 });
 
 
