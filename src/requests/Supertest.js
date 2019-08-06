@@ -36,7 +36,6 @@ export default class Supertest {
             type    : response.type,
             charset : response.charset
         };
-        console.log(this._action.data);
     }
 
     with([ params ]) {
@@ -44,12 +43,6 @@ export default class Supertest {
 
         return this._decorate(supertest(this._app)); // TODO change to context
     }
-
-    // 'before_then'(params) {
-    //     console.log('before_then: ', params[1]);
-
-    //     return params;
-    // }
 
     'before_end'(params) {
         const that = this;

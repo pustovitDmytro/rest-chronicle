@@ -1,5 +1,5 @@
 import Chronicle from './modules/Chronicle';
-import Supertest from './clients/Supertest';
+import Supertest from './requests/Supertest';
 
 const chronicle = new Chronicle();
 
