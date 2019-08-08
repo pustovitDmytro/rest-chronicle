@@ -36,6 +36,7 @@ export default class Supertest {
             type    : response.type,
             charset : response.charset
         };
+        console.log('this._action: ', this._action.data);
     }
 
     with([ params ]) {

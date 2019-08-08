@@ -2,7 +2,7 @@ import { assert } from 'chai';
 import { supertest } from '../entry';
 import app, { users } from '../mock';
 
-suite.only('Supertest');
+suite('Supertest');
 
 test('Supertest usage without chronicle', async function () {
     const request = supertest(app);
