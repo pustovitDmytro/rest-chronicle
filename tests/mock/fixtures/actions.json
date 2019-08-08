@@ -1,0 +1,28 @@
+[
+    {
+        "group": "Users",
+        "title": "create user",
+        "url": "http://127.0.0.1:62887/users",
+        "method": "POST",
+        "reqHeaders": {
+            "Authorization": "25NPmT"
+        },
+        "resHeaders": {
+            "x-powered-by": "Express",
+            "content-length": "120"
+        },
+        "reqBody": {
+            "first_name": "Pascal",
+            "last_name": "Ancell",
+            "email": "pancell1@gravatar.com",
+            "gender": "Male"
+        },
+        "resBody": {
+            "id": 2,
+            "first_name": "Pascal",
+            "last_name": "Ancell",
+            "email": "pancell1@gravatar.com",
+            "gender": "Male"
+        }
+    }
+]
