@@ -3,7 +3,7 @@ import chronicle  from '../entry';
 
 suite('Actions');
 
-test('Simple manual GET request', function () {
+test('Manually setting required attributes', function () {
     const action = chronicle.action('get users', 'Users');
 
     action.url = 'http://localhost:8080/api/users?status=ACTIVE';
