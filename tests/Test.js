@@ -10,11 +10,16 @@ export default class Test {
     async setTmpFolder() {
         await fse.ensureDir(tmpFolder);
     }
-    async setActions(c) {
-        const chronicle = this._chronicle || c;
+    async setActions(chr, actionsToSet=actions ) {
+        const chronicle = chr || this._chronicle;
 
-        return actions.map(action => new Action({ ...action, chronicle }));
+        return actionsToSet.map(action => new Action({ ...action, chronicle }));
     }
+
+    async setRandomActions(config, chr){
+
+    }
+
     async cleanTmpFolder() {
         await fse.remove(tmpFolder);
     }

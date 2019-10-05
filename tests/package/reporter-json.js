@@ -47,7 +47,7 @@ const postSeedResponse = {
     http : { version: '1.1' }
 };
 
-test.only('json-reporter on seeds', async function () {
+test('json-reporter on seeds', async function () {
     const EXPECTED = [ {
         group  : 'Users',
         titles : [ {
