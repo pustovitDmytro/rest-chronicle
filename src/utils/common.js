@@ -53,3 +53,7 @@ export function cleanUndefined(obj) {
 
     return obj;
 }
+
+export function lastItem(array) {
+    return array[array.length - 1];
+}

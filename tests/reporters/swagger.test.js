@@ -1,7 +1,6 @@
 import { assert } from 'chai';
 import Test from '../Test';
 import chronicle, { Chronicle, reporters }  from '../entry';
-import 
 import { getTmpFilePath, readFile } from '../utils';
 
 const factory = new Test(chronicle);
@@ -25,7 +24,7 @@ test('Positive: swagger reporter grouping', async function () {
         [ 'post', '/users' ]
     ], instance);
 
-    const {groups} = await reporter._build(instance._actions.map(a => a.data));
+    const { groups } = await reporter._build(instance._actions.map(a => a.data));
 });
 
 

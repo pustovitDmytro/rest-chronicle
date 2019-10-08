@@ -1,136 +1,39 @@
+import { inspect } from 'util';
 import { assert } from 'chai';
-import { supertest, axios } from '../entry';
-import app, { users } from '../mock';
+import { axios } from '../entry';
+import { users } from '../mock';
+import Test from '../Test';
+import { mockAppUrl } from '../constants';
 
-suite.only('Axios');
+suite('Axios');
 
-// axios.get('/user?ID=12345')
-//   .then(function (response) {
-//     // handle success
-//     console.log(response);
-//   })
-//   .catch(function (error) {
-//     // handle error
-//     console.log(error);
-//   })
+const factory = new Test();
 
-// axios({
-//     method: 'post',
-//     url: '/user/12345',
-//     data: {
-//       firstName: 'Fred',
-//       lastName: 'Flintstone'
-//     }
-//   });
-
-test('Supertest usage without chronicle', async function () {
-    const request = supertest(app);
-
-    await request
-        .get('/users')
-        .expect('Content-Type', /json/)
-        .expect(200)
-        .expect(({ body }) => {
-            assert.isArray(body);
-            assert.isNotEmpty(body);
-            assert.deepEqual(body, users);
-        });
+before(async () => {
+    await factory.startMockApp();
+    await factory.setTmpFolder();
 });
 
-test('Supertest getOne request with chronicle', async function () {
-    const request = supertest(app);
-    const expected =  users.find(u => u.id === 2);
+test('Axios usage without chronicle', async function () {
+    const response = await axios(`${mockAppUrl}/users?limit=10`);
+    const body = response.data;
 
-    await request
-        .with({ title: 'apart', group: 1 })
-        .get('/users/2')
-        .expect('Content-Type', /json/)
-        .expect(200)
-        .expect(({ body }) => {
-            assert.deepEqual(body, expected);
-        });
+    assert.isArray(body);
+    assert.isNotEmpty(body);
+    assert.deepEqual(body, users);
 });
 
-test('Supertest with .end resolving', async function () {
-    const request = supertest(app);
-    const data = { 'first_name': 'Gertrude' };
+test('Axios post request with chronicle', async function () {
+    const data =  users.find(u => u.id === 2);
+    const context = { title: 'success is', group: 'wrong' };
 
-    return new Promise((res, rej) => {
-        request
-            .with({ title: 'support', group: 1 })
-            .patch('/users/4')
-            .send(data)
-            .expect('Content-Type', /json/)
-            .expect(200)
-            .expect(({ body }) => {
-                assert.deepOwnInclude(body, {
-                    id : 4,
-                    ...data
-                });
-            })
-            .end((err, result) => {
-                if (err) rej(err);
-                res(result);
-            });
+    delete data.id;
+    const response = await axios({
+        method : 'POST',
+        url    : `${mockAppUrl}/users`,
+        data,
+        with   : context
     });
+
+    assert.deepOwnInclude(response.data, data);
 });
-
-
-// import { Chronicle, axios, request } from 'rest-chronicle';
-
-// const chronicle = new Chronicle({
-//     version : 'v1',
-//     prefix  : 'api/v1'
-// });
-// // const axios = new Axios({
-// //     with     : 'mocha',
-// //     instance : chronicle
-// // });
-
-// axios({
-//     with         : this,
-//     method       : 'get',
-//     url          : 'http://bit.ly/2mTM3nY',
-//     responseType : 'stream'
-// });
-
-// {
-//     const action = chronicle.action('get users', 'Users');
-
-//     action.url = 'http://localhost:8080/api/v1/users?status=ACTIVE';
-//     action.response = {
-//         headers : { 'content-type': 'application/json' },
-//         code    : 200,
-//         body    : []
-//     };
-//     // action.method = 'GET';
-// }
-
-// // methods
-// // with
-// // desc
-// // comment
-// // tag
-
-// axios
-//     .with(this)
-//     .desc('additional descr')
-//     .comment('some text')
-//     .get('/user/12345');
-
-// request
-//     .with(this)
-//     .get('/products')
-//     .expect(200);
-
-// // const instane1 = axios.create({
-// //     baseURL : 'https://some-domain.com/api/',
-// //     timeout : 1000,
-// //     headers : { 'X-Custom-Header': 'foobar' }
-// // });
-
-
-// chronicle.save('filePath', {});
-// chronicle.saveMany('groups_to_files', {});
-// chronicle.clear();
-

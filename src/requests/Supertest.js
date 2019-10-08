@@ -1,6 +1,5 @@
 import supertest from 'supertest';
-import Test from 'supertest/lib/test';
-import { getMethodNames, isPromise, isFunction, inject } from '../utils';
+import { inject } from '../utils';
 
 export default class Supertest {
     constructor(app, chronicle) {
@@ -36,7 +35,6 @@ export default class Supertest {
             type    : response.type,
             charset : response.charset
         };
-        console.log('this._action: ', this._action.data);
     }
 
     with([ params ]) {
