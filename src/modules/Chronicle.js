@@ -17,6 +17,10 @@ export default class Chronicle {
         return action;
     }
 
+    clear() {
+        this._actions = [];
+    }
+
     async save(filePath, opts = {}) {
         const { reporter:reporterType = 'json', ...reporterOptions } = opts;
         const Reporter = reporters[reporterType];

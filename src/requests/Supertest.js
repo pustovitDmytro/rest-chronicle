@@ -1,5 +1,5 @@
 import supertest from 'supertest';
-import { inject } from '../utils';
+import { decorate } from '../utils';
 
 export default class Supertest {
     constructor(app, chronicle) {
@@ -8,21 +8,31 @@ export default class Supertest {
 
         return this._decorate(supertest(this._app));
     }
+
     _decorate(target) {
-        return inject(this, target);
+        [ '_with' ].forEach(key => {
+            target[key] = this[key]; // eslint-disable-line no-param-reassign
+        });
+
+        return decorate(target, this);
     }
+
     _process(response) {
-        if (this._action || !this._with) return;
+        if (!this._with) return;
         const { title, group } = this._with;
+
+        this._with = null;
         const { request, res } = response;
 
-        this._action = this._chronicle.action(title, group);
-        this._action.request = {
+        const action = this._chronicle.action(title, group);
+
+        action.request = {
             url     : request.url,
             headers : request.header,
             method  : request.method
         };
-        this._action.response = {
+
+        action.response = {
             body    : response.body,
             headers : response.header,
             http    : {
@@ -37,13 +47,13 @@ export default class Supertest {
         };
     }
 
-    with([ params ]) {
+    with = (params) => {
         this._with = params;
 
-        return this._decorate(supertest(this._app)); // TODO change to context
+        return this._decorate(supertest(this._app));
     }
 
-    'before_end'(params) {
+    'before_end' = ({ params }) => {
         const that = this;
 
         return [
@@ -56,11 +66,13 @@ export default class Supertest {
         ];
     }
 
-    'after_get'(params, result) {
+    _proxy = ({ result }) => {
         return this._decorate(result);
     }
 
-    'after_expect'(params, result) {
-        return this._decorate(result);
-    }
+    'after_get'    = this._proxy;
+    'after_patch'  = this._proxy;
+    'after_post'   = this._proxy;
+    'after_delete' = this._proxy;
+    'after_expect' = this._proxy;
 }

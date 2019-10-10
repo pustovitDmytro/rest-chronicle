@@ -26,29 +26,26 @@
         }
     },
     {
-        "group": "UsersX",
-        "title": "create X user",
-        "url": "http://127.0.0.1:62887/users",
+        "group": "Users",
+        "title": "update user name",
+        "url": "http://127.0.0.1:62887/users/4",
         "method": "PATCH",
         "reqHeaders": {
-            "Authorization": "25NPmT"
+            "Authorization": "dNFgil4tftWpLUjz"
         },
         "resHeaders": {
             "x-powered-by": "Express",
             "content-length": "120"
         },
         "reqBody": {
-            "first_name": "Pascal",
-            "last_name": "Ancell",
-            "email": "pancell1@gravatar.com",
-            "gender": "Male"
+            "first_name": "Bettie"
         },
         "resBody": {
-            "id": 2,
-            "first_name": "Pascal",
-            "last_name": "Ancell",
-            "email": "pancell1@gravatar.com",
-            "gender": "Male"
+            "id": 4,
+            "first_name": "Bettie",
+            "last_name": "Ford",
+            "email": "nebawawaw@wopdoj.nr",
+            "gender": "Female"
         }
     }
 ]

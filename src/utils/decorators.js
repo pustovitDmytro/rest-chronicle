@@ -26,12 +26,14 @@ function classMethodDecorator({ methodName, descriptor, config }) {
 function _onSuccess({ result }) {
     return result;
 }
+
 function _onParams({ params }) {
     return params;
 }
 
 export function decorate(target, methods) {
     const isDecorateFunction = isFunction(target);
+
     const defaultConfig = {
         onError   : console.error,
         chronicle : methods._chronicle
@@ -44,6 +46,16 @@ export function decorate(target, methods) {
         } })
         : target;
     const injectMethodNames = getMethodNames(methods);
+
+    injectMethodNames
+        .filter(name => !name.includes('before_') && !name.includes('after_'))
+        .forEach(methodName => {
+            if (isDecorateFunction) {
+                decorated[methodName] = methods[methodName];
+            } else {
+                decorated[methodName] = methods[methodName];
+            }
+        });
 
     getMethodNames(target)
         .forEach(methodName => {
@@ -80,82 +92,6 @@ export function decorate(target, methods) {
 
     return decorated;
 }
-
-
-export function inject(methods, target) {
-    function _onSuccess({ params, result, method }) {
-        if (isFunction(methods[`after_${method}`])) {
-            return methods[`after_${method}`](params, result);
-        }
-        if (isFunction(methods[method])) {
-            return methods[method](params, result);
-        }
-
-        return result;
-    }
-
-    function _onParams({ params, method }) {
-        if (isFunction(methods[`before_${method}`])) {
-            return methods[`before_${method}`](params);
-        }
-
-        return params;
-    }
-    const isDecorateFunction = isFunction(target);
-    const decorated = isDecorateFunction ? functionDecorator() : null;
-
-    [
-        ...getMethodNames(methods),
-        ...getMethodNames(target)
-    ]
-        .forEach(methodName => {
-            const config = {
-                onParams  : _onParams,
-                onError   : console.error,
-                onSuccess : _onSuccess,
-                chronicle : methods._chronicle
-            };
-
-            if (isDecorateFunction) {
-                if ([ 'caller', 'caller', 'arguments' ].includes(methodName)) return;
-                descriptor[methodName] = functionDecorator(target[methodName], { methodName, config });
-            } else {
-                const descriptor = getMethodDescriptor(methodName, target);
-
-                Object.defineProperty(
-                    target,
-                    methodName,
-                    classMethodDecorator.call(
-                        this,
-                        {
-                            methodName,
-                            descriptor,
-                            config
-                        },
-                    )
-                );
-            }
-        });
-
-    return target;
-}
-
-// export function decorate(target, config) {
-//     getMethodNames(target).forEach(methodName => {
-//         const descriptor = getMethodDescriptor(methodName, target);
-
-//         Object.defineProperty(
-//             target,
-//             methodName,
-//             classMethodDecorator.call(
-//                 this,
-//                 { methodName, descriptor, config },
-//             )
-//         );
-//     });
-
-//     return target;
-// }
 
 function functionDecorator(method, { methodName, config }) {
     const methodData = {

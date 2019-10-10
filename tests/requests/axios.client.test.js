@@ -1,4 +1,3 @@
-import { inspect } from 'util';
 import { assert } from 'chai';
 import { axios } from '../entry';
 import { users } from '../mock';

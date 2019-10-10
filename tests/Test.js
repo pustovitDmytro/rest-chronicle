@@ -1,4 +1,5 @@
 import fse from 'fs-extra';
+import { assert } from 'chai';
 import Action from '../src/modules/Action';
 import app, { actions } from './mock';
 import { tmpFolder, mockAppPort } from './constants';
@@ -13,6 +14,25 @@ export default class Test {
         });
     }
 
+    ensureAction({ title, group }, { path, method, body }) {
+        const action = this.findAction({ title, group });
+
+        assert.deepOwnInclude(action.request, { path, method });
+        if (body) {
+            assert.deepOwnInclude(action.response, { body });
+        }
+    }
+
+    findAction({ title, group }) {
+        return this._chronicle._actions
+            .find(a => a.context.title === title && a.context.group === group)
+            .data;
+    }
+
+    async cleanup() {
+        this._chronicle.clear();
+    }
+
     async setTmpFolder() {
         await fse.ensureDir(tmpFolder);
     }
@@ -21,11 +41,6 @@ export default class Test {
 
         return actionsToSet.map(action => new Action({ ...action, chronicle }));
     }
-
-    async setRandomActions(config, chr) {
-
-    }
-
     async cleanTmpFolder() {
         await fse.remove(tmpFolder);
     }
