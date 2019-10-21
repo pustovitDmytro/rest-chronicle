@@ -68,6 +68,7 @@ export default class Axios {
 
         return this._decorate(result);
     }
+
     'after_post'(params, result) {
         console.log('after_post: ', params, result);
 

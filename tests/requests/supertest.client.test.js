@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import chronicle, { supertest, Chronicle } from '../entry';
+import chronicle, { supertest } from '../entry';
 import app, { users } from '../mock';
 import Test from '../Test';
 
@@ -7,10 +7,11 @@ const factory = new Test(chronicle);
 const request = supertest(app);
 
 before(async () => {
+    await factory.startMockApp();
     await factory.cleanup();
 });
 
-suite.only('Supertest');
+suite('Supertest');
 
 test('Supertest usage without chronicle', async function () {
     await request
@@ -25,12 +26,13 @@ test('Supertest usage without chronicle', async function () {
 });
 
 test('Supertest getOne request with chronicle', async function () {
-    const expected =  users.find(u => u.id === 2);
+    const expected =  users.find(u => u.id === 7);
     const context = { title: 'apart', group: 1 };
 
     await request
         .with(context)
-        .get('/users/2')
+        .get('/users/:id')
+        .params({ id: 7 })
         .expect('Content-Type', /json/)
         .expect(200)
         .expect(({ body }) => {
@@ -39,7 +41,7 @@ test('Supertest getOne request with chronicle', async function () {
 
     factory.ensureAction(context, {
         method : 'GET',
-        path   : '/users/2',
+        path   : '/users/:id',
         body   : expected
     });
 });

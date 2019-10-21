@@ -1,6 +1,16 @@
 import supertest from 'supertest';
 import { decorate } from '../utils';
 
+function fillParams(url, params) {
+    let filled = url;
+
+    Object.entries(params).forEach(([ key, value ]) => {
+        filled = filled.replace(`:${key}`, value);
+    });
+
+    return filled;
+}
+
 export default class Supertest {
     constructor(app, chronicle) {
         this._chronicle = chronicle;
@@ -19,12 +29,10 @@ export default class Supertest {
 
     _process(response) {
         if (!this._with) return;
-        const { title, group } = this._with;
+        const action = this._chronicle.action(this._with);
 
         this._with = null;
         const { request, res } = response;
-
-        const action = this._chronicle.action(title, group);
 
         action.request = {
             url     : request.url,
@@ -51,6 +59,14 @@ export default class Supertest {
         this._with = params;
 
         return this._decorate(supertest(this._app));
+    }
+
+    params(params) {
+        this._with.urlParams = params;
+        this._with.rawUrl = this.url;
+        this.url = fillParams(this.url, params);
+
+        return this;
     }
 
     'before_end' = ({ params }) => {

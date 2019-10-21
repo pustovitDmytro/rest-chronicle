@@ -15,19 +15,20 @@ export function actionGenerate() {
     const url = chance.url();
     const group = chance.pickone(GROUPS);
     const title = chance.pickone(TITLES[group]);
+    // chance.
 }
 
 export function generateActions(count = 100, options = {}) {
     return Array.from(new Array(count)).map(() => actionGenerate());
 }
 
-export function AxiosCollection(baseUrl, ){
+export function AxiosCollection(baseUrl,) {
 
 }
 
-export function generateAxiosRequest(baseUrl, {method, query, path}={}){
+export function generateAxiosRequest(baseUrl, { method, query, path } = {}) {
     return {
-        method: method.toUpperCase(),
-        url: baseUrl+path
-    }
+        method : method.toUpperCase(),
+        url    : baseUrl + path
+    };
 }

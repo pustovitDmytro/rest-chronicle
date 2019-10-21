@@ -13,12 +13,12 @@ function getQuery(searchParams) {
 }
 
 export default class Action {
-    constructor({ title, group, chronicle, id, ...values }) {
-        this._context = { title, group };
+    constructor({ chronicle, id, ...values }) {
+        this._context = {};
         this._response = {};
         this._request = {};
+        this._chronicle = chronicle;
         this.set(values);
-        chronicle._actions.push(this);
         this._id = id || uuid.v4();
     }
 
@@ -26,9 +26,13 @@ export default class Action {
         Object.entries(values)
             .filter(([ , value ]) => value !== undefined)
             // .filter(([ key ]) => value !== undefined)
-            .forEach(([ key, value ]) => {
+            .forEach(([ key, value ]) => { // TODO check for setter
                 this[key] = value;
             });
+    }
+
+    set context(context) {
+        this._context = this._chronicle.contextBuilder(context);
     }
 
     set request({ headers, body, ...values }) {
@@ -48,11 +52,14 @@ export default class Action {
     }
 
     set url(value) {
-        this._request.url = new URL(value);
+        const { rawUrl } = this._context;
+        const url = rawUrl || value;
+
+        this._request.url = new URL(url);
     }
 
     set method(value) {
-        this._request._method = value;
+        this._request._method = value.toUpperCase();
     }
 
     set reqHeaders(headers) {

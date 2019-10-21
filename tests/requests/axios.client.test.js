@@ -1,12 +1,12 @@
 import { assert } from 'chai';
-import { axios } from '../entry';
+import chronicle, { axios } from '../entry';
 import { users } from '../mock';
 import Test from '../Test';
 import { mockAppUrl } from '../constants';
 
 suite('Axios');
 
-const factory = new Test();
+const factory = new Test(chronicle);
 
 before(async () => {
     await factory.startMockApp();
@@ -22,7 +22,7 @@ test('Axios usage without chronicle', async function () {
     assert.deepEqual(body, users);
 });
 
-test('Axios post request with chronicle', async function () {
+test('Axios default function request with chronicle', async function () {
     const data =  users.find(u => u.id === 2);
     const context = { title: 'success is', group: 'wrong' };
 
@@ -35,4 +35,10 @@ test('Axios post request with chronicle', async function () {
     });
 
     assert.deepOwnInclude(response.data, data);
+
+    factory.ensureAction(context, {
+        method : 'POST',
+        path   : '/users',
+        body   : data
+    });
 });

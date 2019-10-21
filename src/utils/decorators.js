@@ -38,6 +38,7 @@ export function decorate(target, methods) {
         onError   : console.error,
         chronicle : methods._chronicle
     };
+
     const decorated = isDecorateFunction
         ? functionDecorator(target, { config : {
             onParams  : methods.before_default || _onParams,

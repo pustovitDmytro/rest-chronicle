@@ -19,7 +19,7 @@ export default class Test {
 
         assert.deepOwnInclude(action.request, { path, method });
         if (body) {
-            assert.deepOwnInclude(action.response, { body });
+            assert.deepOwnInclude(action.response.body, body);
         }
     }
 

@@ -1,0 +1,203 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Swagger Report"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:54269"
+        },
+        {
+            "url": "http://127.0.0.1:54271"
+        },
+        {
+            "url": "http://127.0.0.1:54273"
+        }
+    ],
+    "paths": {
+        "/users/:id": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Positive: show user profile",
+                "parameters": [
+                    {
+                        "name": "User-Agent",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "node-superagent/3.8.3"
+                    }
+                ],
+                "responses": {
+                    "[object Object]": {
+                        "description": "Positive: show user profile",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "example": {
+                                        "id": 1,
+                                        "name": "Leigh",
+                                        "email": "helvy0@feedburner.com"
+                                    },
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Leigh"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "helvy0@feedburner.com"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Positive: change user name",
+                "parameters": [
+                    {
+                        "name": "User-Agent",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "node-superagent/3.8.3"
+                    },
+                    {
+                        "name": "AUTH",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "5NM2p40Z8"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "application/json"
+                    }
+                ],
+                "responses": {
+                    "[object Object]": {
+                        "description": "Positive: change user name",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "example": {
+                                        "id": 2,
+                                        "name": "McCoy",
+                                        "email": "pancell1@gravatar.com"
+                                    },
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 2
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "McCoy"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "pancell1@gravatar.com"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/messages": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "description": "Positive: get list of messages",
+                "parameters": [
+                    {
+                        "name": "User-Agent",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "node-superagent/3.8.3"
+                    },
+                    {
+                        "name": "AUTH",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "5NM2p40Z8"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "application/json"
+                    }
+                ],
+                "responses": {
+                    "[object Object]": {
+                        "description": "Positive: get list of messages",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "example": [
+                                        {
+                                            "text": "butter property president flow nodded degree where keep",
+                                            "sender": 2
+                                        }
+                                    ],
+                                    "properties": {
+                                        "0": {
+                                            "type": "object",
+                                            "example": {
+                                                "text": "butter property president flow nodded degree where keep",
+                                                "sender": 2
+                                            },
+                                            "properties": {
+                                                "text": {
+                                                    "type": "string",
+                                                    "example": "butter property president flow nodded degree where keep"
+                                                },
+                                                "sender": {
+                                                    "type": "number",
+                                                    "example": 2
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
