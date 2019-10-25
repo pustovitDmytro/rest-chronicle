@@ -1,4 +1,5 @@
 import Chronicle from './modules/Chronicle';
+import Action from './modules/Action';
 import Supertest from './requests/Supertest';
 import Axios from './requests/Axios';
 import reporters from './reporters';
@@ -13,6 +14,7 @@ function supertest(app, instance = chronicle) {
 export default chronicle;
 export {
     Chronicle,
+    Action,
     supertest,
     axios,
     reporters

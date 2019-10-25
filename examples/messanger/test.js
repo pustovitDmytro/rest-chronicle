@@ -4,7 +4,7 @@ import app from './app';
 const request = supertest(app);
 
 function contextBuilder({ urlParams, rawUrl, test }) {
-    return {
+    return { // TODO rawUrl, urlParams auto
         urlParams,
         rawUrl,
         title : test.title,
@@ -50,7 +50,5 @@ test('Positive: get list of messages', async function () {
 });
 
 after(async () => {
-    await chronicle.save('./documentation/swagger.json', {
-        reporter : 'swagger'
-    });
+    await chronicle.save('./documentation/swagger.json', { reporter: 'swagger' });
 });

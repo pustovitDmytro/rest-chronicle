@@ -22,7 +22,9 @@ test('messanger', async function () {
     mocha.addFile(exampleTestFile);
     await new Promise((res, rej) => {
         mocha.run(function (failures) {
-            if (failures > 0) return rej(new Error(JSON.stringify({ failures })));
+            if (failures > 0) {
+                return rej(new Error(JSON.stringify({ failures })));
+            }
             res();
         });
     });
@@ -32,8 +34,8 @@ test('messanger', async function () {
     const expectedSwagerFilePath = path.join(exampleFolder, swaggerRelativeFilePath);
 
     assert.deepEqual(
-        require(gotSwaggerFilePath),
-        require(expectedSwagerFilePath),
+        { ...require(gotSwaggerFilePath), servers: [] },
+        { ...require(expectedSwagerFilePath),  servers: [] },
     );
 });
 

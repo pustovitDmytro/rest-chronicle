@@ -25,8 +25,10 @@ export default class Test {
 
     findAction({ title, group }) {
         return this._chronicle._actions
-            .find(a => a.context.title === title && a.context.group === group)
-            .data;
+            .find(a =>
+                (title ? a.context.title === title : true) &&
+                (group ? a.context.group === group : true)
+            ).data;
     }
 
     async cleanup() {

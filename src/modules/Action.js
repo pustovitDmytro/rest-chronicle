@@ -90,6 +90,14 @@ export default class Action {
         return this._context;
     }
 
+    get title() {
+        return this._context.title;
+    }
+
+    get group() {
+        return this._context.group;
+    }
+
     get url() {
         if (!this._request.url) return null;
 

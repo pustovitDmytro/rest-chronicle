@@ -1,7 +1,9 @@
 [
     {
-        "group": "Users",
-        "title": "create user",
+        "context": {
+            "group": "Users",
+            "title": "create user"
+        },
         "url": "http://127.0.0.1:62887/users",
         "method": "POST",
         "reqHeaders": {
