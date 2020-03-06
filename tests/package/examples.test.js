@@ -3,6 +3,7 @@ import Mocha from 'mocha';
 import { assert } from 'chai';
 import fs from 'fs-extra';
 import { tmpFolder } from '../constants';
+import  chronicle  from '../entry';
 
 const mocha = new Mocha({
     'ui' : 'qunit'
@@ -10,7 +11,7 @@ const mocha = new Mocha({
 const examplesDir = path.join(__dirname, '../../examples/');
 const cwd = process.cwd();
 
-suite.only('Check Examples');
+suite('Check Examples');
 
 before(async () => {
     await fs.ensureDir(tmpFolder);
@@ -44,4 +45,5 @@ test('messanger', async function () {
 
 after(async () => {
     process.chdir(cwd);
+    chronicle.clear();
 });

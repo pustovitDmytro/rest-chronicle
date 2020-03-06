@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import chronicle, { axios } from '../entry';
-import { users } from '../mock';
+import { users } from '../mock/fixtures';
 import Test from '../Test';
 import { mockAppUrl } from '../constants';
 

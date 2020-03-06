@@ -1,4 +1,5 @@
 import path from 'path';
+import { inspect } from 'util';
 import uuid from 'uuid';
 import fse from 'fs-extra';
 import { diffWords } from 'diff';
@@ -20,10 +21,11 @@ export function compareTexts(a, b) {
 
     if (diff.some(p => p.removed || p.added)) {
         const res = diff.map(part => {
-            const color = part.added && 'green'
-        || part.removed && 'red'
-        || 'grey';
-            const value = part.value;
+            const color = part.added && 'green' || part.removed && 'red' || 'grey';
+            const isDiffs = part.added || part.removed;
+            const value = isDiffs && !part.value.trim()
+                ? inspect(part.value)
+                : part.value;
 
             return chalk[color](value);
         }).join('');

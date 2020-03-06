@@ -17,7 +17,7 @@ export default class Test {
     }
 
     stopMockApp() {
-        if (this.app) app.close();
+        if (this.app) this.app.close();
     }
 
     ensureAction({ title, group }, { path, method, body }) {
@@ -30,11 +30,17 @@ export default class Test {
     }
 
     findAction({ title, group }) {
-        return this._chronicle._actions
+        const action  =  this._chronicle._actions
             .find(a =>
                 (title ? a.context.title === title : true) &&
                 (group ? a.context.group === group : true)
-            ).data;
+            );
+
+        if (!action) {
+            throw new Error(`action ${group}: ${title} not found in${ this._chronicle._actions.map(a => JSON.stringify(a.context)).join(',')}`);
+        }
+
+        return action.data;
     }
 
     async cleanup() {

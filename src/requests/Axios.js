@@ -14,10 +14,9 @@ export default class Axios {
 
     _process(response, context) {
         if (!context) return;
-        const { title, group } = context;
         const { config, request } = response;
 
-        const action = this._chronicle.action(title, group);
+        const action = this._chronicle.action(context);
 
         action.request = {
             url     : config.url,
