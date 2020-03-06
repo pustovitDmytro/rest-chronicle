@@ -25,9 +25,7 @@ const messages = [ {
 
 const server = jsonServer.create();
 const router = jsonServer.router({ users, messages });
-const middlewares = jsonServer.defaults();
 
-server.use(middlewares);
 server.use(router);
 server.listen(port, () => {
     console.log(`Mock server is running on ${port}`);

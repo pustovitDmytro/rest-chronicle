@@ -63,14 +63,10 @@ export default class Axios {
     }
 
     'after_get'(params, result) {
-        console.log('after_get: ', result);
-
         return this._decorate(result);
     }
 
     'after_post'(params, result) {
-        console.log('after_post: ', params, result);
-
         return this._decorate(result);
     }
 }

@@ -23,8 +23,6 @@ export default class BaseReporter {
         actions.forEach(a => {
             const groupValues = groupBy.map(key => dP.get(a, key));
 
-            console.log('groupValues: ', groupValues);
-
             findGroup(groups, groupValues, a.id);
             map.set(a.id, a);
         });

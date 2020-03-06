@@ -16,8 +16,9 @@ export async function readFile(file) {
     return content.toString();
 }
 
-export function compareTexts(a, b) {
-    const diff = diffWords(a, b, { ignoreWhitespace: true });
+export function compareTexts(a, b, reason = 'text fragments should equal', { ignore = '' } = {}) {
+    const words = [ a, b ].map(w => ignore ? w.replace(ignore, '') : w);
+    const diff = diffWords(...words, { ignoreWhitespace: true });
 
     if (diff.some(p => p.removed || p.added)) {
         const res = diff.map(part => {
@@ -30,7 +31,7 @@ export function compareTexts(a, b) {
             return chalk[color](value);
         }).join('');
 
-        throw new Error(`text fragments should equal: ${res}`);
+        throw new Error(`${reason}: ${res}`);
     }
 }
 

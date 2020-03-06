@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs-extra';
-import * as reporters from '../reporters';
+import reporters from '../reporters';
 import Action from './Action';
 
 export default class Chronicle {

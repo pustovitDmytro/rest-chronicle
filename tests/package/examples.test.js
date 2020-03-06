@@ -4,6 +4,7 @@ import { assert } from 'chai';
 import fs from 'fs-extra';
 import { tmpFolder } from '../constants';
 import  chronicle  from '../entry';
+import { compareTexts } from '../utils';
 
 const mocha = new Mocha({
     'ui' : 'qunit'
@@ -40,6 +41,18 @@ test('messanger', async function () {
     assert.deepEqual(
         { ...require(gotSwaggerFilePath), servers: [] },
         { ...require(expectedSwagerFilePath),  servers: [] },
+        'swagger report'
+    );
+
+    const blueprintRelativeFilePath = './documentation/api-blueprint.md';
+    const actualBluePrintFilePath = path.join(tmpFolder, blueprintRelativeFilePath);
+    const expectedBluePrintFilePath = path.join(exampleFolder, blueprintRelativeFilePath);
+
+    compareTexts(
+        (await fs.readFile(actualBluePrintFilePath)).toString(),
+        (await fs.readFile(expectedBluePrintFilePath)).toString(),
+        'api-blueprint report',
+        { ignore: /date:.*\s/g }
     );
 });
 

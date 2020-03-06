@@ -14,8 +14,6 @@ handleBars.registerHelper('json', (data, offset) => {
 handleBars.registerHelper('findById', (map, id) => {
     return map.get(id);
 });
-// const readmeTemplateText = mdinclude.readFileSync('templates/documentation/readme.md'); // eslint-disable-line no-sync
-// const readmeTemplate = handleBars.compile(readmeTemplateText);
 const templatePath = path.join(__dirname, '../../templates/reporters/api-blueprint.md');
 
 export default class ApiBluePrint extends Base {
@@ -33,7 +31,7 @@ export default class ApiBluePrint extends Base {
 
     async write(actions) {
         await this._init();
-        const { groups, map } = this._build(actions, { groupBy: [ 'request.path', 'request.method' ] });
+        const { groups, map } = this._build(actions, { groupBy: [ 'context.group', 'context.title' ] });
         const content = this._generate(groups, map, actions);
 
         await fs.writeFile(this.file, content);

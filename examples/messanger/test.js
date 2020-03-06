@@ -51,4 +51,5 @@ test('Positive: get list of messages', async function () {
 
 after(async () => {
     await chronicle.save('./documentation/swagger.json', { reporter: 'swagger' });
+    await chronicle.save('./documentation/api-blueprint.md', { reporter: 'api-blueprint' });
 });
