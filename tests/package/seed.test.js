@@ -1,13 +1,14 @@
 import { assert } from 'chai';
-import Action from '../../src/modules/Action';
 import { actions } from '../Test';
+import chronicle, { Action }  from '../entry';
 
 suite('Seed actions');
 
 test('POST request', async function () {
-    const seed = actions[0];
-    const action = new Action(seed);
+    const id = 'babb227f-8ac8-5632-9166-20a5b6b1db83';
+    const action = new Action({ ...actions[0], chronicle, id });
     const expected = {
+        id,
         context : {
             title : 'create user',
             group : 'Users'

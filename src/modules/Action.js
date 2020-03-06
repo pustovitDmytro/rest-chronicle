@@ -82,7 +82,7 @@ export default class Action {
         this._response.httpVersion = version;
     }
 
-    set status(code) {
+    set status({ code }) {
         this._response.code = code;
     }
 

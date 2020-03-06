@@ -1,6 +1,7 @@
 import jsonServer from 'json-server';
-import { users, actions } from './fixtures';
+import * as fixtures from './fixtures';
 
+const { users, actions } = fixtures;
 const server = jsonServer.create();
 const router = jsonServer.router({ users });
 const middlewares = jsonServer.defaults();
@@ -12,5 +13,5 @@ server.listen(3000, () => {
 });
 
 export default server;
-export { users, actions };
+export { fixtures, actions };
 

@@ -28,8 +28,10 @@
         }
     },
     {
-        "group": "Users",
-        "title": "update user name",
+        "context": {
+            "group": "Users",
+            "title": "update user name"
+        },
         "url": "http://127.0.0.1:62887/users/4",
         "method": "PATCH",
         "reqHeaders": {

@@ -1,44 +1,22 @@
 import fs from 'fs-extra';
+import Base from './Base';
 
-export default class JSONReporter {
-    constructor(file, opts) {
-        this.file = file;
-    }
-    _build(actions) {
-        const map = new Map();
-        const groups = [];
-
-        actions.forEach(a => {
-            const { id, context } = a;
-            const group = groups.find(g => g.name === context.group);
-
-            if (!group) {
-                groups.push({
-                    group  : context.group,
-                    titles : [ {
-                        title   : context.title,
-                        actions : [ id ]
-                    } ]
-                });
-            }
-            map.set(id, a);
-        });
-
-        return { groups, map };
-    }
+export default class JSONReporter extends Base {
     _generate(groups, map) {
-        const injected = groups.map(g => ({
-            group  : g.group,
-            titles : g.titles.map(t => ({
-                name    : t.title,
-                actions : t.actions
-                    .map(id => map.get(id))
-                    .map(action => ({
-                        request  : action.request,
-                        response : action.response
+        const injected = Object.keys(groups)
+            .map(groupName => ({
+                group  : groupName,
+                titles : Object.keys(groups[groupName])
+                    .map(title => ({
+                        name    : title,
+                        actions : groups[groupName][title]
+                            .map(id => map.get(id))
+                            .map(action => ({
+                                request  : action.request,
+                                response : action.response
+                            }))
                     }))
-            }))
-        }));
+            }));
 
         return JSON.stringify(injected, null, 4);
     }

@@ -1,6 +1,7 @@
 import path from 'path';
 import Mocha from 'mocha';
 import { assert } from 'chai';
+import fs from 'fs-extra';
 import { tmpFolder } from '../constants';
 
 const mocha = new Mocha({
@@ -9,11 +10,13 @@ const mocha = new Mocha({
 const examplesDir = path.join(__dirname, '../../examples/');
 const cwd = process.cwd();
 
+suite.only('Check Examples');
+
 before(async () => {
+    await fs.ensureDir(tmpFolder);
     process.chdir(tmpFolder);
 });
 
-suite('Check Examples');
 
 test('messanger', async function () {
     const exampleFolder = path.join(examplesDir, 'messanger');

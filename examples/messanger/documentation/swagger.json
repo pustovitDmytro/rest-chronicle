@@ -33,7 +33,7 @@
                     }
                 ],
                 "responses": {
-                    "[object Object]": {
+                    "200": {
                         "description": "Positive: show user profile",
                         "content": {
                             "application/json": {
@@ -96,7 +96,7 @@
                     }
                 ],
                 "responses": {
-                    "[object Object]": {
+                    "200": {
                         "description": "Positive: change user name",
                         "content": {
                             "application/json": {
@@ -161,7 +161,7 @@
                     }
                 ],
                 "responses": {
-                    "[object Object]": {
+                    "200": {
                         "description": "Positive: get list of messages",
                         "content": {
                             "application/json": {

@@ -21,6 +21,9 @@ export default class SwaggerReporter {
     constructor(file) {
         this.file = file;
     }
+    _init() {
+
+    }
     _build(actions, { groupBy = [] } = {}) {
         const map = new Map();
         const groups = {};

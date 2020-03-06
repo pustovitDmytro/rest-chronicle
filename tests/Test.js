@@ -1,8 +1,10 @@
 import fse from 'fs-extra';
 import { assert } from 'chai';
 import Action from '../src/modules/Action';
-import app, { actions } from './mock';
+import app, { fixtures } from './mock';
 import { tmpFolder, mockAppPort } from './constants';
+
+const { actions } = fixtures;
 
 export default class Test {
     constructor(chronicle) {
@@ -10,8 +12,12 @@ export default class Test {
     }
     async startMockApp(port = mockAppPort) {
         return new Promise(res => {
-            app.listen(port, res);
+            this.app = app.listen(port, res);
         });
+    }
+
+    stopMockApp() {
+        if (this.app) app.close();
     }
 
     ensureAction({ title, group }, { path, method, body }) {
@@ -32,7 +38,9 @@ export default class Test {
     }
 
     async cleanup() {
+        this.actions = [];
         this._chronicle.clear();
+        this.stopMockApp();
     }
 
     async setTmpFolder() {
@@ -41,7 +49,9 @@ export default class Test {
     async setActions(chr, actionsToSet = actions) {
         const chronicle = chr || this._chronicle;
 
-        return actionsToSet.map(action => new Action({ ...action, chronicle }));
+        this.actions =  actionsToSet.map(action => new Action({ ...action, chronicle }));
+
+        return this.actions;
     }
     async cleanTmpFolder() {
         await fse.remove(tmpFolder);
@@ -50,5 +60,6 @@ export default class Test {
 
 export {
     tmpFolder,
+    fixtures,
     actions
 };

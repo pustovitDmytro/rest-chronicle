@@ -1,36 +1,38 @@
 import { assert } from 'chai';
-import Test from '../Test';
-import chronicle, { Chronicle, reporters }  from '../entry';
-import { getTmpFilePath, readFile } from '../utils';
+import Test, { fixtures } from '../Test';
+import chronicle, { reporters }  from '../entry';
 
+const Reporter = reporters.swagger;
 const factory = new Test(chronicle);
 
 suite('swagger reporter');
 
 before(async () => {
-    // await factory.cleanup();
-    // await factory.setActions();
+    await factory.cleanup();
+    await factory.setActions();
     await factory.setTmpFolder();
 });
 
 
-test('Positive: swagger reporter grouping', async function () {
-    const instance = new Chronicle();
+// test('Positive: swagger reporter grouping', async function () {
+//     const instance = new Chronicle();
+//     const reporter = new Reporter();
+
+//     factory.setRandomActions([
+//         [ 'get', '/users?name=A' ],
+//         [ 'post', '/users' ],
+//         [ 'post', '/users' ]
+//     ], instance);
+
+//     const { groups } = await reporter._build(instance._actions.map(a => a.data));
+// });
+
+
+test('Positive: swagger action template', async function () {
     const reporter = new Reporter();
 
-    factory.setRandomActions([
-        [ 'get', '/users?name=A' ],
-        [ 'post', '/users' ],
-        [ 'post', '/users' ]
-    ], instance);
-
-    const { groups } = await reporter._build(instance._actions.map(a => a.data));
+    assert.deepEqual(
+        reporter._renderAction(factory.actions[0]),
+        fixtures.reports.swagger.createUserAction
+    );
 });
-
-
-// test('Positive: basic structure', async function () {
-//     const file = getTmpFilePath();
-
-//     chronicle.save(file, { reporter: 'swagger' });
-//     const got = JSON.parse(await readFile(file));
-// });
