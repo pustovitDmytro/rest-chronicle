@@ -8,12 +8,13 @@ const { users } = fixtures;
 const factory = new Test(chronicle);
 const request = supertest(app);
 
+
+suite('Supertest');
+
 before(async () => {
     await factory.startMockApp();
     await factory.cleanup();
 });
-
-suite('Supertest');
 
 test('Supertest usage without chronicle', async function () {
     await request

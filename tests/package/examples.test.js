@@ -20,8 +20,8 @@ before(async () => {
 });
 
 
-test('messanger', async function () {
-    const exampleFolder = path.join(examplesDir, 'messanger');
+test('chat', async function () {
+    const exampleFolder = path.join(examplesDir, 'chat');
     const exampleTestFile = path.join(exampleFolder, 'test.js');
 
     mocha.addFile(exampleTestFile);

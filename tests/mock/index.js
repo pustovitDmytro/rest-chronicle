@@ -7,10 +7,20 @@ const router = jsonServer.router({ users });
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
-server.use(router);
-server.listen(3000, () => {
-    console.log('Mock server is running');
-});
+// server.listen(3000, () => {
+//     console.log('Mock server is running');
+// });
+server.start = async function (port) {
+    let app;
+
+    server.use(router);
+
+    await new Promise(res => {
+        app = server.listen(port, res);
+    });
+
+    return app;
+};
 
 export default server;
 export { fixtures, actions };

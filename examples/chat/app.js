@@ -28,7 +28,7 @@ const router = jsonServer.router({ users, messages });
 
 server.use(router);
 server.listen(port, () => {
-    console.log(`Mock server is running on ${port}`);
+    console.log(`Chat server is running on ${port}`);
 });
 
 export default server;

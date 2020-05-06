@@ -42,3 +42,6 @@ test('Axios default function request with chronicle', async function () {
         body   : data
     });
 });
+after(async () => {
+    await factory.cleanup();
+});

@@ -19,10 +19,10 @@
       [
         "module-resolver",
         {
-          "root": ["./src"],
           "alias": {
+            "src": "./src",
             "tests": "./tests",
-            "package": "./package.json",
+            "package": "./package.json"
           }
         }
       ],

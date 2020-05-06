@@ -9,11 +9,10 @@ const { actions } = fixtures;
 export default class Test {
     constructor(chronicle) {
         this._chronicle = chronicle;
+        this.mockApp = app;
     }
     async startMockApp(port = mockAppPort) {
-        return new Promise(res => {
-            this.app = app.listen(port, res);
-        });
+        this.app = await this.mockApp.start(port);
     }
 
     stopMockApp() {
@@ -25,7 +24,11 @@ export default class Test {
 
         assert.deepOwnInclude(action.request, { path, method });
         if (body) {
-            assert.deepOwnInclude(action.response.body, body);
+            if (body.length) {
+                assert.deepEqual(action.response.body, body);
+            } else {
+                assert.deepOwnInclude(action.response.body, body);
+            }
         }
     }
 

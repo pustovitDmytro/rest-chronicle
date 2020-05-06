@@ -1,0 +1,161 @@
+[{
+    "id": 1,
+    "name": "Verkhnya Rozhanka",
+    "coordinates": {
+      "lat": 48.7799795,
+      "lon": 23.51569
+    },
+    "country": "Ukraine"
+  }, {
+    "id": 2,
+    "name": "Cincinnati",
+    "coordinates": {
+      "lat": 39.1822152,
+      "lon": -84.4225186
+    },
+    "country": "United States"
+  }, {
+    "id": 3,
+    "name": "Eindhoven",
+    "coordinates": {
+      "lat": 51.5244042,
+      "lon": 5.7576526
+    },
+    "country": "Netherlands"
+  }, {
+    "id": 4,
+    "name": "Halton",
+    "coordinates": {
+      "lat": 53.800245,
+      "lon": -1.48003
+    },
+    "country": "United Kingdom"
+  }, {
+    "id": 5,
+    "name": "Garden Grove",
+    "coordinates": {
+      "lat": 33.6952452,
+      "lon": -117.7639765
+    },
+    "country": "United States"
+  }, {
+    "id": 6,
+    "name": "Palatine",
+    "coordinates": {
+      "lat": 42.1165506,
+      "lon": -88.0549221
+    },
+    "country": "United States"
+  }, {
+    "id": 7,
+    "name": "Las Vegas",
+    "coordinates": {
+      "lat": 36.1,
+      "lon": -115.07
+    },
+    "country": "United States"
+  }, {
+    "id": 8,
+    "name": "New York City",
+    "coordinates": {
+      "lat": 40.7582228,
+      "lon": -73.9704871
+    },
+    "country": "United States"
+  }, {
+    "id": 9,
+    "name": "Tulsa",
+    "coordinates": {
+      "lat": 36.1592882,
+      "lon": -95.9964783
+    },
+    "country": "United States"
+  }, {
+    "id": 10,
+    "name": "Augusta",
+    "coordinates": {
+      "lat": 33.4243373,
+      "lon": -82.1387233
+    },
+    "country": "United States"
+  }, {
+    "id": 11,
+    "name": "Reston",
+    "coordinates": {
+      "lat": 38.93,
+      "lon": -77.4
+    },
+    "country": "United States"
+  }, {
+    "id": 12,
+    "name": "Obodivka",
+    "coordinates": {
+      "lat": 48.401643,
+      "lon": 29.2407915
+    },
+    "country": "Ukraine"
+  }, {
+    "id": 13,
+    "name": "Haarlem",
+    "coordinates": {
+      "lat": 52.3811357,
+      "lon": 4.6419648
+    },
+    "country": "Netherlands"
+  }, {
+    "id": 14,
+    "name": "San Jose",
+    "coordinates": {
+      "lat": 37.2422863,
+      "lon": -121.7309452
+    },
+    "country": "United States"
+  }, {
+    "id": 15,
+    "name": "Radekhiv",
+    "coordinates": {
+      "lat": 50.2836918,
+      "lon": 24.6345078
+    },
+    "country": "Ukraine"
+  }, {
+    "id": 16,
+    "name": "Shawnee Mission",
+    "coordinates": {
+      "lat": 39.0269443,
+      "lon": -94.6673484
+    },
+    "country": "United States"
+  }, {
+    "id": 17,
+    "name": "Charleston",
+    "coordinates": {
+      "lat": 32.7830575,
+      "lon": -79.9365839
+    },
+    "country": "United States"
+  }, {
+    "id": 18,
+    "name": "Greensboro",
+    "coordinates": {
+      "lat": 36.09,
+      "lon": -79.83
+    },
+    "country": "United States"
+  }, {
+    "id": 19,
+    "name": "Koryukivka",
+    "coordinates": {
+      "lat": 51.7754831,
+      "lon": 32.2595792
+    },
+    "country": "Ukraine"
+  }, {
+    "id": 20,
+    "name": "San Antonio",
+    "coordinates": {
+      "lat": 29.5613789,
+      "lon": -98.5612534
+    },
+    "country": "United States"
+  }]  
