@@ -1,5 +1,5 @@
 # rest-chronicle
-**rest-chronicle** boilerplate for creating npm packages.
+**rest-chronicle** autodocumentate rest api.
 
 [![Version][badge-vers]][npm]
 [![Dependencies][badge-deps]][npm]
