@@ -4,8 +4,8 @@ import Base from  './Base';
 
 export default class TemplateReporter extends Base {
     constructor(file, { path } = {}) {
-        this.templatePath = path;
         super(file);
+        this.templatePath = path;
     }
     _generate(groups, map) {
         return this._template({

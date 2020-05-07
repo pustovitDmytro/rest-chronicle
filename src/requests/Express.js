@@ -1,5 +1,4 @@
 import { URL } from 'url';
-import { resolveSoa } from 'dns';
 
 function chronicleMiddleware(req, res, next) {
     const action = this._chronicle.action(this);

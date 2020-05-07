@@ -1,6 +1,7 @@
 import { URL } from 'url';
 import uuid from 'uuid';
 import { HTTP_STATUS_CODES } from '../constants';
+import { isEmpty } from '../utils/common';
 
 function getQuery(searchParams) {
     const query = {};
@@ -20,6 +21,31 @@ export default class Action {
         this._chronicle = chronicle;
         this.set(values);
         this._id = id || uuid.v4();
+    }
+
+    static sanitizeHeaders(headers, config) {
+        if (!config || !headers) return headers;
+        const sanitized = {};
+
+        if (typeof config.sanitize === 'function') {
+            return config.sanitize(headers);
+        }
+
+        Object.keys(headers).forEach(key => {
+            const value = headers[key];
+            const sanitizer = config.sanitize?.[key];
+
+            if (config.include && !config.include.includes(key)) return;
+            if (config.exclude && config.exclude.includes(key)) return;
+
+            if (typeof sanitizer === 'function') {
+                sanitized[key] = sanitizer(value, headers);
+            } else {
+                sanitized[key] = value;
+            }
+        });
+
+        return isEmpty(sanitized) ? null : sanitized;
     }
 
     set(values = {}) {
@@ -117,7 +143,7 @@ export default class Action {
     }
 
     get reqHeaders() {
-        return this._request.headers || {};
+        return Action.sanitizeHeaders(this._request.headers, this._chronicle.headers?.request);
     }
 
     get reqBody() {
@@ -157,7 +183,7 @@ export default class Action {
     }
 
     get resHeaders() {
-        return this._response.headers || {};
+        return Action.sanitizeHeaders(this._response.headers, this._chronicle.headers?.response);
     }
 
     get resContentInfo() {
