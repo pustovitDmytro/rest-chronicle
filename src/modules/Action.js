@@ -24,7 +24,7 @@ export default class Action {
     }
 
     static sanitizeHeaders(headers, config) {
-        if (!config || !headers) return headers;
+        if (!config || !headers) return headers || null;
         const sanitized = {};
 
         if (typeof config.sanitize === 'function') {
