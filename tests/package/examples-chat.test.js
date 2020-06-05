@@ -2,6 +2,7 @@ import path from 'path';
 import Mocha from 'mocha';
 import { assert } from 'chai';
 import fs from 'fs-extra';
+import axios from 'axios';
 import { tmpFolder } from '../constants';
 import  chronicle  from '../entry';
 import { compareTexts } from '../utils';
@@ -12,7 +13,7 @@ const mocha = new Mocha({
 const examplesDir = path.join(__dirname, '../../examples/');
 const cwd = process.cwd();
 
-suite('Check Examples');
+suite('Chat Example');
 
 before(async () => {
     await fs.ensureDir(tmpFolder);
@@ -60,3 +61,4 @@ after(async () => {
     process.chdir(cwd);
     chronicle.clear();
 });
+

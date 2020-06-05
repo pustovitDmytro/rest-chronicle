@@ -27,7 +27,7 @@ function chronicleMiddleware(req, res, next) {
         const body = Buffer.concat(chunks).toString('utf8');
 
         action.response = {
-            body    : JSON.parse(body),
+            body    : body && JSON.parse(body),
             headers : res.getHeaders(),
             http    : {
                 version : res.httpVersion
@@ -37,14 +37,19 @@ function chronicleMiddleware(req, res, next) {
                 message : res.statusMessage
             }
         };
+        if (this._config?.save) {
+            console.log('save');
+        }
     });
 
     next();
 }
 
 export default class Express {
-    constructor(chronicle) {
+    constructor(chronicle, config = {}) {
         this._chronicle = chronicle;
+        this._config = config;
+        console.log('constructor ', config);
 
         return this.generateMiddleWare;
     }
@@ -61,12 +66,14 @@ export default class Express {
         if (typeof args[0] === 'function') {
             return {
                 ...args[0](...args.slice(1)),
-                _chronicle : this._chronicle
+                _chronicle : this._chronicle,
+                _config    : this._config
             };
         }
 
         return {
             _chronicle : this._chronicle,
+            _config    : this._config,
             group      : args[0],
             title      : args[1]
         };
