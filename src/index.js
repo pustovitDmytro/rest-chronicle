@@ -8,8 +8,8 @@ import reporters from './reporters';
 const chronicle = new Chronicle();
 const axios = new Axios(chronicle);
 const middlewares = {
-    express(instance = chronicle) {
-        return new Express(instance);
+    express(instance = chronicle, ...params) {
+        return new Express(instance, ...params);
     }
 };
 

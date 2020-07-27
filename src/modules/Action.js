@@ -143,7 +143,7 @@ export default class Action {
     }
 
     get reqHeaders() {
-        return Action.sanitizeHeaders(this._request.headers, this._chronicle.headers?.request);
+        return Action.sanitizeHeaders(this._request.headers, this._chronicle.config.headers?.request);
     }
 
     get reqBody() {
@@ -183,7 +183,7 @@ export default class Action {
     }
 
     get resHeaders() {
-        return Action.sanitizeHeaders(this._response.headers, this._chronicle.headers?.response);
+        return Action.sanitizeHeaders(this._response.headers, this._chronicle.config.headers?.response);
     }
 
     get resContentInfo() {

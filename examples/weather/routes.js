@@ -2,7 +2,7 @@ import forecasts from './data/forecasts';
 import cities from './data/cities';
 
 function getById(array, id) {
-    array.find(i => i.id === id);
+    return array.find(i => i.id === id);
 }
 
 export function citiesList(req, res) {
@@ -10,7 +10,7 @@ export function citiesList(req, res) {
 }
 
 export function cityShow(req, res) {
-    res.send(getById(cities, req.id));
+    res.send(getById(cities, +req.params.id));
 }
 
 export function cityUpdate(req, res) {
@@ -22,9 +22,12 @@ export function cityCreate(req, res) {
 }
 
 export function forecastsList(req, res) {
-    res.send(forecasts.filter(i => i.city === req.city_id));
+    res.send(forecasts.filter(i => req.query.cityId
+        ? i.city === +req.query.cityId
+        : true)
+    );
 }
 
 export function forecastUpdate(req, res) {
-    res.send(res.body);
+    res.send(req.body);
 }

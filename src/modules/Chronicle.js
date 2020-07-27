@@ -4,7 +4,7 @@ import reporters from '../reporters';
 import Action from './Action';
 
 export default class Chronicle {
-    constructor(config) {
+    constructor(config = {}) {
         this._actions = [];
         this.setConfig(config);
     }
@@ -15,8 +15,8 @@ export default class Chronicle {
         this.contextBuilder = fn;
     }
 
-    setConfig() {
-
+    setConfig(config) {
+        this.config = config;
     }
 
     action(context) {

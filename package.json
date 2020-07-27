@@ -70,6 +70,7 @@
     "chalk": "^2.4.2",
     "dot-prop": "^5.1.0",
     "handlebars": "^4.4.5",
+    "myrmidon": "^1.4.3",
     "supertest": "^4.0.2",
     "uuid": "^3.3.2"
   }

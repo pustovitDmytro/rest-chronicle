@@ -9,16 +9,35 @@
 ### Request
 
     {{request.method}} {{request.path}}
+                    {{#if (notEmpty request.params)}}
+
+**Params**
+
+                    {{#each request.params}}
+* {{@key}}: {{{this}}}
+                    {{/each}}
+                {{/if}}
+                {{#if (notEmpty request.query)}}
+
+**Query**
+
+                    {{#each request.query}}
+* {{@key}}: {{{this}}}
+                    {{/each}}
+                {{/if}}
                 {{#if request.headers}}
+
 **Headers**
+
                     {{#each request.headers}}
-* {{@key}}: {{this}}
+* {{@key}}: {{{this}}}
                     {{/each}}
                 {{/if}}
 
                 {{#if request.body}}
 **Body**
-```javascript          
+
+```json          
 {{json request.body 4}}
 ```
                 {{/if}}
@@ -28,7 +47,6 @@
 **Status:** {{response.status.code}} 
 
 **Type:** {{response.info.type}}
-
                 {{#if response.headers}}
 
 **Headers**
@@ -39,9 +57,11 @@
                 {{#if response.body}}
 
 **Body**
+
 ```javascript 
-{{json response.body 4}}
+{{inspect response.body @root.options}}
 ```
+
                 {{/if}}
             {{/with}}
         {{/each}}

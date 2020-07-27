@@ -5,19 +5,22 @@ import { citiesList, cityShow, cityUpdate, cityCreate, forecastsList, forecastUp
 
 const port = process.env.PORT || 3005;
 const chr = middlewares.express(chronicle, {
-    // Results will be saved after each request.
     save : {
-        './documentation/docs.md' : { reporter: 'api-blueprint' }
+        uniqueFilter : [ 'context.title', 'request.method', 'response.status.code', 'url.path' ],
+        files        : [ { reporter: 'lite', path: './documentation/api.md' } ]
     }
 });
 
 chronicle.setConfig({
     headers : {
         request : {
+            include  : [ 'authorization' ],
             sanitize : {
-                include       : [ 'Authorization' ],
-                Authorization : () => '<Token>'
+                authorization : () => "'API KEY'"
             }
+        },
+        response : {
+            include : []
         }
     }
 });
@@ -28,9 +31,9 @@ const router = express.Router();
 router.use(bodyParser.json());
 
 router.get('/cities', chr('Cities', 'Get list of cities'), citiesList);
-router.get('/cities/:id', chr('Cities', 'Get list of cities'), cityShow);
+router.get('/cities/:id', chr('Cities', 'Get one city'), cityShow);
 router.patch('/cities/:id', chr('Cities', 'Update Existing City'), cityUpdate);
-router.post('/cities/:id', chr('Cities', 'Create new City'), cityCreate);
+router.post('/cities', chr('Cities', 'Create new City'), cityCreate);
 router.patch('/forecasts/:id', chr('Forecasts', 'Update Forecast'), forecastUpdate);
 
 // Use function in middleware for full controll

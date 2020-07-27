@@ -3,14 +3,16 @@ import handleBars from '../handlebars';
 import Base from  './Base';
 
 export default class TemplateReporter extends Base {
-    constructor(file, { path } = {}) {
+    constructor(file, { path, templateOpts = {} } = {}) {
         super(file);
         this.templatePath = path;
+        this.templateOpts = templateOpts;
     }
     _generate(groups, map) {
         return this._template({
             groups,
-            actions : map
+            actions : map,
+            options : this.templateOpts
         });
     }
     async _init() {
