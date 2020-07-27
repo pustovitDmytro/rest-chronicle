@@ -10,7 +10,7 @@ POST /users
 * Authorization: 25NPmT
 
 **Body**
-```javascript
+```json
 {
     "first_name": "Pascal",
     "last_name": "Ancell",
@@ -25,13 +25,17 @@ POST /users
 
 **Type:** application/json
 
+**Headers**
+    x-powered-by: Express
+    content-length: 120
+
 **Body**
 ```javascript
 {
-    "id": 2,
-    "first_name": "Pascal",
-    "last_name": "Ancell",
-    "email": "pancell1@gravatar.com",
-    "gender": "Male"
+    id: 2,
+    first_name: 'Pascal',
+    last_name: 'Ancell',
+    email: 'pancell1@gravatar.com',
+    gender: 'Male'
 }
 ```

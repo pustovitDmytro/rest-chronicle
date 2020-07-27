@@ -30,7 +30,9 @@ function chronicleMiddleware(req, res, next) {
     };
     const url = new URL(req.originalUrl, `${req.protocol}://${req.get('host')}`);
 
-    url.pathname = req.route.path;
+    if (req.route) {
+        url.pathname = req.route.path;
+    }
     action.request = {
         url,
         headers : req.headers,
@@ -85,6 +87,7 @@ function chronicleMiddleware(req, res, next) {
 
 export default class Express {
     constructor(chronicle, config = {}) {
+        console.log('express constructor');
         this._chronicle = chronicle;
         this._config = config;
 

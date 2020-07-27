@@ -10,17 +10,16 @@ suite('Express');
 const factory = new Test(chronicle);
 const expressMiddleWare = middlewares.express(chronicle);
 
-factory.mockApp.use(expressMiddleWare(req => {
-    return {
-        group : 'Users',
-        title : req.url.includes('limit=10') ? 'With limit' : 'general'
-    };
-}));
-
 
 before(async () => {
     await factory.startMockApp();
     await factory.setTmpFolder();
+    factory.mockApp.use(expressMiddleWare(req => {
+        return {
+            group : 'Users',
+            title : req.url.includes('limit=10') ? 'With limit' : 'general'
+        };
+    }));
 });
 
 test('Express middleware for get json array', async function () {

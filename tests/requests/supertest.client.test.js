@@ -4,10 +4,8 @@ import app, { fixtures } from '../mock';
 import Test from '../Test';
 
 const { users } = fixtures;
-
 const factory = new Test(chronicle);
 const request = supertest(app);
-
 
 suite('Supertest');
 

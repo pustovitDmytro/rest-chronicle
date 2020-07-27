@@ -1,5 +1,5 @@
 import Test, { fixtures } from '../Test';
-import chronicle, { reporters, Action }  from '../entry';
+import chronicle, { reporters }  from '../entry';
 import { compareTexts } from '../utils';
 
 const Reporter = reporters.lite;

@@ -7,9 +7,7 @@ const router = jsonServer.router({ users });
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
-// server.listen(3000, () => {
-//     console.log('Mock server is running');
-// });
+
 server.start = async function (port) {
     let app;
 
