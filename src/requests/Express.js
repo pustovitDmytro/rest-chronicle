@@ -87,7 +87,6 @@ function chronicleMiddleware(req, res, next) {
 
 export default class Express {
     constructor(chronicle, config = {}) {
-        console.log('express constructor');
         this._chronicle = chronicle;
         this._config = config;
 

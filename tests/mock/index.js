@@ -2,24 +2,29 @@ import jsonServer from 'json-server';
 import * as fixtures from './fixtures';
 
 const { users, actions } = fixtures;
-const server = jsonServer.create();
-const router = jsonServer.router({ users });
-const middlewares = jsonServer.defaults();
 
-server.use(middlewares);
+function createMockApp() {
+    const server = jsonServer.create();
+    const router = jsonServer.router({ users });
+    const middlewares = jsonServer.defaults();
 
-server.start = async function (port) {
-    let app;
+    server.use(middlewares);
 
-    server.use(router);
+    server.start = async function (port) {
+        let app;
 
-    await new Promise(res => {
-        app = server.listen(port, res);
-    });
+        server.use(router);
 
-    return app;
-};
+        await new Promise(res => {
+            app = server.listen(port, res);
+        });
 
-export default server;
+        return app;
+    };
+
+    return server;
+}
+
+export default createMockApp;
 export { fixtures, actions };
 

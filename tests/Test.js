@@ -1,7 +1,7 @@
 import fse from 'fs-extra';
 import { assert } from 'chai';
 import Action from '../src/modules/Action';
-import app, { fixtures } from './mock';
+import createMockApp, { fixtures } from './mock';
 import { tmpFolder, mockAppPort } from './constants';
 
 const { actions } = fixtures;
@@ -9,7 +9,7 @@ const { actions } = fixtures;
 export default class Test {
     constructor(chronicle) {
         this._chronicle = chronicle;
-        this.mockApp = app;
+        this.mockApp = createMockApp();
     }
     async startMockApp(port = mockAppPort) {
         this.app = await this.mockApp.start(port);
@@ -40,7 +40,9 @@ export default class Test {
             );
 
         if (!action) {
-            throw new Error(`action ${group}: ${title} not found in${ this._chronicle._actions.map(a => JSON.stringify(a.context)).join(',')}`);
+            const actionsList = this._chronicle._actions.map(a => JSON.stringify(a.context)).join(',');
+
+            throw new Error(`action ${group}: ${title} not found in ${actionsList}`);
         }
 
         return action.data;

@@ -33,6 +33,7 @@ export default class Chronicle {
     clear() {
         this._actions = [];
         this.contextBuilder = c => c;
+        this.setConfig({});
     }
 
     async save(filePath, opts = {}) {
