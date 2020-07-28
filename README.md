@@ -9,10 +9,16 @@
 [![License][badge-lic]][github]
 
 ## Table of Contents
+  - [Motivation](#motivation)
   - [Requirements](#requirements)
   - [Installation](#installation)
   - [Usage](#usage)
   - [Contribute](#contribute)
+
+## Motivation
+A lot of modern rest servers have a lack of up-to-date apidoc. There could be a wide number of reasons for this. 
+
+**rest-chronicle** can help developers keep documentation up-to-date using their existing test coverage, external clients, or even express middleware.
 
 ## Requirements
 To use library you need to have [node](https://nodejs.org) and [npm](https://www.npmjs.com) installed in your machine:
@@ -28,11 +34,81 @@ To install the library run following command
   npm i --save rest-chronicle
 ```
 
+## Examples
+
+Check full, ready for use, well-tested examples in the [examples folder](./examples).  There currently 2 examples there:
+1. [chat app](./examples/chat/app.js): demonstrates apidoc generation using tests with supertest module. [Swagger](examples/chat/documentation/swagger.json) and [api-blueprint](examples/chat/documentation/api-blueprint.md) documentation files will be generated after running [test.js](examples/chat/test.js).
+2. [weather app](examples/weather/app.js): generates apidoc as express middleware. [lite](./examples/weather/documentation/api.md) markdown file will be generated after executing requests from the scenario described in [client.js](examples/weather/client.js).
+
 ## Usage
 
-```javascript
+### Clients
 
+To capture actions into chronicle use one of the supported clients:
+
+**Axios**
+
+```javascript
+    import { axios } from 'rest-chronicle';
+
+    const response = await axios({
+        method : 'GET',
+        url    : `https://example.com/users`,
+        with   : { title: 'List of Users', group: 'Users' }
+    });
 ```
+
+**Express**
+
+```javascript
+    import { middlewares } from 'rest-chronicle';
+    import express from 'express';
+
+    const chr = middlewares.express();
+    const app = express();
+    const router = express.Router();
+    router.get('/users', chr('Users', 'List of Users'), usersList);
+```
+
+check [weather app](./examples/weather/app.js) for complete example
+
+**Supertest**
+
+```javascript
+    import { supertest } from 'rest-chronicle';
+    import app from './app';
+
+    const request = supertest(app);
+
+    await request
+        .with({ title: 'List of Users', group: 'Users' })
+        .get('/users')
+        .expect('Content-Type', /json/)
+        .expect(200);
+```
+
+check [chat app](./examples/chat/test.js) for complete example
+
+### Reporters
+
+The package provides several reporters under the hood. General reporters api allows to save captured actions in specific format.
+
+To explicitly call save method, use the next approach:
+```javascript
+import chronicle from 'rest-chronicle';
+
+// capture actions here
+
+await chronicle.save('./documentation/swagger.json', { reporter: 'swagger' });
+```
+The first argument receives file path, and second - reporter-specific configuration.
+
+Supported reporters:
+* **[api-blueprint](https://apiblueprint.org/)**
+* **[swagger](https://swagger.io/)**
+* **template reporter** - use a custom template (will be filled with handlebars)
+* **lite reporter** - markdown file from the template will be generated. The configuration will be passed to inspect method.
+* **json reporter** - store captured actions in JSON format with common grouping.
 
 ## Contribute
 

@@ -5,3 +5,8 @@ tests
 .eslintignore 
 .babelrc
 tmp
+examples
+bin
+.nycrc.json
+.releaserc.json
+.mocharc.json
