@@ -3,10 +3,8 @@ import app from './app';
 
 const request = supertest(app);
 
-function contextBuilder({ urlParams, rawUrl, test }) {
-    return { // TODO rawUrl, urlParams auto
-        urlParams,
-        rawUrl,
+function contextBuilder({ test }) {
+    return {
         title : test.title,
         group : test.parent.title
     };

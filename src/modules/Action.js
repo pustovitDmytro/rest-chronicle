@@ -58,7 +58,13 @@ export default class Action {
     }
 
     set context(context) {
-        this._context = this._chronicle.contextBuilder(context);
+        const { urlParams, rawUrl } = context;
+
+        this._context = {
+            urlParams,
+            rawUrl,
+            ...this._chronicle.contextBuilder(context)
+        };
     }
 
     set request({ headers, body, ...values }) {

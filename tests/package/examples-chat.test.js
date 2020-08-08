@@ -2,7 +2,6 @@ import path from 'path';
 import Mocha from 'mocha';
 import { assert } from 'chai';
 import fs from 'fs-extra';
-import axios from 'axios';
 import { tmpFolder } from '../constants';
 import  chronicle  from '../entry';
 import { compareTexts } from '../utils';
