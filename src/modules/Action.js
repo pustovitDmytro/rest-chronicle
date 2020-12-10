@@ -60,11 +60,9 @@ export default class Action {
     set context(context) {
         const { urlParams, rawUrl } = context;
 
-        this._context = {
-            urlParams,
-            rawUrl,
-            ...this._chronicle.contextBuilder(context)
-        };
+        this._context = this._chronicle.contextBuilder(context);
+        if (urlParams) this._context.urlParams = urlParams;
+        if (rawUrl) this._context.rawUrl = rawUrl;
     }
 
     set request({ headers, body, ...values }) {
