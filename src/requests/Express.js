@@ -13,7 +13,7 @@ function arrayKeyFilter(keys) {
 }
 
 function chronicleMiddleware(req, res, next) {
-    const action = this._chronicle.action(this);
+    const action = this.chronicle.action(this.context);
     const originalWrite = res.write;
     const originalEnd = res.end;
     const chunks = [];
@@ -53,13 +53,13 @@ function chronicleMiddleware(req, res, next) {
                 message : res.statusMessage
             }
         };
-        const save = this._config?.save;
+        const save = this.config?.save;
 
         if (save) {
-            const actions = this._chronicle._actions;
+            const actions = this.chronicle._actions;
 
             if (isFunction(save)) {
-                save(action, actions, this._chronicle, this._config);
+                save(action, actions, this.chronicle, this.config);
             } else {
                 let isApproved = true;
 
@@ -74,7 +74,7 @@ function chronicleMiddleware(req, res, next) {
                 server._chronicles.push(
                     Promise.all(
                         save.files.map(
-                            ({ path, ...opts }) => this._chronicle.save(path, opts)
+                            ({ path, ...opts }) => this.chronicle.save(path, opts)
                         )
                     )
                 );
@@ -95,26 +95,26 @@ export default class Express {
 
     generateMiddleWare = (...args) => {
         return (...expressArgs) => {
-            const config = this.getConfig(...args, ...expressArgs);
+            const context = this.getContext(...args, ...expressArgs);
 
-            chronicleMiddleware.call(config, ...expressArgs);
+            chronicleMiddleware.call({
+                context,
+                chronicle : this._chronicle,
+                config    : this._config
+            }, ...expressArgs);
         };
     }
 
-    getConfig(...args) {
+    getContext(...args) {
         if (typeof args[0] === 'function') {
             return {
-                ...args[0](...args.slice(1)),
-                _chronicle : this._chronicle,
-                _config    : this._config
+                ...args[0](...args.slice(1))
             };
         }
 
         return {
-            _chronicle : this._chronicle,
-            _config    : this._config,
-            group      : args[0],
-            title      : args[1]
+            group : args[0],
+            title : args[1]
         };
     }
 }

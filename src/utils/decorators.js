@@ -31,7 +31,7 @@ function _onParams({ params }) {
     return params;
 }
 
-export function decorate(target, methods) {
+export function decorate(target, methods = {}) {
     const isDecorateFunction = isFunction(target);
 
     const defaultConfig = {
@@ -64,7 +64,7 @@ export function decorate(target, methods) {
             const onSuccessMethod = injectMethodNames.find(m => m === `after_${methodName}`);
 
             if (isDecorateFunction && [ 'caller', 'caller', 'arguments' ].includes(methodName)) return;
-            if (!onParamsMethod && !onSuccessMethod) return;
+            if (!onParamsMethod && !onSuccessMethod) return decorated[methodName] = target[methodName];
             const config = {
                 onParams  : onParamsMethod ? methods[onParamsMethod] : _onParams,
                 onSuccess : onSuccessMethod ? methods[onSuccessMethod] : _onSuccess,
