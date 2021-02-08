@@ -1,8 +1,13 @@
 import fs from 'fs-extra';
 import dP from 'dot-prop';
+import { isArray } from 'myrmidon';
 
 function findGroup(obj, filters, id, index = 0) {
-    if (index === filters.length) return [ id ];
+    if (index === filters.length) {
+        if (isArray(obj)) return [ ...obj, id ];
+
+        return [ id ];
+    }
     obj[filters[index]] = findGroup(  // eslint-disable-line no-param-reassign
         obj[filters[index]] || {},
         filters,
@@ -18,8 +23,9 @@ function detectType(value) {
 }
 
 export default class SwaggerReporter {
-    constructor(file) {
+    constructor(file, { hash } = {}) {
         this.file = file;
+        if (hash) this.getHash = hash;
     }
     _init() {
 
@@ -54,7 +60,9 @@ export default class SwaggerReporter {
             example : body
         };
 
-        if (result.type === 'object') {
+        if (result === null) result.nullable = true;
+
+        if (body && result.type === 'object') {
             Object.entries(body)
                 .forEach(([ key, value ]) => {
                     dP.set(result, `properties.${key}`, this._renderBody(value));
@@ -98,12 +106,12 @@ export default class SwaggerReporter {
                         const methodName = method.toLowerCase();
 
                         actionIds.forEach(id => {
-                            const actionPayload = this._renderAction(map.get(id));
+                            const action = map.get(id);
                             const hash = dP.get(paths, `${path}.${methodName}`)
-                                ? `#${id}`
+                                ? `#${this.getHash(action)}`
                                 : '';
 
-                            dP.set(paths, `${path}${hash}.${methodName}`, actionPayload);
+                            dP.set(paths, `${path}${hash}.${methodName}`, this._renderAction(action));
                         });
                     });
             });
@@ -120,6 +128,11 @@ export default class SwaggerReporter {
 
         return JSON.stringify(content, null, 4);
     }
+
+    getHash(action) {
+        return action.id;
+    }
+
     async write(actions) {
         const { groups, map } = this._build(actions, { groupBy: [ 'request.path', 'request.method' ] });
         const content = this._generate(groups, map, actions);

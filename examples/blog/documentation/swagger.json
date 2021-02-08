@@ -1,0 +1,216 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Swagger Report"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:44461"
+        }
+    ],
+    "paths": {
+        "/posts/1": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "description": "Positive: show first post",
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "axios/0.21.1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Positive: show first post",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "example": {
+                                        "id": 1,
+                                        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                                        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
+                                        "thumbnail": null
+                                    },
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
+                                        },
+                                        "body": {
+                                            "type": "string",
+                                            "example": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+                                        },
+                                        "thumbnail": {
+                                            "type": "object",
+                                            "example": null
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/posts/:id": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "description": "Positive: show single post by id",
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "axios/0.21.1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Positive: show single post by id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "example": {
+                                        "id": 2,
+                                        "title": "qui est esse",
+                                        "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla",
+                                        "thumbnail": "https://via.placeholder.com/150/24f355"
+                                    },
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 2
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "qui est esse"
+                                        },
+                                        "body": {
+                                            "type": "string",
+                                            "example": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+                                        },
+                                        "thumbnail": {
+                                            "type": "string",
+                                            "example": "https://via.placeholder.com/150/24f355"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/posts/:id#negative_post_not_found": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "description": "Negative: post not found",
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "axios/0.21.1"
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Negative: post not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "example": {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/posts/:id#negative_bad_id": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "description": "Negative: bad id",
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "axios/0.21.1"
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Negative: bad id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "example": {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
