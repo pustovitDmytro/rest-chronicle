@@ -16,8 +16,11 @@ export default class Axios {
                 const currentUrl = new URL(config.url, config.baseURL);
                 const context = config.with || useContext;
 
-                context.rawUrl = new URL(config.url, config.baseURL);
-                context.urlParams = config.params;
+                if (context) {
+                    context.rawUrl = new URL(config.url, config.baseURL);
+                    context.urlParams = config.params;
+                }
+
                 Object.entries(config.params || {}).forEach(([ key, val ]) => {
                     currentUrl.pathname = currentUrl.pathname.replace(`:${key}`, encodeURIComponent(val));
                 });
