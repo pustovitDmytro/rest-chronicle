@@ -1,5 +1,5 @@
 import test from 'ava';
-import chronicle, { axios } from '../../src';
+import chronicle, { axios } from '../../tests/entry';
 import express from './app';
 
 const app = {};
@@ -70,7 +70,9 @@ test('Negative: bad id', async function (t) {
 });
 
 test.after('cleanup', async () => {
-    await chronicle.save('./documentation/swagger.json', {
+    const docsDir = process.env.DOCS || './documentation';
+
+    await chronicle.save(`${docsDir}/swagger.json`, {
         reporter : 'swagger',
         hash     : action => action.context.title.replace(/\W/g, ' ').replace(/\s+/g, '_').toLowerCase()
     });
