@@ -1,0 +1,140 @@
+#%RAML 1.0
+title: Raml report
+baseUri: 'http://localhost:34285'
+version: 1.0.0
+annotationTypes:
+  group: string
+/posts:
+  post:
+    (group): Posts
+    description: 'Positive: create blog post'
+    headers:
+      Accept:
+        example: 'application/json, text/plain, */*'
+        type: string
+      Content-Type:
+        example: application/json;charset=utf-8
+        type: string
+      User-Agent:
+        example: axios/0.21.1
+        type: string
+      Content-Length:
+        example: 206
+        type: number
+    responses:
+      '201':
+        body:
+          application/json:
+            type: object
+            example: |-
+              {
+                  "data": {
+                      "title": "quite cotton although shadow",
+                      "body": "mood income built field throw badly finest seat accurate ago seldom allow invented exactly past garage baseball",
+                      "thumbnail": "http://lakkik.ng/kupa"
+                  },
+                  "id": 4
+              }
+            properties:
+              data:
+                type: object
+              id:
+                type: number
+  /1:
+    get:
+      (group): Posts
+      description: 'Positive: show first post'
+      headers:
+        Accept:
+          example: 'application/json, text/plain, */*'
+          type: string
+        User-Agent:
+          example: axios/0.21.1
+          type: string
+      responses:
+        '200':
+          body:
+            application/json:
+              type: object
+              example: |-
+                {
+                    "id": 1,
+                    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
+                    "thumbnail": null
+                }
+              properties:
+                id:
+                  type: number
+                title:
+                  type: string
+                body:
+                  type: string
+                thumbnail:
+                  type: nil
+  '/:id':
+    get:
+      (group): Posts
+      description: 'Positive: show single post by id'
+      headers:
+        Accept:
+          example: 'application/json, text/plain, */*'
+          type: string
+        User-Agent:
+          example: axios/0.21.1
+          type: string
+      responses:
+        '200':
+          body:
+            application/json:
+              type: object
+              example: |-
+                {
+                    "id": 2,
+                    "title": "qui est esse",
+                    "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla",
+                    "thumbnail": "https://via.placeholder.com/150/24f355"
+                }
+              properties:
+                id:
+                  type: number
+                title:
+                  type: string
+                body:
+                  type: string
+                thumbnail:
+                  type: string
+  '/:id#post_not_found':
+    get:
+      (group): Posts
+      description: 'Negative: post not found'
+      headers:
+        Accept:
+          example: 'application/json, text/plain, */*'
+          type: string
+        User-Agent:
+          example: axios/0.21.1
+          type: string
+      responses:
+        '404':
+          body:
+            application/json:
+              type: object
+              example: {}
+  '/:id#bad_id':
+    get:
+      (group): Posts
+      description: 'Negative: bad id'
+      headers:
+        Accept:
+          example: 'application/json, text/plain, */*'
+          type: string
+        User-Agent:
+          example: axios/0.21.1
+          type: string
+      responses:
+        '404':
+          body:
+            application/json:
+              type: object
+              example: {}

@@ -60,7 +60,7 @@ export default class SwaggerReporter {
             example : body
         };
 
-        if (result === null) result.nullable = true;
+        if (body === null) result.nullable = true;
 
         if (body && result.type === 'object') {
             Object.entries(body)

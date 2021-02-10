@@ -6,10 +6,100 @@
     },
     "servers": [
         {
-            "url": "http://localhost:44461"
+            "url": "http://localhost:34285"
         }
     ],
     "paths": {
+        "/posts": {
+            "post": {
+                "tags": [
+                    "Posts"
+                ],
+                "description": "Positive: create blog post",
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "application/json;charset=utf-8"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "axios/0.21.1"
+                    },
+                    {
+                        "name": "Content-Length",
+                        "in": "header",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": 206
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Positive: create blog post",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "example": {
+                                        "data": {
+                                            "title": "quite cotton although shadow",
+                                            "body": "mood income built field throw badly finest seat accurate ago seldom allow invented exactly past garage baseball",
+                                            "thumbnail": "http://lakkik.ng/kupa"
+                                        },
+                                        "id": 4
+                                    },
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "example": {
+                                                "title": "quite cotton although shadow",
+                                                "body": "mood income built field throw badly finest seat accurate ago seldom allow invented exactly past garage baseball",
+                                                "thumbnail": "http://lakkik.ng/kupa"
+                                            },
+                                            "properties": {
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "quite cotton although shadow"
+                                                },
+                                                "body": {
+                                                    "type": "string",
+                                                    "example": "mood income built field throw badly finest seat accurate ago seldom allow invented exactly past garage baseball"
+                                                },
+                                                "thumbnail": {
+                                                    "type": "string",
+                                                    "example": "http://lakkik.ng/kupa"
+                                                }
+                                            }
+                                        },
+                                        "id": {
+                                            "type": "number",
+                                            "example": 4
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/posts/1": {
             "get": {
                 "tags": [
@@ -62,7 +152,8 @@
                                         },
                                         "thumbnail": {
                                             "type": "object",
-                                            "example": null
+                                            "example": null,
+                                            "nullable": true
                                         }
                                     }
                                 }

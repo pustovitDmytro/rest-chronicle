@@ -2,14 +2,14 @@ import path from 'path';
 import { execSync } from 'child_process';
 import { assert } from 'chai';
 import fs from 'fs-extra';
+import yaml from 'js-yaml';
 import { tmpFolder } from '../constants';
 import  chronicle  from '../entry';
-// import { compareTexts } from '../utils';
 
 const examplesDir = path.join(__dirname, '../../examples/');
 const docsDir = path.join(tmpFolder, 'blog-example');
 
-suite.only('Chat Example');
+suite('Chat Example');
 
 before(async () => {
     await fs.ensureDir(docsDir);
@@ -35,20 +35,19 @@ test('chat', async function () {
         'swagger report'
     );
 
-    // const blueprintRelativeFilePath = './documentation/api-blueprint.md';
-    // const actualBluePrintFilePath = path.join(tmpFolder, blueprintRelativeFilePath);
-    // const expectedBluePrintFilePath = path.join(exampleFolder, blueprintRelativeFilePath);
+    const gotRamlFilePath = path.join(docsDir, 'raml.yaml');
+    const expectedRamlFilePath = path.join(exampleFolder, './documentation/raml.yaml');
+    const gotRamlContent = await fs.readFile(gotRamlFilePath).toString();
+    const expectedRamlContent = await fs.readFile(expectedRamlFilePath).toString();
 
-    // compareTexts(
-    //     (await fs.readFile(actualBluePrintFilePath)).toString(),
-    //     (await fs.readFile(expectedBluePrintFilePath)).toString(),
-    //     'api-blueprint report',
-    //     { ignore: /date:.*\s/g }
-    // );
+    assert.deepEqual(
+        yaml.load(gotRamlContent),
+        yaml.load(expectedRamlContent),
+        'raml report'
+    );
 });
 
 after(async () => {
-    // process.chdir(cwd);
     chronicle.clear();
 });
 

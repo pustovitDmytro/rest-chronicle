@@ -33,6 +33,21 @@ test.beforeEach(t => {
     };
 });
 
+test('Positive: create blog post', async function (t) {
+    const res = await axios
+        .with(t.context)
+        .post(`${app.url}/posts`, {
+            data : {
+                title     : 'quite cotton although shadow',
+                body      : 'mood income built field throw badly finest seat accurate ago seldom allow invented exactly past garage baseball',
+                thumbnail : 'http://lakkik.ng/kupa'
+            }
+        });
+
+    t.is(res.status, 201);
+    t.assert(res.data);
+});
+
 test('Positive: show first post', async function (t) {
     const res = await axios
         .with(t.context)
@@ -76,10 +91,12 @@ test.after('cleanup', async () => {
         reporter : 'swagger',
         hash     : action => action.context.title.replace(/\W/g, ' ').replace(/\s+/g, '_').toLowerCase()
     });
+
+    await chronicle.save(`${docsDir}/raml.yaml`, {
+        reporter : 'raml',
+        hash     : action => action.context.title.split(':').pop().trim().replace(/\W/g, ' ').replace(/\s+/g, '_').toLowerCase()
+
+    });
     chronicle.clear();
 });
 
-// after(async () => {
-//     await chronicle.save('./documentation/swagger.json', { reporter: 'swagger' });
-//     await chronicle.save('./documentation/api-blueprint.md', { reporter: 'api-blueprint' });
-// });
