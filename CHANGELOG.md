@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.2.1...v1.2.2) (2021-04-18)
+
+
+### Docs
+
+* fixes badges ([76f4f3f](https://github.com/pustovitDmytro/rest-chronicle/commit/76f4f3fd52e97610973dca38c9d4dd937b972c0e))
+
 ## [1.2.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.2.0...v1.2.1) (2021-04-18)
 
 
