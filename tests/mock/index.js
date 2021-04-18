@@ -13,7 +13,15 @@ function createMockApp() {
     server.start = async function (port) {
         let app;
 
-        server.use(router);
+        server.use('/api', router);
+        server.post('/format/:format', (req, res) => {
+            if (req.params.format === 'xml') {
+                res.type('application/xml');
+
+                return res.send('<status>OK</status>');
+            }
+            res.sendStatus(404);
+        });
 
         await new Promise(res => {
             app = server.listen(port, res);

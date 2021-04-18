@@ -35,15 +35,46 @@ export default class Axios {
             });
             axios.interceptors.response.use(
                 response => Axios.onResponse(response, chronicle, useContext),
-                (error) => {
+                error => {
                     if (error.isAxiosError) {
-                        Axios.onResponse(error.response, chronicle, useContext);
+                        Axios.handleError(error, chronicle, useContext);
                     }
                     throw error;
                 });
         }
 
         return decorated;
+    }
+
+    static handleError(error, chronicle, useContext) {
+        const { config, request, response } = error;
+        const context = config.with || useContext;
+
+        if (!context) throw error;
+        const action = chronicle.action(context);
+
+        action.request = {
+            url     : new URL(config.url, config.baseURL),
+            headers : config.headers,
+            method  : config.method,
+            body    : config.data
+        };
+
+        action.response = {
+            body    : response.data,
+            headers : response.header,
+            http    : {
+                version : request.res.httpVersion
+            },
+            status : {
+                code    : response.status,
+                message : response.statusText
+            },
+            type    : response.type,
+            charset : response.charset
+        };
+
+        throw error;
     }
 
     static onResponse(response, chronicle, useContext) {

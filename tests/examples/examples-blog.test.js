@@ -9,14 +9,14 @@ import  chronicle  from '../entry';
 const examplesDir = path.join(__dirname, '../../examples/');
 const docsDir = path.join(tmpFolder, 'blog-example');
 
-suite('Chat Example');
+suite('Blog Example');
 
 before(async () => {
     await fs.ensureDir(docsDir);
 });
 
 
-test('chat', async function () {
+test('blog', async function () {
     await execSync('npx ava', {
         env : {
             ...process.env,

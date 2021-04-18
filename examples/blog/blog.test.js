@@ -91,7 +91,6 @@ test.after('cleanup', async () => {
         reporter : 'swagger',
         hash     : action => action.context.title.replace(/\W/g, ' ').replace(/\s+/g, '_').toLowerCase()
     });
-
     await chronicle.save(`${docsDir}/raml.yaml`, {
         reporter : 'raml',
         hash     : action => action.context.title.split(':').pop().trim().replace(/\W/g, ' ').replace(/\s+/g, '_').toLowerCase()

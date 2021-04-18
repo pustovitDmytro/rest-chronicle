@@ -31,11 +31,15 @@ function _onParams({ params }) {
     return params;
 }
 
+function _onError(error) {
+    throw error;
+}
+
 export function decorate(target, methods = {}) {
     const isDecorateFunction = isFunction(target);
 
     const defaultConfig = {
-        onError   : console.error,
+        onError   : _onError,
         chronicle : methods._chronicle
     };
 
