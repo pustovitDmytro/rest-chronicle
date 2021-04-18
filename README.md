@@ -132,7 +132,6 @@ The Tag is one of the following:
 The message summary should be a one-sentence description of the change. The issue number should be mentioned at the end.
 
 
-<<<<<<< HEAD
 [npm]: https://www.npmjs.com/package/rest-chronicle
 [github]: https://github.com/pustovitDmytro/rest-chronicle
 [travis]: https://travis-ci.org/pustovitDmytro/rest-chronicle
@@ -143,15 +142,3 @@ The message summary should be a one-sentence description of the change. The issu
 [badge-vers]: https://img.shields.io/npm/v/rest-chronicle.svg
 [badge-lic]: https://img.shields.io/github/license/pustovitDmytro/rest-chronicle.svg
 [badge-coverage]: https://coveralls.io/repos/github/pustovitDmytro/rest-chronicle/badge.svg?branch=master
-=======
-[npm]: https://www.npmjs.com/package/npm-boilerplate
-[github]: https://github.com/pustovitDmytro/npm-boilerplate
-[travis]: https://travis-ci.org/pustovitDmytro/npm-boilerplate
-[coveralls]: https://coveralls.io/github/pustovitDmytro/npm-boilerplate?branch=master
-[badge-deps]: https://img.shields.io/david/pustovitDmytro/npm-boilerplate.svg
-[badge-tests]: https://travis-ci.com/pustovitDmytro/npm-boilerplate.svg?branch=master
-[badge-vuln]: https://img.shields.io/snyk/vulnerabilities/npm/npm-boilerplate.svg?style=popout
-[badge-vers]: https://img.shields.io/npm/v/npm-boilerplate.svg
-[badge-lic]: https://img.shields.io/github/license/pustovitDmytro/npm-boilerplate.svg
-[badge-coverage]: https://coveralls.io/repos/github/pustovitDmytro/npm-boilerplate/badge.svg?branch=master
->>>>>>> f9fd4631aa300e16128a4d7107d45f9317f70c9b
