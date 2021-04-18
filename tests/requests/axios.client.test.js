@@ -13,8 +13,8 @@ before(async () => {
     await factory.setTmpFolder();
 });
 
-test('Axios usage without chronicle', async function () {
-    const response = await axios(`${mockAppUrl}/users?limit=10`);
+test('Axios usage without context', async function () {
+    const response = await axios(`${mockAppUrl}/api/users?limit=10`);
     const body = response.data;
 
     assert.isArray(body);
@@ -29,7 +29,7 @@ test('Axios default function request with chronicle', async function () {
     delete data.id;
     const response = await axios({
         method : 'POST',
-        url    : `${mockAppUrl}/users`,
+        url    : `${mockAppUrl}/api/users`,
         data,
         with   : context
     });
@@ -38,9 +38,27 @@ test('Axios default function request with chronicle', async function () {
 
     factory.ensureAction(context, {
         method : 'POST',
-        path   : '/users',
+        path   : '/api/users',
         body   : data
     });
+});
+
+test('Axios send xml', async function () {
+    const context = { title: 'send xml data', group: 'formats' };
+    const xml = '<language><code>en</code></language>';
+    const response = await axios
+        .post(`${mockAppUrl}/format/xml`,
+            xml, {
+                with    : context,
+                headers : { 'Content-Type': 'text/xml' }
+            }
+        );
+
+    assert.equal(response.data, '<status>OK</status>');
+    assert.match(response.headers['content-type'], /application\/xml/);
+    const action = factory.findAction(context);
+
+    assert.exists(action);
 });
 
 after(async () => {

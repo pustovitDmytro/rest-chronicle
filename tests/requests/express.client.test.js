@@ -24,7 +24,7 @@ before(async () => {
 });
 
 test('Express middleware for get json array', async function () {
-    const response = await axios(`${mockAppUrl}/users?limit=10`);
+    const response = await axios(`${mockAppUrl}/api/users?limit=10`);
     const body = response.data;
 
     assert.isArray(body);
@@ -34,7 +34,7 @@ test('Express middleware for get json array', async function () {
 
     factory.ensureAction(context, {
         method : 'GET',
-        path   : '/users',
+        path   : '/api/users',
         body
     });
 });

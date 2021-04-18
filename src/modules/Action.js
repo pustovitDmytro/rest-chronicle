@@ -230,4 +230,8 @@ export default class Action {
             response
         };
     }
+
+    toJSON() {
+        return this.data;
+    }
 }

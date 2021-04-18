@@ -16,7 +16,7 @@ before(async () => {
 
 test('Supertest usage without chronicle', async function () {
     await request
-        .get('/users')
+        .get('/api/users')
         .expect('Content-Type', /json/)
         .expect(200)
         .expect(({ body }) => {
@@ -32,7 +32,7 @@ test('Supertest getOne request with chronicle', async function () {
 
     await request
         .with(context)
-        .get('/users/:id')
+        .get('/api/users/:id')
         .params({ id: 7 })
         .expect('Content-Type', /json/)
         .expect(200)
@@ -42,7 +42,7 @@ test('Supertest getOne request with chronicle', async function () {
 
     factory.ensureAction(context, {
         method : 'GET',
-        path   : '/users/:id',
+        path   : '/api/users/:id',
         body   : expected
     });
 });
@@ -52,7 +52,7 @@ test('Supertest with .end resolving', async function () {
     const context = { title: 'support', group: 1 };
 
     await request
-        .get('/users/5')
+        .get('/api/users/5')
         .expect('Content-Type', /json/)
         .expect(200)
         .expect(({ body }) => {
@@ -63,7 +63,7 @@ test('Supertest with .end resolving', async function () {
     await new Promise((res, rej) => {
         request
             .with(context)
-            .patch('/users/4')
+            .patch('/api/users/4')
             .send(data)
             .expect('Content-Type', /json/)
             .expect(200)
@@ -82,7 +82,7 @@ test('Supertest with .end resolving', async function () {
 
     factory.ensureAction(context, {
         method : 'PATCH',
-        path   : '/users/4',
+        path   : '/api/users/4',
         body   : actualbody
     });
 });

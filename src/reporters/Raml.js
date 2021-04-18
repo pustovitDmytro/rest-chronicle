@@ -1,29 +1,9 @@
 import fs from 'fs-extra';
 import dP from 'dot-prop';
-import { isArray, isObject, flatten, isEmpty } from 'myrmidon';
+import { isObject, flatten, isEmpty } from 'myrmidon';
 import yaml from 'js-yaml';
-
-function findGroup(obj, filters, id, index = 0) {
-    if (index === filters.length) {
-        if (isArray(obj)) return [ ...obj, id ];
-
-        return [ id ];
-    }
-    obj[filters[index]] = findGroup(  // eslint-disable-line no-param-reassign
-        obj[filters[index]] || {},
-        filters,
-        id,
-        index + 1
-    );
-
-    return obj;
-}
-
-function detectType(value) {
-    if (value === null) return 'nil';
-
-    return typeof value;
-}
+import { findGroup, detectType } from './utils';
+import Base from './Base';
 
 function dictionary(obj, prefix = []) {
     return flatten(Object.entries(obj)
@@ -35,12 +15,16 @@ function dictionary(obj, prefix = []) {
     );
 }
 
-export default class RamlReporter {
+const types = { null: 'nil' };
+
+export default class RamlReporter extends Base {
     constructor(file, { hash } = {}) {
-        this.file = file;
+        super(file);
         if (hash) this.getHash = hash;
     }
-    _init() {}
+
+    mergeArray = true;
+
     _build(actions) {
         const map = new Map();
         const groups = {};
@@ -52,7 +36,7 @@ export default class RamlReporter {
 
             const groupValues = [ ...resources, method.toLowerCase() ];
 
-            findGroup(groups, groupValues, a.id);
+            findGroup.call(this, groups, groupValues, a.id);
             map.set(a.id, a);
         });
 
@@ -65,14 +49,14 @@ export default class RamlReporter {
                 ...prev,
                 [name] : {
                     example : value,
-                    type    : detectType(value)
+                    type    : detectType(value, types)
                 }
             }), {});
     }
 
     _renderBody(body) {
         const result = {
-            type    : detectType(body),
+            type    : detectType(body, types),
             example : isEmpty(body) ? body : JSON.stringify(body, null, 4)
         };
 
@@ -80,7 +64,7 @@ export default class RamlReporter {
             Object.entries(body)
                 .forEach(([ key, value ]) => {
                     dP.set(result, `properties.${key}`, {
-                        type : detectType(value)
+                        type : detectType(value, types)
                     });
                 });
         }
@@ -145,10 +129,6 @@ export default class RamlReporter {
         };
 
         return `#%RAML 1.0\n${yaml.dump(content)}`;
-    }
-
-    getHash(action) {
-        return action.id;
     }
 
     async write(actions) {

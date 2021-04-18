@@ -1,48 +1,15 @@
 import fs from 'fs-extra';
 import dP from 'dot-prop';
-import { isArray } from 'myrmidon';
+import { detectType } from './utils';
+import Base from './Base';
 
-function findGroup(obj, filters, id, index = 0) {
-    if (index === filters.length) {
-        if (isArray(obj)) return [ ...obj, id ];
-
-        return [ id ];
-    }
-    obj[filters[index]] = findGroup(  // eslint-disable-line no-param-reassign
-        obj[filters[index]] || {},
-        filters,
-        id,
-        index + 1
-    );
-
-    return obj;
-}
-
-function detectType(value) {
-    return typeof value;
-}
-
-export default class SwaggerReporter {
+export default class SwaggerReporter extends Base {
     constructor(file, { hash } = {}) {
-        this.file = file;
+        super(file);
         if (hash) this.getHash = hash;
     }
-    _init() {
 
-    }
-    _build(actions, { groupBy = [] } = {}) {
-        const map = new Map();
-        const groups = {};
-
-        actions.forEach(a => {
-            const groupValues = groupBy.map(key => dP.get(a, key));
-
-            findGroup(groups, groupValues, a.id);
-            map.set(a.id, a);
-        });
-
-        return { groups, map };
-    }
+    mergeArray = true
 
     _renderHeaders(headers) {
         return Object.entries(headers)
@@ -127,10 +94,6 @@ export default class SwaggerReporter {
         };
 
         return JSON.stringify(content, null, 4);
-    }
-
-    getHash(action) {
-        return action.id;
     }
 
     async write(actions) {

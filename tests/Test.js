@@ -45,7 +45,7 @@ export default class Test {
             throw new Error(`action ${group}: ${title} not found in ${actionsList}`);
         }
 
-        return action.data;
+        return action;
     }
 
     async cleanup() {

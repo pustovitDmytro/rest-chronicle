@@ -6,7 +6,11 @@ tests
 .babelrc
 tmp
 examples
+.husky
 bin
+*.tgz
+.commitlintrc.json
+.mocharc.json
 .nycrc.json
 .releaserc.json
-.mocharc.json
+coverage/*
