@@ -39,10 +39,13 @@ export default class Axios {
                     if (error.isAxiosError) {
                         Axios.handleError(error, chronicle, useContext);
                     }
+
                     throw error;
-                });
+                }
+            );
         }
 
+        // eslint-disable-next-line no-constructor-return
         return decorated;
     }
 

@@ -8,6 +8,7 @@ export default class TemplateReporter extends Base {
         this.templatePath = path;
         this.templateOpts = templateOpts;
     }
+
     _generate(groups, map) {
         return this._template({
             groups,
@@ -15,6 +16,7 @@ export default class TemplateReporter extends Base {
             options : this.templateOpts
         });
     }
+
     async _init() {
         const templateContent = await fs.readFile(this.templatePath);
 

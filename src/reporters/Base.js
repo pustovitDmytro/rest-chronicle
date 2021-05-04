@@ -5,7 +5,9 @@ export default class BaseReporter {
     constructor(file) {
         this.file = file;
     }
+
     _init() {}
+
     _build(actions, { groupBy = [] } = {}) {
         const map = new Map();
         const groups = {};

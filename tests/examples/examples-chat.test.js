@@ -30,6 +30,7 @@ test('chat', async function () {
             if (failures > 0) {
                 return rej(new Error(JSON.stringify({ failures })));
             }
+
             res();
         });
     });

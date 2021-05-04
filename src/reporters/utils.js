@@ -8,12 +8,13 @@ export function findGroup(obj, filters, id, index = 0) {
 
         return [ id ];
     }
+
     obj[filters[index]] = findGroup.call(  // eslint-disable-line no-param-reassign
         this,
         obj[filters[index]] || {},
         filters,
         id,
-        index + 1,
+        index + 1
     );
 
     return obj;

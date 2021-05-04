@@ -47,7 +47,8 @@ test('Axios send xml', async function () {
     const context = { title: 'send xml data', group: 'formats' };
     const xml = '<language><code>en</code></language>';
     const response = await axios
-        .post(`${mockAppUrl}/format/xml`,
+        .post(
+            `${mockAppUrl}/format/xml`,
             xml, {
                 with    : context,
                 headers : { 'Content-Type': 'text/xml' }

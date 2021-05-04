@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Chance from 'chance';
 
 const chance = new Chance();
@@ -22,7 +23,7 @@ export function generateActions(count = 100, options = {}) {
     return Array.from(new Array(count)).map(() => actionGenerate());
 }
 
-export function AxiosCollection(baseUrl,) {
+export function AxiosCollection(baseUrl) {
 
 }
 

@@ -2,10 +2,22 @@
 **rest-chronicle** autodocumentate rest api.
 
 [![Version][badge-vers]][npm]
+[![Bundle size][npm-size-badge]][npm-size-url]
+[![Downloads][npm-downloads-badge]][npm]
+
+[![CodeFactor][codefactor-badge]][codefactor-url]
+[![SonarCloud][sonarcloud-badge]][sonarcloud-url]
+[![Codacy][codacy-badge]][codacy-url]
+[![Total alerts][lgtm-alerts-badge]][lgtm-alerts-url]
+[![Language grade][lgtm-lg-badge]][lgtm-lg-url]
+[![Scrutinizer][scrutinizer-badge]][scrutinizer-url]
+
 [![Dependencies][badge-deps]][npm]
 [![Vulnerabilities][badge-vuln]](https://snyk.io/)
-[![Build Status][badge-tests]][travis]
-[![Coverage Status][badge-coverage]](https://coveralls.io/github/pustovitDmytro/rest-chronicle?branch=master)
+[![Build Status][tests-badge]][tests-url]
+[![Coverage Status][badge-coverage]][url-coverage]
+
+[![Commit activity][commit-activity-badge]][github]
 [![License][badge-lic]][github]
 
 ## Table of Contents
@@ -28,7 +40,7 @@ To use library you need to have [node](https://nodejs.org) and [npm](https://www
 
 ## Installation
 
-To install the library run following command
+To install the library run the following command
 
 ```bash
   npm i --save rest-chronicle
@@ -44,7 +56,7 @@ Check full, ready for use, well-tested examples in the [examples folder](./examp
 
 ### Clients
 
-To capture actions into chronicle use one of the supported clients:
+To capture actions into the chronicle, use one of the supported clients:
 
 **Axios**
 
@@ -91,9 +103,9 @@ check [chat app](./examples/chat/test.js) for complete example
 
 ### Reporters
 
-The package provides several reporters under the hood. General reporters api allows to save captured actions in specific format.
+The package provides several reporters under the hood. General reporters API allows saving captured actions in a specific format.
 
-To explicitly call save method, use the next approach:
+To explicitly call the save method, use the next approach:
 ```javascript
 import chronicle from 'rest-chronicle';
 
@@ -101,7 +113,7 @@ import chronicle from 'rest-chronicle';
 
 await chronicle.save('./documentation/swagger.json', { reporter: 'swagger' });
 ```
-The first argument receives file path, and second - reporter-specific configuration.
+The first argument receives a file path, and the second - reporter-specific configuration.
 
 Supported reporters:
 * **[api-blueprint](https://apiblueprint.org/)**
@@ -112,7 +124,7 @@ Supported reporters:
 
 ## Contribute
 
-Make the changes to the code and tests and then commit to your branch. Be sure to follow the commit message conventions.
+Make the changes to the code and tests. Then commit to your branch. Be sure to follow the commit message conventions.
 
 Commit message summaries must follow this basic format:
 ```
@@ -134,11 +146,37 @@ The message summary should be a one-sentence description of the change. The issu
 
 [npm]: https://www.npmjs.com/package/rest-chronicle
 [github]: https://github.com/pustovitDmytro/rest-chronicle
-[travis]: https://travis-ci.org/pustovitDmytro/rest-chronicle
 [coveralls]: https://coveralls.io/github/pustovitDmytro/rest-chronicle?branch=master
 [badge-deps]: https://img.shields.io/david/pustovitDmytro/rest-chronicle.svg
-[badge-tests]: https://img.shields.io/travis/pustovitDmytro/rest-chronicle.svg
 [badge-vuln]: https://img.shields.io/snyk/vulnerabilities/npm/rest-chronicle.svg?style=popout
 [badge-vers]: https://img.shields.io/npm/v/rest-chronicle.svg
 [badge-lic]: https://img.shields.io/github/license/pustovitDmytro/rest-chronicle.svg
 [badge-coverage]: https://coveralls.io/repos/github/pustovitDmytro/rest-chronicle/badge.svg?branch=master
+[url-coverage]: https://coveralls.io/github/pustovitDmytro/rest-chronicle?branch=master
+
+[tests-badge]: https://img.shields.io/circleci/build/github/pustovitDmytro/rest-chronicle
+[tests-url]: https://app.circleci.com/pipelines/github/pustovitDmytro/rest-chronicle
+
+[codefactor-badge]: https://www.codefactor.io/repository/github/pustovitdmytro/rest-chronicle/badge
+[codefactor-url]: https://www.codefactor.io/repository/github/pustovitdmytro/rest-chronicle
+
+[commit-activity-badge]: https://img.shields.io/github/commit-activity/m/pustovitDmytro/rest-chronicle
+
+[scrutinizer-badge]: https://scrutinizer-ci.com/g/pustovitDmytro/rest-chronicle/badges/quality-score.png?b=master
+[scrutinizer-url]: https://scrutinizer-ci.com/g/pustovitDmytro/rest-chronicle/?branch=master
+
+[lgtm-lg-badge]: https://img.shields.io/lgtm/grade/javascript/g/pustovitDmytro/rest-chronicle.svg?logo=lgtm&logoWidth=18
+[lgtm-lg-url]: https://lgtm.com/projects/g/pustovitDmytro/rest-chronicle/context:javascript
+
+[lgtm-alerts-badge]: https://img.shields.io/lgtm/alerts/g/pustovitDmytro/rest-chronicle.svg?logo=lgtm&logoWidth=18
+[lgtm-alerts-url]: https://lgtm.com/projects/g/pustovitDmytro/rest-chronicle/alerts/
+
+[codacy-badge]: https://app.codacy.com/project/badge/Grade/7074b6f5c8e947438db5b1a09b45d5fc
+[codacy-url]: https://www.codacy.com/gh/pustovitDmytro/rest-chronicle/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pustovitDmytro/rest-chronicle&amp;utm_campaign=Badge_Grade
+
+[sonarcloud-badge]: https://sonarcloud.io/api/project_badges/measure?project=pustovitDmytro_rest-chronicle&metric=alert_status
+[sonarcloud-url]: https://sonarcloud.io/dashboard?id=pustovitDmytro_rest-chronicle
+
+[npm-downloads-badge]: https://img.shields.io/npm/dw/rest-chronicle
+[npm-size-badge]: https://img.shields.io/bundlephobia/min/rest-chronicle
+[npm-size-url]: https://bundlephobia.com/result?p=rest-chronicle

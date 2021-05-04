@@ -11,6 +11,7 @@ export default class Test {
         this._chronicle = chronicle;
         this.mockApp = createMockApp();
     }
+
     async startMockApp(port = mockAppPort) {
         this.app = await this.mockApp.start(port);
     }
@@ -36,8 +37,7 @@ export default class Test {
         const action  =  this._chronicle._actions
             .find(a =>
                 (title ? a.context.title === title : true) &&
-                (group ? a.context.group === group : true)
-            );
+                (group ? a.context.group === group : true));
 
         if (!action) {
             const actionsList = this._chronicle._actions.map(a => JSON.stringify(a.context)).join(',');
@@ -57,6 +57,7 @@ export default class Test {
     async setTmpFolder() {
         await fse.ensureDir(tmpFolder);
     }
+
     async setActions(chr, actionsToSet = actions) {
         const chronicle = chr || this._chronicle;
 
@@ -64,6 +65,7 @@ export default class Test {
 
         return this.actions;
     }
+
     async cleanTmpFolder() {
         await fse.remove(tmpFolder);
     }

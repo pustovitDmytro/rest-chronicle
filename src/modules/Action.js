@@ -1,6 +1,6 @@
 import { URL } from 'url';
 import uuid from 'uuid';
-import { HTTP_STATUS_CODES } from '../constants';
+import { HTTP_STATUS_CODES, DEFAULT_STATUS_CODE } from '../constants';
 import { isEmpty } from '../utils/common';
 
 function getQuery(searchParams) {
@@ -178,7 +178,7 @@ export default class Action {
     }
 
     get status() {
-        const statusCode = this._response.code || 200;
+        const statusCode = this._response.code || DEFAULT_STATUS_CODE;
 
         return {
             code    : statusCode,

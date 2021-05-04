@@ -1,10 +1,12 @@
 import { inspect } from 'util';
 import { isEmpty } from 'myrmidon';
 import handleBars from 'handlebars';
+import { DEFAULT_JSON_OFFSET } from './constants';
+
 
 handleBars.registerHelper('json', (data, offset) => {
     const shift = Array.from(new Array(offset), () => ' ').join('');
-    const text = shift + JSON.stringify(data, null, 4 + offset);
+    const text = shift + JSON.stringify(data, null, DEFAULT_JSON_OFFSET + offset);
     const rightShifted = text.slice(0, -1) + shift + text.slice(-1);
 
     return new handleBars.SafeString(rightShifted);

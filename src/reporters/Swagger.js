@@ -2,6 +2,7 @@ import fs from 'fs-extra';
 import dP from 'dot-prop';
 import { detectType } from './utils';
 import Base from './Base';
+import { DEFAULT_JSON_OFFSET } from '../constants';
 
 export default class SwaggerReporter extends Base {
     constructor(file, { hash } = {}) {
@@ -62,6 +63,7 @@ export default class SwaggerReporter extends Base {
             }
         };
     }
+
     _generate(groups, map, actions) {
         const paths = {};
         const origins = [ ...new Set(actions.map(a => a.request.origin)) ];
@@ -93,7 +95,7 @@ export default class SwaggerReporter extends Base {
             paths
         };
 
-        return JSON.stringify(content, null, 4);
+        return JSON.stringify(content, null, DEFAULT_JSON_OFFSET);
     }
 
     async write(actions) {

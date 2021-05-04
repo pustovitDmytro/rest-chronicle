@@ -39,6 +39,7 @@ test('weather api', async function () {
 
         assert.exists(res.data);
     }
+
     await Promise.all(server._chronicles);
 
     const mdRelativeFilePath = './documentation/api.md';

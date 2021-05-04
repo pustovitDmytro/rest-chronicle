@@ -16,6 +16,7 @@ export default class Supertest {
         this._chronicle = chronicle;
         this._app = app;
 
+        // eslint-disable-next-line no-constructor-return
         return this._decorate(supertest(this._app));
     }
 
@@ -87,8 +88,12 @@ export default class Supertest {
     }
 
     'after_get'    = this._proxy;
+
     'after_patch'  = this._proxy;
+
     'after_post'   = this._proxy;
+
     'after_delete' = this._proxy;
+
     'after_expect' = this._proxy;
 }

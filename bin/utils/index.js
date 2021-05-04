@@ -15,10 +15,8 @@ export function buildDocoptParams(opts, { include, exclude } = {}) {
 
     Object.keys(opts)
         .map(raw => ({ raw, key: docoptKey(raw) }))
-        .filter(
-            ({ key }) => (include ? include.includes(key) : true)
-             && (exclude ? !exclude.includes(key) : true)
-        ).forEach(({ raw, key }) => {
+        .filter(({ key }) => (include ? include.includes(key) : true)
+             && (exclude ? !exclude.includes(key) : true)).forEach(({ raw, key }) => {
             clean[key] = opts[raw];
         });
 

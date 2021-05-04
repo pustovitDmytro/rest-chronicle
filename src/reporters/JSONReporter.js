@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import Base from './Base';
-
+import { DEFAULT_JSON_OFFSET } from '../constants';
 export default class JSONReporter extends Base {
     _generate(groups, map) {
         const injected = Object.keys(groups)
@@ -18,8 +18,9 @@ export default class JSONReporter extends Base {
                     }))
             }));
 
-        return JSON.stringify(injected, null, 4);
+        return JSON.stringify(injected, null, DEFAULT_JSON_OFFSET);
     }
+
     async write(actions) {
         const { groups, map } = this._build(actions);
         const content = this._generate(groups, map);

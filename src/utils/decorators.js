@@ -89,7 +89,7 @@ export function decorate(target, methods = {}) {
                             methodName,
                             descriptor,
                             config
-                        },
+                        }
                     )
                 );
             }

@@ -5,13 +5,13 @@ function arrayKeyFilter(keys) {
     return function (action, actions) {
         const dublicate = actions.find(a =>
             keys.every(key => getProp(action, key) === getProp(a, key))
-            && a._id !== action._id
-        );
+            && a._id !== action._id);
 
         return !dublicate;
     };
 }
 
+/* eslint-disable no-param-reassign */
 function chronicleMiddleware(req, res, next) {
     const action = this.chronicle.action(this.context);
     const originalWrite = res.write;
@@ -22,17 +22,21 @@ function chronicleMiddleware(req, res, next) {
         chunks.push(chunk);
         originalWrite.apply(res, arguments);
     };
+
     res.end = function (chunk) {
         if (chunk) {
             chunks.push(chunk);
         }
+
         originalEnd.apply(res, arguments);
     };
+
     const url = new URL(req.originalUrl, `${req.protocol}://${req.get('host')}`);
 
     if (req.route) {
         url.pathname = req.route.path;
     }
+
     action.request = {
         url,
         headers : req.headers,
@@ -67,17 +71,14 @@ function chronicleMiddleware(req, res, next) {
                     if (isFunction(save.uniqueFilter)) isApproved = save.uniqueFilter(action, actions);
                     if (isArray(save.uniqueFilter)) isApproved = arrayKeyFilter(save.uniqueFilter)(action, actions);
                 }
+
                 if (!isApproved) return;
                 const { server } = req.socket;
 
                 if (!server._chronicles) server._chronicles = [];
-                server._chronicles.push(
-                    Promise.all(
-                        save.files.map(
-                            ({ path, ...opts }) => this.chronicle.save(path, opts)
-                        )
-                    )
-                );
+                const promises = Promise.all(save.files.map(({ path, ...opts }) => this.chronicle.save(path, opts)));
+
+                server._chronicles.push(promises);
             }
         }
     });
@@ -90,6 +91,7 @@ export default class Express {
         this._chronicle = chronicle;
         this._config = config;
 
+        // eslint-disable-next-line no-constructor-return
         return this.generateMiddleWare;
     }
 

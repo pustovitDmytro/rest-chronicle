@@ -2,6 +2,7 @@ import jsonServer from 'json-server';
 import * as fixtures from './fixtures';
 
 const { users, actions } = fixtures;
+const badCode = 404;
 
 function createMockApp() {
     const server = jsonServer.create();
@@ -20,7 +21,8 @@ function createMockApp() {
 
                 return res.send('<status>OK</status>');
             }
-            res.sendStatus(404);
+
+            res.sendStatus(badCode);
         });
 
         await new Promise(res => {

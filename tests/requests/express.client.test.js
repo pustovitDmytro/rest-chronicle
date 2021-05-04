@@ -12,14 +12,12 @@ const expressMiddleWare = middlewares.express(chronicle);
 
 before(async () => {
     await factory.setTmpFolder();
-    factory.mockApp.use(
-        expressMiddleWare(req => {
-            return {
-                group : 'Users',
-                title : req.url.includes('limit=10') ? 'With limit' : 'general'
-            };
-        })
-    );
+    factory.mockApp.use(expressMiddleWare(req => {
+        return {
+            group : 'Users',
+            title : req.url.includes('limit=10') ? 'With limit' : 'general'
+        };
+    }));
     await factory.startMockApp();
 });
 

@@ -1,11 +1,9 @@
 #!./node_modules/.bin/babel-node
 
-import path from 'path';
 import { docopt } from 'docopt';
 import { generateActions } from '../tests/mock/generators';
 import { buildDocoptParams } from './utils';
 
-const fixturesDir = path.join(__dirname, '../tests/mock/fixtures/');
 
 const doc = `Usage:
    generate.js actions <count>
@@ -21,6 +19,7 @@ async function main(opts) {
         if (opts.actions) {
             await generateActions(+opts['<count>'], buildDocoptParams(opts));
         }
+
         process.exit(0);
     } catch (error) {
         console.log('FAILED');

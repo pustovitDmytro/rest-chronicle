@@ -4,6 +4,7 @@ import { isObject, flatten, isEmpty } from 'myrmidon';
 import yaml from 'js-yaml';
 import { findGroup, detectType } from './utils';
 import Base from './Base';
+import { DEFAULT_JSON_OFFSET } from '../constants';
 
 function dictionary(obj, prefix = []) {
     return flatten(Object.entries(obj)
@@ -11,8 +12,7 @@ function dictionary(obj, prefix = []) {
             if (isObject(value)) return dictionary(value, [ ...prefix, key ]);
 
             return { key: [ ...prefix, key ], value };
-        })
-    );
+        }));
 }
 
 const types = { null: 'nil' };
@@ -57,7 +57,7 @@ export default class RamlReporter extends Base {
     _renderBody(body) {
         const result = {
             type    : detectType(body, types),
-            example : isEmpty(body) ? body : JSON.stringify(body, null, 4)
+            example : isEmpty(body) ? body : JSON.stringify(body, null, DEFAULT_JSON_OFFSET)
         };
 
         if (body && result.type === 'object') {
@@ -90,6 +90,7 @@ export default class RamlReporter extends Base {
             }
         };
     }
+
     _generate(groups, map, actions) {
         const dict = dictionary(groups);
         const hashed = [];
