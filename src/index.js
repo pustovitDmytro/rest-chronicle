@@ -22,6 +22,7 @@ export {
     Chronicle,
     Action,
     Express,
+    Axios,
     supertest,
     axios,
     reporters,

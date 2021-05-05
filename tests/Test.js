@@ -31,6 +31,8 @@ export default class Test {
                 assert.deepOwnInclude(action.response.body, body);
             }
         }
+
+        return  action;
     }
 
     findAction({ title, group }) {

@@ -29,7 +29,7 @@ export default class Axios {
 
                 return {
                     ...config,
-                    baseURL : `${currentUrl.protocol}//${authPart}${currentUrl.host}`,
+                    baseURL : `${currentUrl.protocol}//${authPart}@${currentUrl.host}`,
                     url     : currentUrl.pathname
                 };
             });

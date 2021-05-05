@@ -88,7 +88,7 @@
     "dot-prop": "5.3.0",
     "handlebars": "4.7.7",
     "js-yaml": "3.14.1",
-    "myrmidon": "1.4.4",
+    "myrmidon": "1.5.1",
     "supertest": "4.0.2",
     "uuid": "3.4.0"
   }

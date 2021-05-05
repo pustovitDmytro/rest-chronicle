@@ -1,5 +1,6 @@
-import { getMethodNames, isPromise, isFunction } from './common';
+import { getMethodNames, isPromise, isFunction } from 'myrmidon';
 
+// TODO: move to myrmidon
 function getMethodDescriptor(propertyName, target) {
     if (target.hasOwnProperty(propertyName)) {
         return Object.getOwnPropertyDescriptor(target, propertyName);
