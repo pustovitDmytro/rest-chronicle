@@ -113,7 +113,7 @@ function functionDecorator(method, { methodName, config }) {
             const promise = method?.apply(this, params);
 
             if (isPromise(promise)) {
-                return promise // eslint-disable-line more/no-then
+                return promise
                     .then(result => config.onSuccess({ result, ...data }))
                     .catch(error => config.onError({ error, ...data }));
             }

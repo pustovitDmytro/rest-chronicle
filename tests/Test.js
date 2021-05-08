@@ -1,8 +1,9 @@
+import path from 'path';
 import fse from 'fs-extra';
 import { assert } from 'chai';
 import Action from '../src/modules/Action';
 import createMockApp, { fixtures } from './mock';
-import { tmpFolder, mockAppPort } from './constants';
+import { tmpFolder, mockAppPort, entry } from './constants';
 
 const { actions } = fixtures;
 
@@ -20,10 +21,10 @@ export default class Test {
         if (this.app) this.app.close();
     }
 
-    ensureAction({ title, group }, { path, method, body }) {
+    ensureAction({ title, group }, { path: p, method, body }) {
         const action = this.findAction({ title, group });
 
-        assert.deepOwnInclude(action.request, { path, method });
+        assert.deepOwnInclude(action.request, { path: p, method });
         if (body) {
             if (body.length) {
                 assert.deepEqual(action.response.body, body);
@@ -73,8 +74,20 @@ export default class Test {
     }
 }
 
+function load(relPath) {
+    // eslint-disable-next-line security/detect-non-literal-require
+    return require(path.join(entry, relPath));
+}
+
+function resolve(relPath) {
+    return require.resolve(path.join(entry, relPath));
+}
+
 export {
     tmpFolder,
     fixtures,
-    actions
+    actions,
+    entry,
+    load,
+    resolve
 };

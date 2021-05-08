@@ -1,9 +1,9 @@
 import { assert } from 'chai';
+import { clone } from 'myrmidon';
 import chronicle, { axios, Axios } from '../entry';
 import { users } from '../mock/fixtures';
 import Test from '../Test';
 import { mockAppUrl, mockAppPort } from '../constants';
-import { clone } from 'myrmidon';
 
 suite('Axios');
 
@@ -107,7 +107,8 @@ test('Axios send xml', async function () {
     const response = await axios
         .post(
             `${mockAppUrl}/format/xml`,
-            xml, {
+            xml,
+            {
                 with    : context,
                 headers : { 'Content-Type': 'text/xml' }
             }

@@ -1,8 +1,8 @@
 import fs from 'fs-extra';
 import dP from 'dot-prop';
+import { DEFAULT_JSON_OFFSET } from '../constants';
 import { detectType } from './utils';
 import Base from './Base';
-import { DEFAULT_JSON_OFFSET } from '../constants';
 
 export default class SwaggerReporter extends Base {
     constructor(file, { hash } = {}) {

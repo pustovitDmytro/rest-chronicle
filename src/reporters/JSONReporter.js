@@ -1,6 +1,7 @@
 import fs from 'fs-extra';
-import Base from './Base';
 import { DEFAULT_JSON_OFFSET } from '../constants';
+import Base from './Base';
+
 export default class JSONReporter extends Base {
     _generate(groups, map) {
         const injected = Object.keys(groups)

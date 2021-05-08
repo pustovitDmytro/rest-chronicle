@@ -2,9 +2,9 @@ import fs from 'fs-extra';
 import dP from 'dot-prop';
 import { isObject, flatten, isEmpty } from 'myrmidon';
 import yaml from 'js-yaml';
+import { DEFAULT_JSON_OFFSET } from '../constants';
 import { findGroup, detectType } from './utils';
 import Base from './Base';
-import { DEFAULT_JSON_OFFSET } from '../constants';
 
 function dictionary(obj, prefix = []) {
     return flatten(Object.entries(obj)

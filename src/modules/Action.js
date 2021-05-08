@@ -1,7 +1,7 @@
 import { URL } from 'url';
 import uuid from 'uuid';
-import { HTTP_STATUS_CODES, DEFAULT_STATUS_CODE } from '../constants';
 import { isEmpty } from 'myrmidon';
+import { HTTP_STATUS_CODES, DEFAULT_STATUS_CODE } from '../constants';
 
 function getQuery(searchParams) {
     const query = {};
