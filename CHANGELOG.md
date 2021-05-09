@@ -1,3 +1,21 @@
+# [1.4.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.3.1...v1.4.0) (2021-05-09)
+
+
+### Chore
+
+* adds Default run test ([415b557](https://github.com/pustovitDmytro/rest-chronicle/commit/415b55704827ee749373a1e5715e976c372fa3c4))
+* fixes tests ([50ef6dc](https://github.com/pustovitDmytro/rest-chronicle/commit/50ef6dc13c39c47cd6184569b1ff0d1dbfe6f021))
+
+### Fix
+
+* adds request body to supertest ([3a0afea](https://github.com/pustovitDmytro/rest-chronicle/commit/3a0afea03184cc47e29c4b884dbe2362125dde0a))
+* allow empty headers in swagegr ([7b1d1d6](https://github.com/pustovitDmytro/rest-chronicle/commit/7b1d1d690af5c7789a00f6611d3ae8ffb6086e9a))
+* fixes blueprint layout ([62a0054](https://github.com/pustovitDmytro/rest-chronicle/commit/62a0054de04a4809f7d1e9f1e54583157947a437))
+
+### New
+
+* headers and identation in api-blueprint ([e094458](https://github.com/pustovitDmytro/rest-chronicle/commit/e0944584b1dfcd0adf71e063432a84360a273320))
+
 ## [1.3.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.3.0...v1.3.1) (2021-05-08)
 
 
