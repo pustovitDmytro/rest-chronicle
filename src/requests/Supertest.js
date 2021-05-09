@@ -38,7 +38,8 @@ export default class Supertest {
         action.request = {
             url     : request.url,
             headers : request.header,
-            method  : request.method
+            method  : request.method,
+            body    : request._data
         };
 
         action.response = {
