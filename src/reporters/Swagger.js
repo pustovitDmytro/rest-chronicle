@@ -13,6 +13,8 @@ export default class SwaggerReporter extends Base {
     mergeArray = true
 
     _renderHeaders(headers) {
+        if (!headers) return [];
+
         return Object.entries(headers)
             .map(([ name, value ]) => ({
                 name,
