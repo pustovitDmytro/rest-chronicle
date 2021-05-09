@@ -1,10 +1,16 @@
 export const  createUser = `FORMAT: 1A
 
-    # Group Users
+    # Users
 
     ## create user [POST /users]
 
     + Request
+
+    + Headers
+        
+        Authorization: 25NPmT
+
+    + Body
 
     {
         "first_name": "Pascal",
