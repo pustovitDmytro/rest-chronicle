@@ -4,12 +4,10 @@ import handleBars from 'handlebars';
 import { DEFAULT_JSON_OFFSET } from './constants';
 
 
-handleBars.registerHelper('json', (data, offset) => {
-    const shift = Array.from(new Array(offset), () => ' ').join('');
-    const text = shift + JSON.stringify(data, null, DEFAULT_JSON_OFFSET + offset);
-    const rightShifted = text.slice(0, -1) + shift + text.slice(-1);
+handleBars.registerHelper('json', (data) => {
+    const text = JSON.stringify(data, null, DEFAULT_JSON_OFFSET);
 
-    return new handleBars.SafeString(rightShifted);
+    return new handleBars.SafeString(text);
 });
 
 handleBars.registerHelper('inspect', (data, options) => {
@@ -18,9 +16,17 @@ handleBars.registerHelper('inspect', (data, options) => {
     return new handleBars.SafeString(text);
 });
 
+handleBars.registerHelper('ident', (multiLine, offset) => {
+    const shift = Array.from(new Array(offset), () => ' ').join('');
+    const changed = multiLine.toString().replace(/\n/g, `\n${shift}`);
+
+    return new handleBars.SafeString(changed);
+});
+
 handleBars.registerHelper('findById', (map, id) => {
     return map.get(id);
 });
+
 
 handleBars.registerHelper({
     // eq  : (v1, v2) => v1 === v2,

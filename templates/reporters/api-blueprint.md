@@ -2,35 +2,39 @@ FORMAT: 1A
 
 {{#each groups}}
 
-    # Group {{@key}} 
+    # {{@key}} 
     {{#each this}}
         {{#each this}}
             {{#with (findById ../../actions this)}}
 
     ## {{@../key}} [{{request.method}} {{request.path}}]
-                {{#if request.body}}
 
     + Request
-
-{{json request.body 4}}
-                {{/if}}
+        {{#if request.headers}}
+        + Headers
+        {{#each request.headers}}
+            {{@key}}: {{this}}
+        {{/each}}
+        {{/if}}
+        {{#if request.body}}
+        + Body
+            {{ident (json request.body) 4}}
+        {{/if}}
 
     + Response {{response.status.code}} ({{response.info.type}})
 
-                {{#if response.headers}}
-
+        {{#if response.headers}}
     + Headers
-
-                    {{#each response.headers}}
+            {{#each response.headers}}
         {{@key}}: {{this}}
-                    {{/each}}
-                {{/if}}
-                {{#if response.body}}
+            {{/each}}
+        {{/if}}
+        {{#if response.body}}
 
     + Body
 
-{{json response.body 4}}
-                {{/if}}
+        {{ident (json response.body) 8}}
+        {{/if}}
             {{/with}}
         {{/each}}
     {{/each}}

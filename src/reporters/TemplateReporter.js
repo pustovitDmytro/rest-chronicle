@@ -20,7 +20,7 @@ export default class TemplateReporter extends Base {
     async _init() {
         const templateContent = await fs.readFile(this.templatePath);
 
-        this._template = handleBars.compile(templateContent.toString());
+        this._template = handleBars.compile(templateContent.toString(), { preventIndent: true });
     }
 
     async write(actions) {
