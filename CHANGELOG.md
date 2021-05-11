@@ -1,3 +1,17 @@
+## [1.4.2](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.4.1...v1.4.2) (2021-05-11)
+
+
+### Chore
+
+* additional quotes in glob pattern ([f6d15cf](https://github.com/pustovitDmytro/rest-chronicle/commit/f6d15cf2b6fc966f1b3a8b175b6bcf0144a80def))
+* fixes prevent require handler ([7923f0e](https://github.com/pustovitDmytro/rest-chronicle/commit/7923f0ed71ba537d7c50064a99e2e9af318fcb60))
+* not fail package if no tmp exists ([5693813](https://github.com/pustovitDmytro/rest-chronicle/commit/569381326c9b688c492aa29c825a61901419d1de))
+* prevent package:test from using devdependencies ([dc896f3](https://github.com/pustovitDmytro/rest-chronicle/commit/dc896f39fd79e6cb73c8cc458213c00f5f5a703d))
+
+### Fix
+
+* fixes module resolving from package fixes #25 #26 ([d6c0839](https://github.com/pustovitDmytro/rest-chronicle/commit/d6c08399569130a972774c29fec86031d242a93f)), closes [#25](https://github.com/pustovitDmytro/rest-chronicle/issues/25) [#26](https://github.com/pustovitDmytro/rest-chronicle/issues/26)
+
 ## [1.4.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.4.0...v1.4.1) (2021-05-11)
 
 
