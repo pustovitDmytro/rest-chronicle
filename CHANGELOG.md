@@ -1,3 +1,11 @@
+## [1.4.3](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.4.2...v1.4.3) (2021-05-11)
+
+
+### Upgrade
+
+* Update dependency dot-prop to v6 ([88376a9](https://github.com/pustovitDmytro/rest-chronicle/commit/88376a9e71607dd3b9b09bfade52a42615659243))
+* Update dependency js-yaml to v4 ([7f8e67f](https://github.com/pustovitDmytro/rest-chronicle/commit/7f8e67f636415220ff707b2e66c8bb0e8c0ec0ee))
+
 ## [1.4.2](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.4.1...v1.4.2) (2021-05-11)
 
 
