@@ -1,4 +1,4 @@
-# Users
+export const createUser = `# Users
 
 ## create user
 
@@ -10,14 +10,14 @@ POST /users
 * Authorization: 25NPmT
 
 **Body**
-```json
+\`\`\`json
 {
     "first_name": "Pascal",
     "last_name": "Ancell",
     "email": "pancell1@gravatar.com",
     "gender": "Male"
 }
-```
+\`\`\`
 
 ### Response 
 
@@ -30,7 +30,7 @@ POST /users
     content-length: 120
 
 **Body**
-```javascript
+\`\`\`javascript
 {
     id: 2,
     first_name: 'Pascal',
@@ -38,4 +38,5 @@ POST /users
     email: 'pancell1@gravatar.com',
     gender: 'Male'
 }
-```
+\`\`\`
+`;

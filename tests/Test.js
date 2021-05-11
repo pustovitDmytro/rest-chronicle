@@ -1,11 +1,14 @@
-import path from 'path';
 import fse from 'fs-extra';
 import { assert } from 'chai';
 import Action from '../src/modules/Action';
 import createMockApp, { fixtures } from './mock';
-import { tmpFolder, mockAppPort, entry } from './constants';
+import { tmpFolder, mockAppPort } from './constants';
 
 const { actions } = fixtures;
+
+export * from './utils';
+// eslint-disable-next-line import/export
+export * from './constants';
 
 export default class Test {
     constructor(chronicle) {
@@ -74,20 +77,7 @@ export default class Test {
     }
 }
 
-function load(relPath) {
-    // eslint-disable-next-line security/detect-non-literal-require
-    return require(path.join(entry, relPath));
-}
-
-function resolve(relPath) {
-    return require.resolve(path.join(entry, relPath));
-}
-
 export {
-    tmpFolder,
-    fixtures,
     actions,
-    entry,
-    load,
-    resolve
+    fixtures
 };

@@ -9,9 +9,13 @@ const tmpFolder = path.join(__dirname, '../tmp/tests');
 const mockAppPort = 8193;
 const mockAppUrl = `http://localhost:${mockAppPort}`;
 
+
+const testsRootFolder = __dirname;
+
 export {
     tmpFolder,
     mockAppPort,
     mockAppUrl,
-    entry
+    entry,
+    testsRootFolder
 };

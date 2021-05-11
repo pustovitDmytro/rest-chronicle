@@ -4,7 +4,8 @@ import uuid from 'uuid';
 import fse from 'fs-extra';
 import { diffWords } from 'diff';
 import chalk from 'chalk';
-import { tmpFolder } from './constants';
+import { tmpFolder, entry } from './constants';
+
 
 export function getTmpFilePath() {
     return path.join(tmpFolder, uuid.v4());
@@ -35,18 +36,18 @@ export function compareTexts(a, b, reason = 'text fragments should equal', { ign
     }
 }
 
-// require('colors');
-// var Diff = require('diff');
+export function load(relPath) {
+    const absPath = path.resolve(entry, relPath);
 
-// var one = 'beep boop';
-// var other = 'beep boob blah';
+    delete require.cache[require.resolve(absPath)];
+    // eslint-disable-next-line security/detect-non-literal-require
+    const result =  require(absPath);
 
-// var diff = Diff.diffChars(one, other);
+    delete require.cache[require.resolve(absPath)];
 
-// diff.forEach(function(part){
-//   // green for additions, red for deletions
-//   // grey for common parts
-//   var color = part.added ? 'green' :
-//     part.removed ? 'red' : 'grey';
-//   process.stderr.write(part.value[color]);
-// });
+    return result;
+}
+
+export function resolve(relPath) {
+    return require.resolve(path.join(entry, relPath));
+}
