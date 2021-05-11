@@ -9,7 +9,7 @@ import { compareTexts } from '../utils';
 const examplesDir = path.join(__dirname, '../../examples/');
 const cwd = process.cwd();
 
-suite('Weather Example');
+suite('Weather Example #no-pack');
 
 before(async () => {
     await fs.ensureDir(tmpFolder);

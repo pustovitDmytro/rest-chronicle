@@ -12,7 +12,7 @@ const mocha = new Mocha({
 const examplesDir = path.join(__dirname, '../../examples/');
 const cwd = process.cwd();
 
-suite('Chat Example');
+suite('Chat Example #no-pack');
 
 before(async () => {
     await fs.ensureDir(tmpFolder);

@@ -9,7 +9,7 @@ import  chronicle  from '../entry';
 const examplesDir = path.join(__dirname, '../../examples/');
 const docsDir = path.join(tmpFolder, 'blog-example');
 
-suite('Blog Example');
+suite('Blog Example #no-pack');
 
 before(async () => {
     await fs.ensureDir(docsDir);
