@@ -22,7 +22,8 @@ const COPY = [
 const TEST_MODULES = [
     'mocha',
     'json-server',
-    'ava'
+    'ava',
+    'uuid'
 ];
 
 const resolveIgnoreRegexp = `^(?!${TEST_MODULES.join('|')}).*$`;

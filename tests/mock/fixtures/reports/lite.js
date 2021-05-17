@@ -7,9 +7,11 @@ export const createUser = `# Users
 POST /users
 
 **Headers**
+
 * Authorization: 25NPmT
 
 **Body**
+
 \`\`\`json
 {
     "first_name": "Pascal",
@@ -30,6 +32,7 @@ POST /users
     content-length: 120
 
 **Body**
+
 \`\`\`javascript
 {
     id: 2,
@@ -39,4 +42,5 @@ POST /users
     gender: 'Male'
 }
 \`\`\`
+
 `;

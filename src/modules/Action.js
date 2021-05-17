@@ -1,5 +1,5 @@
 import { URL } from 'url';
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 import { isEmpty } from 'myrmidon';
 import { HTTP_STATUS_CODES, DEFAULT_STATUS_CODE } from '../constants';
 
@@ -20,7 +20,7 @@ export default class Action {
         this._request = {};
         this._chronicle = chronicle;
         this.set(values);
-        this._id = id || uuid.v4();
+        this._id = id || uuid();
     }
 
     static sanitizeHeaders(headers, config) {

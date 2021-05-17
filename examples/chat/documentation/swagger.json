@@ -22,16 +22,7 @@
                     "Users"
                 ],
                 "description": "Positive: show user profile",
-                "parameters": [
-                    {
-                        "name": "User-Agent",
-                        "in": "header",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "node-superagent/3.8.3"
-                    }
-                ],
+                "parameters": [],
                 "responses": {
                     "200": {
                         "description": "Positive: show user profile",
@@ -70,14 +61,6 @@
                 ],
                 "description": "Positive: change user name",
                 "parameters": [
-                    {
-                        "name": "User-Agent",
-                        "in": "header",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "node-superagent/3.8.3"
-                    },
                     {
                         "name": "AUTH",
                         "in": "header",
@@ -135,14 +118,6 @@
                 ],
                 "description": "Positive: get list of messages",
                 "parameters": [
-                    {
-                        "name": "User-Agent",
-                        "in": "header",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "node-superagent/3.8.3"
-                    },
                     {
                         "name": "AUTH",
                         "in": "header",

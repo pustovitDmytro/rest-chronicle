@@ -1,14 +1,14 @@
 import path from 'path';
 import { inspect } from 'util';
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 import fse from 'fs-extra';
-import { diffWords } from 'diff';
+import { diffLines } from 'diff';
 import chalk from 'chalk';
 import { tmpFolder, entry } from './constants';
 
 
 export function getTmpFilePath() {
-    return path.join(tmpFolder, uuid.v4());
+    return path.join(tmpFolder, uuid());
 }
 
 export async function readFile(file) {
@@ -19,7 +19,7 @@ export async function readFile(file) {
 
 export function compareTexts(a, b, reason = 'text fragments should equal', { ignore = '' } = {}) {
     const words = [ a, b ].map(w => ignore ? w.replace(ignore, '') : w);
-    const diff = diffWords(...words, { ignoreWhitespace: true });
+    const diff = diffLines(...words, { ignoreWhitespace: true });
 
     if (diff.some(p => p.removed || p.added)) {
         const res = diff.map(part => {

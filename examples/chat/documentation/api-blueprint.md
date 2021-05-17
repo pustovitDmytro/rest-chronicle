@@ -8,7 +8,6 @@ FORMAT: 1A
 
     + Headers
         
-        User-Agent: node-superagent/3.8.3
 
 + Response 200 (application/json)
         
@@ -37,7 +36,6 @@ FORMAT: 1A
 
     + Headers
         
-        User-Agent: node-superagent/3.8.3
         AUTH: 5NM2p40Z8
         Content-Type: application/json
  
@@ -75,7 +73,6 @@ FORMAT: 1A
 
     + Headers
         
-        User-Agent: node-superagent/3.8.3
         AUTH: 5NM2p40Z8
         Content-Type: application/json
  
