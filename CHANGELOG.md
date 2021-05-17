@@ -1,3 +1,20 @@
+## [1.4.4](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.4.3...v1.4.4) (2021-05-17)
+
+
+### Chore
+
+* 'Chore' semanticCommitType for updating devDependencies ([4bf79e1](https://github.com/pustovitDmytro/rest-chronicle/commit/4bf79e1ac2907ca07a355f63458b8bf3b41a3afc))
+* (tests) clearCache on module load is optional ([96c2ae5](https://github.com/pustovitDmytro/rest-chronicle/commit/96c2ae5237b7eed47278471cbf3b04b2b99385d4))
+* adds appveyor ([d560b4e](https://github.com/pustovitDmytro/rest-chronicle/commit/d560b4ee54ffb8d4d267fd2cb132ba8bb6dfe5b9))
+* dont store package-tests artifacts ([50ebff1](https://github.com/pustovitDmytro/rest-chronicle/commit/50ebff16449ff34f474587136dca4e4740ed4bf7))
+* integrate APPVEYOR_BUILD_ID to build tests ([16cdd48](https://github.com/pustovitDmytro/rest-chronicle/commit/16cdd48ddb7da5000c6df88ceb1f2513225a4a5b))
+* package-tester improvements ([d5d868b](https://github.com/pustovitDmytro/rest-chronicle/commit/d5d868bc7f529d94f79041be5b923b5967d7a704))
+* update default renovate rules ([7e83bc4](https://github.com/pustovitDmytro/rest-chronicle/commit/7e83bc4fb9b99bb74811cd55db0b94c81e18dcde))
+
+### Upgrade
+
+* update dependencies [uuid supertest diff] ([79ca509](https://github.com/pustovitDmytro/rest-chronicle/commit/79ca509fe94c892e62950224ee0bfc37f459c09d))
+
 ## [1.4.3](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.4.2...v1.4.3) (2021-05-11)
 
 
