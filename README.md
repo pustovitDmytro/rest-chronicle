@@ -33,10 +33,12 @@ A lot of modern rest servers have a lack of up-to-date apidoc. There could be a 
 **rest-chronicle** can help developers keep documentation up-to-date using their existing test coverage, external clients, or even express middleware.
 
 ## Requirements
+[![Platform Status][appveyor-badge]][appveyor-url]
+
 To use library you need to have [node](https://nodejs.org) and [npm](https://www.npmjs.com) installed in your machine:
 
-* node `6.0+`
-* npm `3.0+`
+* node `>=10`
+* npm `>=6`
 
 ## Installation
 
@@ -180,3 +182,8 @@ The message summary should be a one-sentence description of the change. The issu
 [npm-downloads-badge]: https://img.shields.io/npm/dw/rest-chronicle
 [npm-size-badge]: https://img.shields.io/bundlephobia/min/rest-chronicle
 [npm-size-url]: https://bundlephobia.com/result?p=rest-chronicle
+
+[appveyor-badge]: https://ci.appveyor.com/api/projects/status/fv2l6xw8nt4oc4f5/branch/master?svg=true
+[appveyor-url]: https://ci.appveyor.com/project/pustovitDmytro/rest-chronicle/branch/master
+
+

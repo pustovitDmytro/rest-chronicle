@@ -36,14 +36,14 @@ export function compareTexts(a, b, reason = 'text fragments should equal', { ign
     }
 }
 
-export function load(relPath) {
+export function load(relPath, clearCache) {
     const absPath = path.resolve(entry, relPath);
 
-    delete require.cache[require.resolve(absPath)];
+    if (clearCache) delete require.cache[require.resolve(absPath)];
     // eslint-disable-next-line security/detect-non-literal-require
     const result =  require(absPath);
 
-    delete require.cache[require.resolve(absPath)];
+    if (clearCache) delete require.cache[require.resolve(absPath)];
 
     return result;
 }
