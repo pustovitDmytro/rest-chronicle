@@ -39,6 +39,13 @@ export default class Test {
         return  action;
     }
 
+    getActions({ title, group }) {
+        return this._chronicle._actions
+            .filter(a =>
+                (title ? a.context.title === title : true) &&
+                (group ? a.context.group === group : true));
+    }
+
     findAction({ title, group }) {
         const action  =  this._chronicle._actions
             .find(a =>

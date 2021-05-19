@@ -28,11 +28,18 @@ export default class Supertest {
         return decorate(target, this);
     }
 
+    _setContext(context) {
+        this._with = context;
+        this._isContextSet = true;
+    }
+
     _process(response) {
-        if (!this._with) return;
+        if (!this._isContextSet || !this._with) return;
         const action = this._chronicle.action(this._with);
 
         this._with = null;
+        this._isContextSet = false;
+
         const { request, res } = response;
 
         action.request = {
@@ -58,7 +65,7 @@ export default class Supertest {
     }
 
     with = (params) => {
-        this._with = params;
+        this._setContext(params);
 
         return this._decorate(supertest(this._app));
     }
@@ -85,6 +92,12 @@ export default class Supertest {
     }
 
     _proxy = ({ result }) => {
+        if (!this._isContextSet && this._chronicle.clsEnabled) {
+            const clsContext = this._chronicle.getCLSContext();
+
+            if (clsContext) this._setContext(clsContext);
+        }
+
         return this._decorate(result);
     }
 
