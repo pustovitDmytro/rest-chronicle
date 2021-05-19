@@ -23,7 +23,8 @@ const TEST_MODULES = [
     'mocha',
     'json-server',
     'ava',
-    'uuid'
+    'uuid',
+    'cls-hooked'
 ];
 
 const resolveIgnoreRegexp = `^(?!${TEST_MODULES.join('|')}).*$`;
