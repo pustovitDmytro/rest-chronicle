@@ -3,6 +3,7 @@
   "version": "1.5.0",
   "description": "autodocumentate rest api",
   "main": "./lib",
+  "keywords": ["generate", "apidoc", "generator", "documentation", "documentate", "tests", "autodocumentate", "rest", "api", "http"],
   "scripts": {
     "prepare": "babel src --out-dir ./lib --copy-files && husky install",
     "coveralls": "cat ./reports/coverage/lcov.info | coveralls",
