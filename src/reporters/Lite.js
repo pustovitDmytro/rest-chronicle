@@ -17,6 +17,8 @@ export default class Lite extends Base {
     static defaultTemplateOptions = {
         maxArrayLength  : 4,
         maxStringLength : 256,
-        depth           : 8
+        depth           : 8,
+        breakLength     : Infinity,
+        compact         : false
     }
 }

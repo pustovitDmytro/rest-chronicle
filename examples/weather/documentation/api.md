@@ -24,25 +24,37 @@
   {
     id: 1,
     name: 'Verkhnya Rozhanka',
-    coordinates: { lat: 48.7799795, lon: 23.51569 },
+    coordinates: {
+      lat: 48.7799795,
+      lon: 23.51569
+    },
     country: 'Ukraine'
   },
   {
     id: 2,
     name: 'Cincinnati',
-    coordinates: { lat: 39.1822152, lon: -84.4225186 },
+    coordinates: {
+      lat: 39.1822152,
+      lon: -84.4225186
+    },
     country: 'United States'
   },
   {
     id: 3,
     name: 'Eindhoven',
-    coordinates: { lat: 51.5244042, lon: 5.7576526 },
+    coordinates: {
+      lat: 51.5244042,
+      lon: 5.7576526
+    },
     country: 'Netherlands'
   },
   {
     id: 4,
     name: 'Halton',
-    coordinates: { lat: 53.800245, lon: -1.48003 },
+    coordinates: {
+      lat: 53.800245,
+      lon: -1.48003
+    },
     country: 'United Kingdom'
   },
   ... 16 more items
@@ -73,7 +85,10 @@
 {
   id: 1,
   name: 'Verkhnya Rozhanka',
-  coordinates: { lat: 48.7799795, lon: 23.51569 },
+  coordinates: {
+    lat: 48.7799795,
+    lon: 23.51569
+  },
   country: 'Ukraine'
 }
 ```
@@ -92,15 +107,15 @@
 **Body**
 
 ```json          
-    {
-        "id": 1,
-        "name": "Verkhnya Rozhanka",
-        "coordinates": {
-                "lat": 48.7799795,
-                "lon": 23.51569
-        },
-        "country": "Ukraine"
-    }
+{
+    "id": 1,
+    "name": "Verkhnya Rozhanka",
+    "coordinates": {
+        "lat": 48.7799795,
+        "lon": 23.51569
+    },
+    "country": "Ukraine"
+}
 ```
 
 ### Response
@@ -115,7 +130,10 @@
 {
   id: 1,
   name: 'Verkhnya Rozhanka',
-  coordinates: { lat: 48.7799795, lon: 23.51569 },
+  coordinates: {
+    lat: 48.7799795,
+    lon: 23.51569
+  },
   country: 'Ukraine'
 }
 ```
@@ -134,15 +152,15 @@
 **Body**
 
 ```json          
-    {
-        "id": 8,
-        "name": "New York City",
-        "coordinates": {
-                "lat": 40.7582228,
-                "lon": -73.9704871
-        },
-        "country": "United States"
-    }
+{
+    "id": 8,
+    "name": "New York City",
+    "coordinates": {
+        "lat": 40.7582228,
+        "lon": -73.9704871
+    },
+    "country": "United States"
+}
 ```
 
 ### Response
@@ -157,7 +175,10 @@
 {
   id: 8,
   name: 'New York City',
-  coordinates: { lat: 40.7582228, lon: -73.9704871 },
+  coordinates: {
+    lat: 40.7582228,
+    lon: -73.9704871
+  },
   country: 'United States'
 }
 ```
@@ -268,12 +289,12 @@
 **Body**
 
 ```json          
-    {
-        "id": "2d5f723a-6ec2-4f56-befc-54e63ce860be",
-        "city": 5,
-        "weather": "stormy",
-        "date": "19-Aug-2019"
-    }
+{
+    "id": "2d5f723a-6ec2-4f56-befc-54e63ce860be",
+    "city": 5,
+    "weather": "stormy",
+    "date": "19-Aug-2019"
+}
 ```
 
 ### Response
