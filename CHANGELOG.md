@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.5.0...v1.5.1) (2021-05-19)
+
+
+### Docs
+
+* adds keywords ([c669d57](https://github.com/pustovitDmytro/rest-chronicle/commit/c669d570f17b7c02eaa512f6155ed62ef0c83872))
+
 # [1.5.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.4.4...v1.5.0) (2021-05-19)
 
 
