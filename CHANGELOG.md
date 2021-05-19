@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.4.4...v1.5.0) (2021-05-19)
+
+
+### Fix
+
+* (lite-repoter) split object keys to new lines for consistency with prior node versions ([ca0cb05](https://github.com/pustovitDmytro/rest-chronicle/commit/ca0cb05cd4629b137755481f284c00e28a56cca4))
+* adds cls-hooked to ignore in package-tests ([286e73a](https://github.com/pustovitDmytro/rest-chronicle/commit/286e73af5ae6cd057bf42b0ef64d369de932f0e4))
+
+### New
+
+* adds cls context resolver for supertest #20 ([ca1f96e](https://github.com/pustovitDmytro/rest-chronicle/commit/ca1f96e6774625996d1d7ba5e4445260170ebd91)), closes [#20](https://github.com/pustovitDmytro/rest-chronicle/issues/20)
+
 ## [1.4.4](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.4.3...v1.4.4) (2021-05-17)
 
 
