@@ -14,13 +14,14 @@ function getQuery(searchParams) {
 }
 
 export default class Action {
-    constructor({ chronicle, id, ...values }) {
+    constructor({ chronicle, id, _id, _chronicle, ...values }) {
         this._context = {};
         this._response = {};
         this._request = {};
-        this._chronicle = chronicle;
+        this._chronicle = chronicle || _chronicle;
         this.set(values);
-        this._id = id || uuid();
+        this._id = id || _id || uuid();
+        this._chronicle._actions.push(this);
     }
 
     static sanitizeHeaders(headers, config) {

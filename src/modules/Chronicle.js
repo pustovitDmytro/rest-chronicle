@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs-extra';
 import cls from 'cls-hooked';
+import { v4 as uuid } from 'uuid';
 import reporters from '../reporters';
 import { DEFAULT_CLS_CONTEXT_KEY } from '../constants';
 import Action from './Action';
@@ -9,6 +10,7 @@ export default class Chronicle {
     constructor(config = {}) {
         this._actions = [];
         this.setConfig(config);
+        this.id = config.id || uuid();
     }
 
     useCLS(namespace, contextKey = DEFAULT_CLS_CONTEXT_KEY) {
@@ -38,8 +40,6 @@ export default class Chronicle {
             chronicle : this
         });
 
-        this._actions.push(action);
-
         return action;
     }
 
@@ -57,5 +57,35 @@ export default class Chronicle {
         const reporter = new Reporter(filePath, reporterOptions);
 
         await reporter.write(this._actions.map(a => a.data));
+    }
+
+    split(splitfn) {
+        const splitted = new Map();
+
+        this._actions.forEach(item => {
+            const chrID = splitfn(item);
+            const curr = splitted.get(chrID) || [];
+
+            curr.push(item);
+            splitted.set(chrID, curr);
+        });
+
+        return [ ...splitted.keys() ].map(groupId => {
+            const actions = splitted.get(groupId);
+            const chronicle = new Chronicle({
+                ...this.config,
+                id : groupId
+            });
+
+            chronicle.clsEnabled = this.clsEnabled;
+            chronicle._cls = this._cls;
+            chronicle.contextBuilder = this.contextBuilder;
+            console.log('before: ', chronicle.id, chronicle._actions);
+            actions.forEach(action => new Action({ ...action, chronicle }));
+            console.log('actions: ', actions.length);
+            console.log('chronicle: ', chronicle.id, chronicle._actions);
+
+            return chronicle;
+        });
     }
 }

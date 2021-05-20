@@ -51,5 +51,53 @@
             "email": "nebawawaw@wopdoj.nr",
             "gender": "Female"
         }
+    },
+    {
+        "context": {
+            "group": "Users",
+            "title": "update user gender"
+        },
+        "url": "http://127.0.0.1:62887/users/2",
+        "method": "PATCH",
+        "reqHeaders": {
+            "Authorization": "dNFgil4tftWpLUjz"
+        },
+        "resHeaders": {
+            "x-powered-by": "Express",
+            "content-length": "120"
+        },
+        "reqBody": {
+            "gender": "Male"
+        },
+        "resBody": {
+            "id": 2,
+            "first_name": "Eugenia",
+            "last_name": "Perry",
+            "email": "nusmad@pa.jp",
+            "gender": "Female"
+        }
+    },
+    {
+        "context": {
+            "group": "Orders",
+            "title": "get order"
+        },
+        "url": "http://127.0.0.1:62887/orders/1",
+        "method": "GET",
+        "reqHeaders": {
+            "Authorization": "dNFgil4tftWpLUjz"
+        },
+        "resHeaders": {
+            "x-powered-by": "Express",
+            "content-length": "120"
+        },
+        "reqBody": {
+            "gender": "Male"
+        },
+        "resBody": {
+            "id": 1,
+            "link": "http://pabeve.ao/mum",
+            "country": "Turkmenistan"
+        }
     }
 ]
