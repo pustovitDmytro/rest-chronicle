@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.5.1...v1.6.0) (2021-05-21)
+
+
+### New
+
+* adds split chronicle functionality #29 ([b0e673a](https://github.com/pustovitDmytro/rest-chronicle/commit/b0e673ac521de241d10b01e857814ee0563fca44)), closes [#29](https://github.com/pustovitDmytro/rest-chronicle/issues/29)
+
 ## [1.5.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.5.0...v1.5.1) (2021-05-19)
 
 
