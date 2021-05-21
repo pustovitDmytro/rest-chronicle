@@ -50,9 +50,13 @@ To install the library run the following command
 
 ## Examples
 
-Check full, ready for use, well-tested examples in the [examples folder](./examples).  There currently 2 examples there:
-1. [chat app](./examples/chat/app.js): demonstrates apidoc generation using tests with supertest module. [Swagger](examples/chat/documentation/swagger.json) and [api-blueprint](examples/chat/documentation/api-blueprint.md) documentation files will be generated after running [test.js](examples/chat/test.js).
-2. [weather app](examples/weather/app.js): generates apidoc as express middleware. [lite](./examples/weather/documentation/api.md) markdown file will be generated after executing requests from the scenario described in [client.js](examples/weather/client.js).
+Check full, ready for use, well-tested examples in the [examples folder](./examples).  There currently 3 examples there:
+1. [chat app](./examples/chat/app.js): demonstrates apidoc generation using [mocha](https://www.npmjs.com/package/mocha) tests with **supertest** module. [Swagger](examples/chat/documentation/swagger.json) and [api-blueprint](examples/chat/documentation/api-blueprint.md) documentation files will be generated after running [test.js](examples/chat/test.js).
+2. [weather app](examples/weather/app.js): generates apidoc as **express** middleware. [lite](./examples/weather/documentation/api.md) markdown file will be generated after executing requests from the scenario described in [client.js](examples/weather/client.js).
+3. [blog app](examples/blog/app.js): demonstrates apidoc generation using [ava](https://www.npmjs.com/package/ava) tests with **axios** requests. [Swagger](examples/blog/documentation/swagger.json) and [Raml](examples/blog/documentation/raml.yaml) documentation files will be generated after running [test.js](examples/blog/blog.test.js).
+
+Real-life projects:
+ - https://github.com/pustovitDmytro/sns-telegram-bot
 
 ## Usage
 
@@ -120,9 +124,51 @@ The first argument receives a file path, and the second - reporter-specific conf
 Supported reporters:
 * **[api-blueprint](https://apiblueprint.org/)**
 * **[swagger](https://swagger.io/)**
+* **[raml](https://raml.org/)**
 * **template reporter** - use a custom template (will be filled with handlebars)
 * **lite reporter** - markdown file from the template will be generated. The configuration will be passed to inspect method.
 * **json reporter** - store captured actions in JSON format with common grouping.
+
+### CLS
+if you prefer using **CLS** (Continuation Local Storage) as context storage, enable cls namespace:
+```javascript
+    chronicle.useCLS('cls-namespace-name');
+```
+Now you can set chronicle context to cls namespace:
+```javascript
+    const ns = cls.createNamespace('cls-supertest-ns');
+
+    ns.set('chronicle-context', { title: 'create user', group: 'Users' });
+```
+
+Use ```chronicle-context``` as default context key, or specify the custom key as the second argument of ```chronicle.useCLS``` method:
+
+```javascript
+    chronicle.useCLS('my-cls-namespace', 'my-rest-chronicle-context-key');
+
+    ns.set('my-rest-chronicle-context-key', { title: 'update user', group: 'Users' });
+```
+
+**Note:** currently only **supertest** client recognizes cls.
+
+### Split
+after all actions are captured, it is possible to split chronicle to several instances, based on dynamic criteria.
+
+Examples:
+1. move each group to separate chronicle
+```javascript
+const splitted = chronicle.split(action => {
+    return action.group;
+});
+```
+2. store get requests separatelly
+```javascript
+const splitted = chronicle.split(action => {
+    return action.request.method === 'GET' ? 'get' : 'other';
+});
+```
+
+Now splitted is an Array of chronicle instances. Each instance has ```id``` key and stores only filtered actions.
 
 ## Contribute
 
