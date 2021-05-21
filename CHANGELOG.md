@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.6.0...v1.6.1) (2021-05-21)
+
+
+### Docs
+
+* update README fixes #20, #29 ([53be9a9](https://github.com/pustovitDmytro/rest-chronicle/commit/53be9a9d307dca90e2de955e7d86835a1f6685d0)), closes [#20](https://github.com/pustovitDmytro/rest-chronicle/issues/20) [#29](https://github.com/pustovitDmytro/rest-chronicle/issues/29)
+
 # [1.6.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.5.1...v1.6.0) (2021-05-21)
 
 
