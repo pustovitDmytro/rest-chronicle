@@ -35,12 +35,10 @@ export default class Chronicle {
     }
 
     action(context) {
-        const action = new Action({
+        return new Action({
             context,
             chronicle : this
         });
-
-        return action;
     }
 
     clear() {
@@ -62,13 +60,13 @@ export default class Chronicle {
     split(splitfn) {
         const splitted = new Map();
 
-        this._actions.forEach(item => {
+        for (const item of this._actions) {
             const chrID = splitfn(item);
             const curr = splitted.get(chrID) || [];
 
             curr.push(item);
             splitted.set(chrID, curr);
-        });
+        }
 
         return [ ...splitted.keys() ].map(groupId => {
             const actions = splitted.get(groupId);
@@ -80,10 +78,10 @@ export default class Chronicle {
             chronicle.clsEnabled = this.clsEnabled;
             chronicle._cls = this._cls;
             chronicle.contextBuilder = this.contextBuilder;
-            console.log('before: ', chronicle.id, chronicle._actions);
-            actions.forEach(action => new Action({ ...action, chronicle }));
-            console.log('actions: ', actions.length);
-            console.log('chronicle: ', chronicle.id, chronicle._actions);
+            for (const action of actions) {
+                // eslint-disable-next-line no-new
+                new Action({ ...action, chronicle });
+            }
 
             return chronicle;
         });

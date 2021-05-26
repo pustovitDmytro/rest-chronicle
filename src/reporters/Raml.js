@@ -29,7 +29,7 @@ export default class RamlReporter extends Base {
         const map = new Map();
         const groups = {};
 
-        actions.forEach(a => {
+        for (const a of actions) {
             const { path, method } = a.request;
 
             const resources = path.split('/').filter(i => i).map(i => `/${i}`);
@@ -38,13 +38,14 @@ export default class RamlReporter extends Base {
 
             findGroup.call(this, groups, groupValues, a.id);
             map.set(a.id, a);
-        });
+        }
 
         return { groups, map };
     }
 
     _renderHeaders(headers) {
         return Object.entries(headers)
+            // eslint-disable-next-line unicorn/no-array-reduce
             .reduce((prev, [ name, value ]) => ({
                 ...prev,
                 [name] : {
@@ -61,12 +62,11 @@ export default class RamlReporter extends Base {
         };
 
         if (body && result.type === 'object') {
-            Object.entries(body)
-                .forEach(([ key, value ]) => {
-                    dP.set(result, `properties.${key}`, {
-                        type : detectType(value, types)
-                    });
+            for (const [ key, value ] of Object.entries(body)) {
+                dP.set(result, `properties.${key}`, {
+                    type : detectType(value, types)
                 });
+            }
         }
 
         return result;
@@ -95,12 +95,15 @@ export default class RamlReporter extends Base {
         const dict = dictionary(groups);
         const hashed = [];
 
-        dict.forEach(item => {
-            if (item.value.length === 1) return hashed.push({ key: item.key, value: item.value[0] });
+        for (const item of dict) {
+            if (item.value.length === 1)  {
+                hashed.push({ key: item.key, value: item.value[0] }); continue;
+            }
+
             const [ original, ...dublicates ] = item.value;
 
             hashed.push({ key: item.key, value: original });
-            dublicates.forEach(actionId => {
+            for (const actionId of dublicates) {
                 const action = map.get(actionId);
                 const hash = this.getHash(action);
                 const [ method, lastPath, ...pathRev ] = [ ...item.key ].reverse();
@@ -109,17 +112,17 @@ export default class RamlReporter extends Base {
                     key   : [ ...pathRev.reverse(), `${lastPath}#${hash}`, method ],
                     value : actionId
                 });
-            });
-        });
+            }
+        }
 
         const paths = {};
         const origins = [ ...new Set(actions.map(a => a.request.origin)) ];
 
-        hashed.forEach(item => {
+        for (const item of hashed) {
             const action = map.get(item.value);
 
             dP.set(paths, item.key.join('.'), this._renderAction(action));
-        });
+        }
 
         const content = {
             title           : 'Raml report',

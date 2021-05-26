@@ -9,7 +9,7 @@ suite('Axios');
 
 const factory = new Test(chronicle);
 
-before(async () => {
+before(async function () {
     await factory.startMockApp();
     await factory.setTmpFolder();
 });
@@ -121,6 +121,6 @@ test('Axios send xml', async function () {
     assert.exists(action);
 });
 
-after(async () => {
+after(async function () {
     await factory.cleanup();
 });

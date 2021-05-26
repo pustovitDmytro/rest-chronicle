@@ -8,7 +8,7 @@ const factory = new Test(chronicle);
 
 suite('api-blueprint reporter');
 
-before(async () => {
+before(async function () {
     await factory.cleanup();
     await factory.setActions();
     await factory.setTmpFolder();

@@ -2,6 +2,7 @@ import Native from 'axios';
 import { decorate } from '../utils';
 
 export default class Axios {
+    // eslint-disable-next-line sonarjs/cognitive-complexity
     constructor(chronicle, useContext) {
         const axios = Native.create({});
         const decorated = decorate(axios, this);
@@ -21,9 +22,9 @@ export default class Axios {
                     context.urlParams = config.params;
                 }
 
-                Object.entries(config.params || {}).forEach(([ key, val ]) => {
+                for (const [ key, val ] of Object.entries(config.params || {})) {
                     currentUrl.pathname = currentUrl.pathname.replace(`:${key}`, encodeURIComponent(val));
-                });
+                }
 
                 const authPart = currentUrl.username && currentUrl.password ? `${currentUrl.username}:${currentUrl.password}` : '';
 
@@ -35,6 +36,7 @@ export default class Axios {
             });
             axios.interceptors.response.use(
                 response => Axios.onResponse(response, chronicle, useContext),
+                // eslint-disable-next-line promise/prefer-await-to-callbacks
                 error => {
                     if (error.isAxiosError) {
                         Axios.handleError(error, chronicle, useContext);

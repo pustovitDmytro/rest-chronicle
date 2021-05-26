@@ -1,5 +1,5 @@
 import * as swagger from './swagger';
-import * as apiBlueprint from './apiBlueprint';
+import * as apiBlueprint from './ApiBlueprint';
 import * as lite from './lite';
 
 export {

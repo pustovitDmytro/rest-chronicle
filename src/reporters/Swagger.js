@@ -33,10 +33,9 @@ export default class SwaggerReporter extends Base {
         if (body === null) result.nullable = true;
 
         if (body && result.type === 'object') {
-            Object.entries(body)
-                .forEach(([ key, value ]) => {
-                    dP.set(result, `properties.${key}`, this._renderBody(value));
-                });
+            for (const [ key, value ] of Object.entries(body)) {
+                dP.set(result, `properties.${key}`, this._renderBody(value));
+            }
         }
 
         return result;
@@ -70,22 +69,20 @@ export default class SwaggerReporter extends Base {
         const paths = {};
         const origins = [ ...new Set(actions.map(a => a.request.origin)) ];
 
-        Object.entries(groups)
-            .forEach(([ path, methods ]) => {
-                Object.entries(methods)
-                    .forEach(([ method, actionIds ]) => {
-                        const methodName = method.toLowerCase();
+        for (const [ path, methods ] of Object.entries(groups)) {
+            for (const [ method, actionIds ] of Object.entries(methods)) {
+                const methodName = method.toLowerCase();
 
-                        actionIds.forEach(id => {
-                            const action = map.get(id);
-                            const hash = dP.get(paths, `${path}.${methodName}`)
-                                ? `#${this.getHash(action)}`
-                                : '';
+                for (const id of actionIds) {
+                    const action = map.get(id);
+                    const hash = dP.get(paths, `${path}.${methodName}`)
+                        ? `#${this.getHash(action)}`
+                        : '';
 
-                            dP.set(paths, `${path}${hash}.${methodName}`, this._renderAction(action));
-                        });
-                    });
-            });
+                    dP.set(paths, `${path}${hash}.${methodName}`, this._renderAction(action));
+                }
+            }
+        }
 
         const content = {
             openapi : '3.0.0',

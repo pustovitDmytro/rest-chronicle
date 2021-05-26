@@ -10,7 +10,7 @@ suite('Express');
 const factory = new Test(chronicle);
 const expressMiddleWare = middlewares.express(chronicle);
 
-before(async () => {
+before(async function () {
     await factory.setTmpFolder();
     factory.mockApp.use(expressMiddleWare(req => {
         return {
@@ -59,6 +59,6 @@ test('Express middleware for get json array', async function () {
 // });
 
 
-after(async () => {
+after(async function () {
     await factory.cleanup();
 });

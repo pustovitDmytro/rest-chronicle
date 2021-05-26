@@ -12,13 +12,17 @@ function docoptKey(key) {
 
 export function buildDocoptParams(opts, { include, exclude } = {}) {
     const clean = {};
-
-    Object.keys(opts)
+    const filtered = Object.keys(opts)
         .map(raw => ({ raw, key: docoptKey(raw) }))
-        .filter(({ key }) => (include ? include.includes(key) : true)
-             && (exclude ? !exclude.includes(key) : true)).forEach(({ raw, key }) => {
-            clean[key] = opts[raw];
-        });
+        .filter(
+            ({ key }) =>
+                (include ? include.includes(key) : true)
+                && (exclude ? !exclude.includes(key) : true)
+        );
+
+    for (const { raw, key } of filtered) {
+        clean[key] = opts[raw];
+    }
 
     return clean;
 }

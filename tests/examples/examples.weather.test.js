@@ -11,7 +11,7 @@ const cwd = process.cwd();
 
 suite('Weather Example #no-pack');
 
-before(async () => {
+before(async function () {
     await fs.ensureDir(tmpFolder);
     process.chdir(tmpFolder);
 });
@@ -54,7 +54,7 @@ test('weather api', async function () {
     );
 });
 
-after(async () => {
+after(async function () {
     process.chdir(cwd);
     chronicle.clear();
 });

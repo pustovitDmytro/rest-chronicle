@@ -11,7 +11,7 @@ const docsDir = path.join(tmpFolder, 'blog-example');
 
 suite('Blog Example #no-pack');
 
-before(async () => {
+before(async function () {
     await fs.ensureDir(docsDir);
 });
 
@@ -47,7 +47,7 @@ test('blog', async function () {
     );
 });
 
-after(async () => {
+after(async function () {
     chronicle.clear();
 });
 

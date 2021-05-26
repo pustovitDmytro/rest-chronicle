@@ -20,12 +20,10 @@ export function actionGenerate() {
 }
 
 export function generateActions(count = 100, options = {}) {
-    return Array.from(new Array(count)).map(() => actionGenerate());
+    return Array.from({ length: count }).map(() => actionGenerate());
 }
 
-export function AxiosCollection(baseUrl) {
-
-}
+export function AxiosCollection(baseUrl) {}
 
 export function generateAxiosRequest(baseUrl, { method, query, path } = {}) {
     return {

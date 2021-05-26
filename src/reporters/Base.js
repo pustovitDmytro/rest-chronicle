@@ -12,12 +12,12 @@ export default class BaseReporter {
         const map = new Map();
         const groups = {};
 
-        actions.forEach(a => {
+        for (const a of actions) {
             const groupValues = groupBy.map(key => dP.get(a, key));
 
             findGroup.call(this, groups, groupValues, a.id);
             map.set(a.id, a);
-        });
+        }
 
         return { groups, map };
     }

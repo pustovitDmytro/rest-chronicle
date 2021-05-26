@@ -29,7 +29,7 @@ export default class Test {
 
         assert.deepOwnInclude(action.request, { path: p, method });
         if (body) {
-            if (body.length) {
+            if (body.length > 0) {
                 assert.deepEqual(action.response.body, body);
             } else {
                 assert.deepOwnInclude(action.response.body, body);

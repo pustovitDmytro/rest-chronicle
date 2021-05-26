@@ -6,7 +6,7 @@ suite('Chronicle split');
 
 const factory = new Test(chronicle);
 
-before(async () => {
+before(async function () {
     await factory.startMockApp();
     await factory.cleanup();
     await factory.setActions();
@@ -27,6 +27,6 @@ test('Split actions', function () {
     assert.lengthOf(orderGroup._actions, 1);
 });
 
-after(async () => {
+after(async function () {
     await factory.cleanup();
 });

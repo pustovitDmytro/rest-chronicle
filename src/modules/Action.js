@@ -6,9 +6,9 @@ import { HTTP_STATUS_CODES, DEFAULT_STATUS_CODE } from '../constants';
 function getQuery(searchParams) {
     const query = {};
 
-    searchParams.forEach((value, name) => {
+    for (const [ name, value ] of searchParams.entries()) {
         query[name] = value;
-    });
+    }
 
     return query;
 }
@@ -32,30 +32,30 @@ export default class Action {
             return config.sanitize(headers);
         }
 
-        Object.keys(headers).forEach(key => {
+        for (const key of Object.keys(headers)) {
             const value = headers[key];
             const sanitizer = config.sanitize?.[key];
 
-            if (config.include && !config.include.includes(key)) return;
-            if (config.exclude && config.exclude.includes(key)) return;
+            if (config.include && !config.include.includes(key)) continue;
+            if (config.exclude && config.exclude.includes(key)) continue;
 
             if (typeof sanitizer === 'function') {
                 sanitized[key] = sanitizer(value, headers);
             } else {
                 sanitized[key] = value;
             }
-        });
+        }
 
         return isEmpty(sanitized) ? null : sanitized;
     }
 
     set(values = {}) {
-        Object.entries(values)
-            .filter(([ , value ]) => value !== undefined)
-            // .filter(([ key ]) => value !== undefined)
-            .forEach(([ key, value ]) => { // TODO check for setter
-                this[key] = value;
-            });
+        const filtered = Object.entries(values)
+            .filter(([ , value ]) => value !== undefined);
+
+        for (const [ key, value ] of filtered) { // TODO: check for setter
+            this[key] = value;
+        }
     }
 
     set context(context) {

@@ -12,6 +12,7 @@ function arrayKeyFilter(keys) {
 }
 
 /* eslint-disable no-param-reassign */
+// eslint-disable-next-line sonarjs/cognitive-complexity
 function chronicleMiddleware(req, res, next) {
     const action = this.chronicle.action(this.context);
     const originalWrite = res.write;

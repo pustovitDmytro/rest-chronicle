@@ -36,6 +36,7 @@ function _onError(error) {
     throw error;
 }
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 export function decorate(target, methods = {}) {
     const isDecorateFunction = isFunction(target);
 
@@ -53,48 +54,46 @@ export function decorate(target, methods = {}) {
         : target;
     const injectMethodNames = getMethodNames(methods);
 
-    injectMethodNames
-        .filter(name => !name.includes('before_') && !name.includes('after_'))
-        .forEach(methodName => {
-            if (isDecorateFunction) {
-                decorated[methodName] = methods[methodName];
-            } else {
-                decorated[methodName] = methods[methodName];
-            }
-        });
+    for (const methodName of injectMethodNames
+        .filter(name => !name.includes('before_') && !name.includes('after_'))) {
+        decorated[methodName] = methods[methodName];
+    }
 
-    getMethodNames(target)
-        .forEach(methodName => {
-            const onParamsMethod = injectMethodNames.find(m => m === `before_${methodName}`);
-            const onSuccessMethod = injectMethodNames.find(m => m === `after_${methodName}`);
+    for (const methodName of getMethodNames(target)) {
+        const onParamsMethod = injectMethodNames.find(m => m === `before_${methodName}`);
+        const onSuccessMethod = injectMethodNames.find(m => m === `after_${methodName}`);
 
-            if (isDecorateFunction && [ 'caller', 'caller', 'arguments' ].includes(methodName)) return;
-            if (!onParamsMethod && !onSuccessMethod) return decorated[methodName] = target[methodName];
-            const config = {
-                onParams  : onParamsMethod ? methods[onParamsMethod] : _onParams,
-                onSuccess : onSuccessMethod ? methods[onSuccessMethod] : _onSuccess,
-                ...defaultConfig
-            };
+        if (isDecorateFunction && [ 'caller', 'caller', 'arguments' ].includes(methodName)) continue;
+        if (!onParamsMethod && !onSuccessMethod)  {
+            decorated[methodName] = target[methodName];
+            continue;
+        }
 
-            if (isDecorateFunction) {
-                decorated[methodName] = functionDecorator(target[methodName], { methodName, config });
-            } else {
-                const descriptor = getMethodDescriptor(methodName, decorated);
+        const config = {
+            onParams  : onParamsMethod ? methods[onParamsMethod] : _onParams,
+            onSuccess : onSuccessMethod ? methods[onSuccessMethod] : _onSuccess,
+            ...defaultConfig
+        };
 
-                Object.defineProperty(
-                    decorated,
-                    methodName,
-                    classMethodDecorator.call(
-                        this,
-                        {
-                            methodName,
-                            descriptor,
-                            config
-                        }
-                    )
-                );
-            }
-        });
+        if (isDecorateFunction) {
+            decorated[methodName] = functionDecorator(target[methodName], { methodName, config });
+        } else {
+            const descriptor = getMethodDescriptor(methodName, decorated);
+
+            Object.defineProperty(
+                decorated,
+                methodName,
+                classMethodDecorator.call(
+                    this,
+                    {
+                        methodName,
+                        descriptor,
+                        config
+                    }
+                )
+            );
+        }
+    }
 
     return decorated;
 }
@@ -114,7 +113,9 @@ function functionDecorator(method, { methodName, config }) {
 
             if (isPromise(promise)) {
                 return promise
+                // eslint-disable-next-line promise/prefer-await-to-then
                     .then(result => config.onSuccess({ result, ...data }))
+                // eslint-disable-next-line promise/prefer-await-to-callbacks,promise/prefer-await-to-then
                     .catch(error => config.onError({ error, ...data }));
             }
 

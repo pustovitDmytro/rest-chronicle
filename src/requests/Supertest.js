@@ -4,9 +4,9 @@ import { decorate } from '../utils';
 function fillParams(url, params) {
     let filled = url;
 
-    Object.entries(params).forEach(([ key, value ]) => {
+    for (const [ key, value ] of Object.entries(params)) {
         filled = filled.replace(`:${key}`, value);
-    });
+    }
 
     return filled;
 }
@@ -21,9 +21,9 @@ export default class Supertest {
     }
 
     _decorate(target) {
-        [ '_with' ].forEach(key => {
+        for (const key of [ '_with' ]) {
             target[key] = this[key]; // eslint-disable-line no-param-reassign
-        });
+        }
 
         return decorate(target, this);
     }
@@ -79,6 +79,7 @@ export default class Supertest {
     }
 
     'before_end' = ({ params }) => {
+        // eslint-disable-next-line unicorn/no-this-assignment
         const that = this;
 
         return [

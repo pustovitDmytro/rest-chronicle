@@ -1,4 +1,4 @@
-import json from './JSONReporter';
+import json from './jsonReporter';
 import swagger from './Swagger';
 import apiblueprint from './ApiBluePrint';
 import lite from './Lite';

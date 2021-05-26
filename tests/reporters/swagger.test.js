@@ -7,7 +7,7 @@ const factory = new Test(chronicle);
 
 suite('swagger reporter');
 
-before(async () => {
+before(async function () {
     await factory.cleanup();
     await factory.setActions();
     await factory.setTmpFolder();

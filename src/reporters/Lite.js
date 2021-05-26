@@ -18,7 +18,7 @@ export default class Lite extends Base {
         maxArrayLength  : 4,
         maxStringLength : 256,
         depth           : 8,
-        breakLength     : Infinity,
+        breakLength     : Number.POSITIVE_INFINITY,
         compact         : false
     }
 }

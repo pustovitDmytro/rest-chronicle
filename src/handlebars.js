@@ -17,7 +17,7 @@ handleBars.registerHelper('inspect', (data, options) => {
 });
 
 handleBars.registerHelper('ident', (multiLine, offset) => {
-    const shift = Array.from(new Array(offset), () => ' ').join('');
+    const shift = Array.from({ length: offset }).map(() => ' ').join('');
     const changed = multiLine.toString().replace(/\n/g, `\n${shift}`);
 
     return new handleBars.SafeString(changed);

@@ -11,7 +11,7 @@ const request = supertest(factory.mockApp);
 
 suite('Supertest');
 
-before(async () => {
+before(async function () {
     await factory.startMockApp();
     await factory.cleanup();
     chronicle.useCLS('cls-supertest-ns');
@@ -173,6 +173,6 @@ test('Clear with for second request', async function () {
     assert.lengthOf(factory.getActions(context), 2);
 });
 
-after(async () => {
+after(async function () {
     await factory.cleanup();
 });

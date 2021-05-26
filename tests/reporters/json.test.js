@@ -7,7 +7,7 @@ const factory = new Test(chronicle);
 
 suite('json reporter');
 
-before(async () => {
+before(async function () {
     await factory.setTmpFolder();
 });
 
