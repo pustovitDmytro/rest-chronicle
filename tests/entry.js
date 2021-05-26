@@ -1,4 +1,3 @@
-/* eslint-disable security/detect-non-literal-require */
 import { entry } from './constants';
 
 const M = require(entry);
