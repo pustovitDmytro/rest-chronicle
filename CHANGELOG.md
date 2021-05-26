@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.6.1...v1.6.2) (2021-05-26)
+
+
+### Upgrade
+
+* Bump browserslist from 4.16.4 to 4.16.6 ([906c578](https://github.com/pustovitDmytro/rest-chronicle/commit/906c57832ceaa7a7379f253c0b83c5c30db7d9fe))
+
 ## [1.6.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.6.0...v1.6.1) (2021-05-21)
 
 
