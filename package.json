@@ -1,6 +1,6 @@
 {
   "name": "rest-chronicle",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "autodocumentate rest api",
   "main": "./lib",
   "keywords": [

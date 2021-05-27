@@ -1,3 +1,10 @@
+## [1.6.4](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.6.3...v1.6.4) (2021-05-27)
+
+
+### Upgrade
+
+* Update dependency myrmidon to v1.5.3 ([3c380cc](https://github.com/pustovitDmytro/rest-chronicle/commit/3c380cca43d1f14e93bed387346fc706c5ead8bd))
+
 ## [1.6.3](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.6.2...v1.6.3) (2021-05-26)
 
 
