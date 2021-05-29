@@ -24,6 +24,15 @@ export default class Action {
         this._chronicle._actions.push(this);
     }
 
+    copy(chronicle) {
+        return new Action({
+            context  : this.context,
+            request  : this.request,
+            response : this.response,
+            chronicle
+        });
+    }
+
     static sanitizeHeaders(headers, config) {
         if (!config || !headers) return headers || null;
         const sanitized = {};
@@ -192,7 +201,7 @@ export default class Action {
     }
 
     get resContentInfo() {
-        // TODO parse from headers
+        // TODO: parse from headers
         const { info } = this._response;
 
         return {

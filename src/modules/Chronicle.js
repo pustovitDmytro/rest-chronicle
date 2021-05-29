@@ -78,10 +78,7 @@ export default class Chronicle {
             chronicle.clsEnabled = this.clsEnabled;
             chronicle._cls = this._cls;
             chronicle.contextBuilder = this.contextBuilder;
-            for (const action of actions) {
-                // eslint-disable-next-line no-new
-                new Action({ ...action, chronicle });
-            }
+            for (const action of actions) action.copy(chronicle);
 
             return chronicle;
         });
