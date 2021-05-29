@@ -1,3 +1,19 @@
+# [1.7.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.6.4...v1.7.0) (2021-05-29)
+
+
+### Chore
+
+* update eslint-config-incredible ([2f39edb](https://github.com/pustovitDmytro/rest-chronicle/commit/2f39edb6b44795918e8650be3e727b8e7abb61b7))
+* update eslint-config-incredible ([58c31d2](https://github.com/pustovitDmytro/rest-chronicle/commit/58c31d295fa2df7cb3dceda8db6a417144a4b1c3))
+
+### Fix
+
+* set babel target node version to 10 ([f736568](https://github.com/pustovitDmytro/rest-chronicle/commit/f73656838a20d11da6680579cfccc24a9f4a1201))
+
+### New
+
+* adds action.copy method ([5ec2078](https://github.com/pustovitDmytro/rest-chronicle/commit/5ec207839b10049ca66ede97193eb27c5c7b5828))
+
 ## [1.6.4](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.6.3...v1.6.4) (2021-05-27)
 
 
