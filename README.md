@@ -18,6 +18,7 @@
 [![Coverage Status][badge-coverage]][url-coverage]
 
 [![Commit activity][commit-activity-badge]][github]
+[![FOSSA][fossa-badge]][fossa-url]
 [![License][badge-lic]][github]
 
 ## Table of Contents
@@ -81,13 +82,14 @@ To capture actions into the chronicle, use one of the supported clients:
 **Express**
 
 ```javascript
-    import { middlewares } from 'rest-chronicle';
-    import express from 'express';
+import { middlewares } from 'rest-chronicle';
+import express from 'express';
 
-    const chr = middlewares.express();
-    const app = express();
-    const router = express.Router();
-    router.get('/users', chr('Users', 'List of Users'), usersList);
+const chr = middlewares.express();
+const app = express();
+const router = express.Router();
+
+router.get('/users', chr('Users', 'List of Users'), usersList);
 ```
 
 check [weather app](./examples/weather/app.js) for complete example
@@ -134,21 +136,21 @@ Supported reporters:
 ### CLS
 if you prefer using **CLS** (Continuation Local Storage) as context storage, enable cls namespace:
 ```javascript
-    chronicle.useCLS('cls-namespace-name');
+chronicle.useCLS('cls-namespace-name');
 ```
 Now you can set chronicle context to cls namespace:
 ```javascript
-    const ns = cls.createNamespace('cls-supertest-ns');
+const ns = cls.createNamespace('cls-supertest-ns');
 
-    ns.set('chronicle-context', { title: 'create user', group: 'Users' });
+ns.set('chronicle-context', { title: 'create user', group: 'Users' });
 ```
 
 Use ```chronicle-context``` as default context key, or specify the custom key as the second argument of ```chronicle.useCLS``` method:
 
 ```javascript
-    chronicle.useCLS('my-cls-namespace', 'my-rest-chronicle-context-key');
+chronicle.useCLS('my-cls-namespace', 'my-rest-chronicle-context-key');
 
-    ns.set('my-rest-chronicle-context-key', { title: 'update user', group: 'Users' });
+ns.set('my-rest-chronicle-context-key', { title: 'update user', group: 'Users' });
 ```
 
 **Note:** currently only **supertest** client recognizes cls.
@@ -216,5 +218,8 @@ Make the changes to the code and tests. Then commit to your branch. Be sure to f
 
 [appveyor-badge]: https://ci.appveyor.com/api/projects/status/fv2l6xw8nt4oc4f5/branch/master?svg=true
 [appveyor-url]: https://ci.appveyor.com/project/pustovitDmytro/rest-chronicle/branch/master
+
+[fossa-badge]: https://app.fossa.com/api/projects/custom%2B24828%2Frest-chronicle.svg?type=shield
+[fossa-url]: https://app.fossa.com/projects/custom%2B24828%2Frest-chronicle?ref=badge_shield
 
 
