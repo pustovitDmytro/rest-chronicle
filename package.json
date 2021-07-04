@@ -93,7 +93,7 @@
     "eslint-plugin-sonarjs": "^0.7.0",
     "eslint-plugin-unicorn": "^34.0.0",
     "express": "^4.17.1",
-    "husky": "^6.0.0",
+    "husky": "^7.0.0",
     "jscpd": "^3.3.25",
     "json-server": "^0.16.0",
     "lockfile-lint": "^4.6.2",
