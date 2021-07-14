@@ -1,3 +1,32 @@
+## [1.7.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.7.0...v1.7.1) (2021-07-14)
+
+
+### Chore
+
+* adds stabilityDays to renovate ([3b262bc](https://github.com/pustovitDmytro/rest-chronicle/commit/3b262bcefc6db318d2a7d9103f9f5f42315202d5))
+* fix json in renovate ([8ad7928](https://github.com/pustovitDmytro/rest-chronicle/commit/8ad792825b2703e3159b65faf722eb43a1d9d421))
+* fixes npm  audit ([c3beccd](https://github.com/pustovitDmytro/rest-chronicle/commit/c3beccdf1926d72dcf9b13cd153e37916f1a8d13))
+* integrate fossa ([b65e961](https://github.com/pustovitDmytro/rest-chronicle/commit/b65e961a5ae500b1b5fd12fce3436e71c1518e35))
+* integrate node-package-tester ([9d53bf3](https://github.com/pustovitDmytro/rest-chronicle/commit/9d53bf30d295368e7f1e925c18b00e48cc16014e))
+* Lock file maintenance ([4f0d45c](https://github.com/pustovitDmytro/rest-chronicle/commit/4f0d45cdf81968ad66021e827173787e03380ced))
+* Lock file maintenance ([3291a21](https://github.com/pustovitDmytro/rest-chronicle/commit/3291a2144ee143dc327f6fb4a8b82e62e07b1c1f))
+* Lock file maintenance ([9a47525](https://github.com/pustovitDmytro/rest-chronicle/commit/9a475258fbdacf4e109d0523778c8fd978b73a30))
+* set YARGS_MIN_NODE_VERSION 10 ([9b6bef9](https://github.com/pustovitDmytro/rest-chronicle/commit/9b6bef9d89f8f0c958ee1fe60f20475dd20c8276))
+* Update dependency eslint-plugin-regexp to ^0.12.0 ([95cc708](https://github.com/pustovitDmytro/rest-chronicle/commit/95cc7083ee8b2d0098aa2e56fccf5aa53e1eac0c))
+* Update dependency eslint-plugin-regexp to ^0.13.0 ([d8b10eb](https://github.com/pustovitDmytro/rest-chronicle/commit/d8b10eb2493f856ccb07e5430abaabe1ba88332a))
+* Update dependency eslint-plugin-sonarjs to ^0.9.0 ([c4ae8fe](https://github.com/pustovitDmytro/rest-chronicle/commit/c4ae8fe941c2cf7b3d54d69d1d13aa6b965e54ea))
+* Update dependency eslint-plugin-unicorn to v33 ([bfa00ff](https://github.com/pustovitDmytro/rest-chronicle/commit/bfa00ff354dfb9ffe717e9a36f7a938d44b32611))
+* Update dependency eslint-plugin-unicorn to v33 ([346c748](https://github.com/pustovitDmytro/rest-chronicle/commit/346c748b5b42ddc56572cb79641adc2a66c4c137))
+* Update dependency eslint-plugin-unicorn to v34 ([14c040b](https://github.com/pustovitDmytro/rest-chronicle/commit/14c040b757961159e611700be331f08441fe0824))
+* Update dependency glob-parent to 5.1.2 [SECURITY] ([c957512](https://github.com/pustovitDmytro/rest-chronicle/commit/c957512cf496d9b99e2278b44b6bb9da545f57a8))
+* Update dependency glob-parent to 5.1.2 [SECURITY] ([814f05a](https://github.com/pustovitDmytro/rest-chronicle/commit/814f05a72bf1ab54133edccede5bfa722b8dd96d))
+* Update dependency husky to v7 ([f121947](https://github.com/pustovitDmytro/rest-chronicle/commit/f121947aeb3f88ff6dbb4f484a81d9f15107d10b))
+* Update dependency mocha to v9 ([93b7a17](https://github.com/pustovitDmytro/rest-chronicle/commit/93b7a1783ea97a7bcd94d570ef33b61314c93746))
+
+### Upgrade
+
+* Update dependency myrmidon to v1.5.8 ([f9d7a3b](https://github.com/pustovitDmytro/rest-chronicle/commit/f9d7a3b178b1014c02449612546f23531bef0af8))
+
 # [1.7.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.6.4...v1.7.0) (2021-05-29)
 
 
