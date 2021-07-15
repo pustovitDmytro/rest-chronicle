@@ -1,127 +1,105 @@
-import { getMethodNames, isPromise, isFunction } from 'myrmidon';
+import {
+    getMethodNames,
+    FunctionDecorator as BaseFunctionDecorator,
+    ClassMethodDecorator as BaseClassMethodDecorator,
+    ClassDecorator as BaseClassDecorator
+} from 'myrmidon';
 
-// TODO: move to myrmidon
-function getMethodDescriptor(propertyName, target) {
-    if (target.hasOwnProperty(propertyName)) {
-        return Object.getOwnPropertyDescriptor(target, propertyName);
-    }
+class FunctionDecorator extends BaseFunctionDecorator {
+    onParams(opts) {
+        const { methodName } = opts;
+        const { methods } = this.config;
+        const injectMethodNames = getMethodNames(methods);
 
-    return {
-        configurable : true,
-        enumerable   : true,
-        writable     : true,
-        value        : target[propertyName]
-    };
-}
-
-function classMethodDecorator({ methodName, descriptor, config }) {
-    descriptor.value = functionDecorator.call( // eslint-disable-line no-param-reassign
-        this,
-        descriptor.value,
-        { methodName, config }
-    );
-
-    return descriptor;
-}
-
-function _onSuccess({ result }) {
-    return result;
-}
-
-function _onParams({ params }) {
-    return params;
-}
-
-function _onError(error) {
-    throw error;
-}
-
-// eslint-disable-next-line sonarjs/cognitive-complexity
-export function decorate(target, methods = {}) {
-    const isDecorateFunction = isFunction(target);
-
-    const defaultConfig = {
-        onError   : _onError,
-        chronicle : methods._chronicle
-    };
-
-    const decorated = isDecorateFunction
-        ? functionDecorator(target, { config : {
-            onParams  : methods.before_default || _onParams,
-            onSuccess : methods.after_default || _onSuccess,
-            ...defaultConfig
-        } })
-        : target;
-    const injectMethodNames = getMethodNames(methods);
-
-    for (const methodName of injectMethodNames
-        .filter(name => !name.includes('before_') && !name.includes('after_'))) {
-        decorated[methodName] = methods[methodName];
-    }
-
-    for (const methodName of getMethodNames(target)) {
         const onParamsMethod = injectMethodNames.find(m => m === `before_${methodName}`);
+
+        if (onParamsMethod) return methods[onParamsMethod](opts);
+
+        return super.onParams(opts);
+    }
+
+    onSuccess(opts) {
+        const { methodName } = opts;
+        const { methods } = this.config;
+        const injectMethodNames = getMethodNames(methods);
+
         const onSuccessMethod = injectMethodNames.find(m => m === `after_${methodName}`);
 
-        if (isDecorateFunction && [ 'caller', 'caller', 'arguments' ].includes(methodName)) continue;
-        if (!onParamsMethod && !onSuccessMethod)  {
-            decorated[methodName] = target[methodName];
-            continue;
-        }
+        if (onSuccessMethod) return methods[onSuccessMethod](opts);
 
-        const config = {
-            onParams  : onParamsMethod ? methods[onParamsMethod] : _onParams,
-            onSuccess : onSuccessMethod ? methods[onSuccessMethod] : _onSuccess,
-            ...defaultConfig
-        };
-
-        if (isDecorateFunction) {
-            decorated[methodName] = functionDecorator(target[methodName], { methodName, config });
-        } else {
-            const descriptor = getMethodDescriptor(methodName, decorated);
-
-            Object.defineProperty(
-                decorated,
-                methodName,
-                classMethodDecorator.call(
-                    this,
-                    {
-                        methodName,
-                        descriptor,
-                        config
-                    }
-                )
-            );
-        }
+        return super.onSuccess(opts);
     }
-
-    return decorated;
 }
 
-function functionDecorator(method, { methodName, config }) {
-    const methodData = {
-        method    : methodName,
-        chronicle : config.chronicle
-    };
+class ClassMethodDecorator extends BaseClassMethodDecorator {
+    static FunctionDecorator = FunctionDecorator
+}
 
-    return function (...args) {
-        const params = config.onParams({ params: args, context: this, ...methodData });
-        const data = { rawParams: args, params, context: this, ...methodData };
+class ClassDecorator extends BaseClassDecorator {
+    static ClassMethodDecorator = ClassMethodDecorator
 
-        try {
-            const promise = method?.apply(this, params);
+    getClassMethodDecoratorConfig(params) {
+        const { target } = params;
 
-            if (isPromise(promise)) {
-                return promise
-                // eslint-disable-next-line promise/prefer-await-to-then
-                    .then(result => config.onSuccess({ result, ...data }))
-                // eslint-disable-next-line promise/prefer-await-to-callbacks,promise/prefer-await-to-then
-                    .catch(error => config.onError({ error, ...data }));
-            }
+        return {
+            ...super.getClassMethodDecoratorConfig(params),
+            serviceName : target.constructor.name
+        };
+    }
 
-            return config.onSuccess({ result: promise, ...data });
-        } catch (error) {
-            config.onError({ error, ...data });
+    getFunctionDecoratorConfig({ target }) {
+        const { methods } = this.config;
+
+        return {
+            ...super.getFunctionDecoratorConfig({ target }),
+            chronicle : methods._chronicle
+        };
+    }
+
+    get injectMethodNames() {
+        const { methods } = this.config;
+
+        return getMethodNames(methods);
+    }
+
+    filterMethodName(name) {
+        const injectMethodNames = this.injectMethodNames;
+        const onParamsMethod = injectMethodNames.find(m => m === `before_${name}`);
+        const onSuccessMethod = injectMethodNames.find(m => m === `after_${name}`);
+
+        return onParamsMethod || onSuccessMethod;
+    }
+
+    decorateClass(target) {
+        const { methods } = this.config;
+        const injectMethodNames = getMethodNames(methods);
+
+        for (const methodName of injectMethodNames
+            .filter(name => !name.includes('before_') && !name.includes('after_'))) {
+            // eslint-disable-next-line no-param-reassign
+            target[methodName] = methods[methodName];
         }
-    };
+
+        return super.decorateClass(target);
+    }
+
+    decorateFunction(target) {
+        const { methods } = this.config;
+        const injectMethodNames = getMethodNames(methods);
+        const decorated = super.decorateFunction(target);
+
+        for (const methodName of injectMethodNames
+            .filter(name => !name.includes('before_') && !name.includes('after_'))) {
+            // eslint-disable-next-line no-param-reassign
+            decorated[methodName] = methods[methodName];
+        }
+
+        return decorated;
+    }
+}
+
+export function decorate(target, methods) {
+    const decorator = new ClassDecorator({ config: { methods } });
+
+    return decorator.decorate(target);
 }
