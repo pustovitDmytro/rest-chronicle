@@ -1,3 +1,27 @@
+# [1.8.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.7.1...v1.8.0) (2021-07-15)
+
+
+### Chore
+
+* adds 'typo' PR template ([e20404d](https://github.com/pustovitDmytro/rest-chronicle/commit/e20404d5f844e87f38558d6986e31df4c214fc3f))
+* adds CODE_OF_CONDUCT ([a969a8d](https://github.com/pustovitDmytro/rest-chronicle/commit/a969a8d7c4b9ea8552ef90d21d1cbef068c9ee4c))
+* adds sonarcloud config ([c92973d](https://github.com/pustovitDmytro/rest-chronicle/commit/c92973d998ecee059594fbcdd35b9be0c08ffd0b))
+* Lock file maintenance ([cdf4f11](https://github.com/pustovitDmytro/rest-chronicle/commit/cdf4f112eebab895c624210cc672ab00ba2fa443))
+* removes unused devDependencies ([ddb100a](https://github.com/pustovitDmytro/rest-chronicle/commit/ddb100aa634ab2e1d2695de73d9aeb4a7795ccce))
+* Update dependency eslint-plugin-regexp to ^0.12.0 ([51ff304](https://github.com/pustovitDmytro/rest-chronicle/commit/51ff3049b892e9ee5655761e53454e4c601fba27))
+* Update dependency eslint-plugin-regexp to ^0.13.0 (#36) ([3a8d3ec](https://github.com/pustovitDmytro/rest-chronicle/commit/3a8d3ecefa7c49575b4c6de6832690117d852dd7)), closes [#36](https://github.com/pustovitDmytro/rest-chronicle/issues/36)
+* Update dependency eslint-plugin-sonarjs to ^0.9.0 ([81d9681](https://github.com/pustovitDmytro/rest-chronicle/commit/81d9681ef601c70ee83a7ca26b199d647fc4ca0e))
+* Update dependency eslint-plugin-unicorn to v34 (#34) ([86efbac](https://github.com/pustovitDmytro/rest-chronicle/commit/86efbac96c6fbd1055c7e83fc3a42a861836b943)), closes [#34](https://github.com/pustovitDmytro/rest-chronicle/issues/34)
+* Update dependency husky to v7 ([3578711](https://github.com/pustovitDmytro/rest-chronicle/commit/35787117161955387aad52949d506c0fbaf42edf))
+
+### Docs
+
+* update snyk badge ([a7fbb1d](https://github.com/pustovitDmytro/rest-chronicle/commit/a7fbb1d0e408bec8b8a8f37d1ffef3921d1dc106))
+
+### Update
+
+* integrate myrmidon decorators ([14e6f2e](https://github.com/pustovitDmytro/rest-chronicle/commit/14e6f2e848effcc47c867ea759f4a8a242a2f037))
+
 ## [1.7.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.7.0...v1.7.1) (2021-07-14)
 
 
