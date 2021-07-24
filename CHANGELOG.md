@@ -1,3 +1,20 @@
+# [2.0.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.8.1...v2.0.0) (2021-07-24)
+
+
+### Breaking
+
+* move axios and supertest to peerDependencies ([8d24d4a](https://github.com/pustovitDmytro/rest-chronicle/commit/8d24d4ae4c1d97756ef849a8185a991cb6be59e8))
+
+### Chore
+
+* adds bump strategy for devDependencies (non-major) ([03c9587](https://github.com/pustovitDmytro/rest-chronicle/commit/03c958728c482d04225d3368aebae8fadc7d6a4d))
+* combine mine packages in renovate updates ([54c97b8](https://github.com/pustovitDmytro/rest-chronicle/commit/54c97b8debfe5eae07fe83947378d03eaaea5763))
+* create auto pr for major dependencies ([d2583a6](https://github.com/pustovitDmytro/rest-chronicle/commit/d2583a6277808bbd2aa5ec69dbd1639c10458c9a))
+* enhance own updates commit messages ([49a2365](https://github.com/pustovitDmytro/rest-chronicle/commit/49a2365c0a49363e42365503939b98819a6c1864))
+* fixes renovate config ([982abaf](https://github.com/pustovitDmytro/rest-chronicle/commit/982abaf61a98de14dadc2fcb8b37b854577cbc64))
+* Lock file maintenance ([5d305a8](https://github.com/pustovitDmytro/rest-chronicle/commit/5d305a8337cccbb1efcb4885805960941f40b143))
+* not allow to fail on node 16 ([22ed683](https://github.com/pustovitDmytro/rest-chronicle/commit/22ed683ace773b242382c094b363a1713f9d8352))
+
 ## [1.8.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.8.0...v1.8.1) (2021-07-19)
 
 
