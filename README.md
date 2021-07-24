@@ -70,7 +70,9 @@ To capture actions into the chronicle, use one of the supported clients:
 **Axios**
 
 ```javascript
-    import { axios } from 'rest-chronicle';
+    import chronicle, { Axios } from 'rest-chronicle';
+
+    const axios = new Axios(chronicle);
 
     const response = await axios({
         method : 'GET',
@@ -173,6 +175,10 @@ const splitted = chronicle.split(action => {
 ```
 
 Now splitted is an Array of chronicle instances. Each instance has ```id``` key and stores only filtered actions.
+
+## Migration Guide
+
+Check [Migration Guide](./MIGRATION.md) to upgrade the next major version. Upgrade to minor/patch versions should happen without additional interventions. See detailed [Changelog](./CHANGELOG.md) for a list of changes.
 
 ## Contribute
 

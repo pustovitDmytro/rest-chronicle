@@ -4,9 +4,8 @@ import Supertest from './requests/Supertest';
 import Axios from './requests/Axios';
 import Express from './requests/Express';
 import reporters from './reporters';
+import chronicle from './chronicle';
 
-const chronicle = new Chronicle();
-const axios = new Axios(chronicle);
 const middlewares = {
     express(instance = chronicle, ...params) {
         return new Express(instance, ...params);
@@ -24,7 +23,6 @@ export {
     Express,
     Axios,
     supertest,
-    axios,
     reporters,
     middlewares
 };

@@ -10,4 +10,4 @@
     "full-trace": true,
     "recursive": true,
     "require": ["./tests/init.js", "@babel/register"]
-  }
+}

@@ -1,5 +1,7 @@
-import supertest from 'supertest';
-import { decorate } from '../utils';
+import { decorate, PeerDependency } from '../utils';
+import chr from '../chronicle';
+
+const supertest = PeerDependency.load('supertest');
 
 function fillParams(url, params) {
     let filled = url;
@@ -12,7 +14,8 @@ function fillParams(url, params) {
 }
 
 export default class Supertest {
-    constructor(app, chronicle) {
+    constructor(app, chronicle = chr) {
+        PeerDependency.check(supertest);
         this._chronicle = chronicle;
         this._app = app;
 

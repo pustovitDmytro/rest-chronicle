@@ -1,9 +1,11 @@
 import { assert } from 'chai';
 import { clone } from 'myrmidon';
-import chronicle, { axios, Axios } from '../entry';
+import chronicle, { Axios } from '../entry';
 import { users } from '../mock/fixtures';
 import Test from '../Test';
 import { mockAppUrl, mockAppPort } from '../constants';
+
+const axios = new Axios();
 
 suite('Axios');
 
@@ -15,7 +17,7 @@ before(async function () {
 });
 
 test('Axios without chronicle', async function () {
-    const client = new Axios();
+    const client = new Axios(null);
     const response = await client(`${mockAppUrl}/api/users?limit=10`);
     const body = response.data;
 

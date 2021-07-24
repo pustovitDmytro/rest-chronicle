@@ -1,5 +1,7 @@
 import { URL } from 'url';
 import { isArray, isFunction, getProp } from 'myrmidon';
+import chr from '../chronicle';
+
 
 function arrayKeyFilter(keys) {
     return function (action, actions) {
@@ -88,7 +90,7 @@ function chronicleMiddleware(req, res, next) {
 }
 
 export default class Express {
-    constructor(chronicle, config = {}) {
+    constructor(chronicle = chr, config = {}) {
         this._chronicle = chronicle;
         this._config = config;
 

@@ -1,6 +1,8 @@
 import test from 'ava';
-import chronicle, { axios } from '../../tests/entry';
+import chronicle, { Axios } from '../../tests/entry';
 import express from './app';
+
+const axios = new Axios();
 
 const app = {};
 
@@ -70,7 +72,7 @@ test('Negative: post not found', async function (t) {
     const res = await axios
         .with(t.context)
         .get(`${app.url}/posts/:id`, { params: { id: 16 } })
-        .catch(err => err);
+        .catch(error => error);
 
     t.is(res.response.status, 404);
 });
@@ -79,7 +81,7 @@ test('Negative: bad id', async function (t) {
     const res = await axios
         .with(t.context)
         .get(`${app.url}/posts/:id`, { params: { id: 'abcd' } })
-        .catch(err => err);
+        .catch(error => error);
 
     t.is(res.response.status, 404);
 });
