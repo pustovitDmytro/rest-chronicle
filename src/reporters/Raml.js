@@ -45,7 +45,7 @@ export default class RamlReporter extends Base {
 
     _renderHeaders(headers) {
         return Object.entries(headers)
-            // eslint-disable-next-line unicorn/no-array-reduce
+            // eslint-disable-next-line unicorn/prefer-object-from-entries, unicorn/no-array-reduce
             .reduce((prev, [ name, value ]) => ({
                 ...prev,
                 [name] : {
