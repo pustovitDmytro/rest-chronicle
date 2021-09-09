@@ -31,7 +31,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "application/json;charset=utf-8"
+                        "example": "application/json"
                     },
                     {
                         "name": "User-Agent",
@@ -39,7 +39,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "axios/0.21.1"
+                        "example": "axios/0.21.4"
                     },
                     {
                         "name": "Content-Length",
@@ -121,7 +121,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "axios/0.21.1"
+                        "example": "axios/0.21.4"
                     }
                 ],
                 "responses": {
@@ -184,7 +184,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "axios/0.21.1"
+                        "example": "axios/0.21.4"
                     }
                 ],
                 "responses": {
@@ -246,7 +246,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "axios/0.21.1"
+                        "example": "axios/0.21.4"
                     }
                 ],
                 "responses": {
@@ -285,7 +285,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "axios/0.21.1"
+                        "example": "axios/0.21.4"
                     }
                 ],
                 "responses": {

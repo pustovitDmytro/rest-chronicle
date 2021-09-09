@@ -30,8 +30,8 @@ test('blog', async function () {
     const expectedSwagerFilePath = path.join(exampleFolder, './documentation/swagger.json');
 
     assert.deepEqual(
-        { ...require(gotSwaggerFilePath), servers: [] },
-        { ...require(expectedSwagerFilePath),  servers: [] },
+        { ...(await fs.readJSON(gotSwaggerFilePath)), servers: [] },
+        { ...(await fs.readJSON(expectedSwagerFilePath)),  servers: [] },
         'swagger report'
     );
 

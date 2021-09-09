@@ -13,10 +13,10 @@ annotationTypes:
         example: 'application/json, text/plain, */*'
         type: string
       Content-Type:
-        example: application/json;charset=utf-8
+        example: application/json
         type: string
       User-Agent:
-        example: axios/0.21.1
+        example: axios/0.21.4
         type: string
       Content-Length:
         example: 206
@@ -49,7 +49,7 @@ annotationTypes:
           example: 'application/json, text/plain, */*'
           type: string
         User-Agent:
-          example: axios/0.21.1
+          example: axios/0.21.4
           type: string
       responses:
         '200':
@@ -81,7 +81,7 @@ annotationTypes:
           example: 'application/json, text/plain, */*'
           type: string
         User-Agent:
-          example: axios/0.21.1
+          example: axios/0.21.4
           type: string
       responses:
         '200':
@@ -113,7 +113,7 @@ annotationTypes:
           example: 'application/json, text/plain, */*'
           type: string
         User-Agent:
-          example: axios/0.21.1
+          example: axios/0.21.4
           type: string
       responses:
         '404':
@@ -130,7 +130,7 @@ annotationTypes:
           example: 'application/json, text/plain, */*'
           type: string
         User-Agent:
-          example: axios/0.21.1
+          example: axios/0.21.4
           type: string
       responses:
         '404':
