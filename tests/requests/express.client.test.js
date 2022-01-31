@@ -13,6 +13,13 @@ const expressMiddleWare = middlewares.express(chronicle);
 before(async function () {
     await factory.setTmpFolder();
     factory.mockApp.use(expressMiddleWare(req => {
+        if (req.url.includes('format')) {
+            return {
+                group : 'Format',
+                title : req.url
+            };
+        }
+
         return {
             group : 'Users',
             title : req.url.includes('limit=10') ? 'With limit' : 'general'
@@ -37,27 +44,21 @@ test('Express middleware for get json array', async function () {
     });
 });
 
-// test('Axios default function request with chronicle', async function () {
-//     const data =  users.find(u => u.id === 2);
-//     const context = { title: 'success is', group: 'wrong' };
+test('Express middleware for get txt Buffer', async function () {
+    const response = await axios.post(`${mockAppUrl}/format/Buffer`);
+    const body = response.data;
 
-//     delete data.id;
-//     const response = await axios({
-//         method : 'POST',
-//         url    : `${mockAppUrl}/users`,
-//         data,
-//         with   : context
-//     });
+    assert.isString(body);
+    assert.equal(body, 'example of text file\nnew line');
 
-//     assert.deepOwnInclude(response.data, data);
+    const context = { title: '/format/Buffer', group: 'Format' };
 
-//     factory.ensureAction(context, {
-//         method : 'POST',
-//         path   : '/users',
-//         body   : data
-//     });
-// });
-
+    factory.ensureAction(context, {
+        method : 'POST',
+        path   : '/format/Buffer',
+        body
+    });
+});
 
 after(async function () {
     await factory.cleanup();

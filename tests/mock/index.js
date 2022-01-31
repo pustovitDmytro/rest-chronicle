@@ -1,5 +1,9 @@
+import path from 'path';
 import jsonServer from 'json-server';
+import fse from 'fs-extra';
 import * as fixtures from './fixtures';
+
+const filesDir = path.join(__dirname, './files');
 
 const { users, actions } = fixtures;
 const badCode = 404;
@@ -15,11 +19,23 @@ function createMockApp() {
         let app;
 
         server.use('/api', router);
-        server.post('/format/:format', (req, res) => {
+        server.post('/format/:format', async (req, res) => {
             if (req.params.format === 'xml') {
                 res.type('application/xml');
 
                 return res.send('<status>OK</status>');
+            }
+
+            if (req.params.format === 'Buffer') {
+                const content = await fse.readFile(path.join(filesDir, '1.txt'));
+
+                res.writeHead(200, {
+                    'Content-Type'        : 'mimetype',
+                    'Content-disposition' : 'attachment;filename=1.txt',
+                    'Content-Length'      : content.length
+                });
+
+                return res.end(Buffer.from(content, 'binary'));
             }
 
             res.sendStatus(badCode);

@@ -49,8 +49,15 @@ function chronicleMiddleware(req, res, next) {
     res.on('finish',  () => {
         const body = Buffer.concat(chunks).toString('utf8');
 
+        let parsedBody = body;
+        const type = res.getHeader('Content-Type');
+
+        if (body && type.includes('application/json')) {
+            parsedBody = JSON.parse(body);
+        }
+
         action.response = {
-            body    : body && JSON.parse(body),
+            body    : parsedBody,
             headers : res.getHeaders(),
             http    : {
                 version : res.httpVersion
