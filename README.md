@@ -34,14 +34,15 @@ A lot of modern rest servers have a lack of up-to-date apidoc. There could be a 
 **rest-chronicle** can help developers keep documentation up-to-date using their existing test coverage, external clients, or even express middleware.
 
 ## Requirements
-[![Platform Status][appveyor-badge]][appveyor-url]
+[![Platform Status][node-ver-test-badge]][node-ver-test-url]
 
 To use library you need to have [node](https://nodejs.org) and [npm](https://www.npmjs.com) installed in your machine:
 
 * node `>=10`
 * npm `>=6`
 
-Package is [continuously tested][appveyor-url] on darwin, linux, win32 platforms. All active and maintenance [LTS](https://nodejs.org/en/about/releases/) node releases are supported.
+Package is [continuously tested][node-ver-test-url] on darwin, linux and win32 platforms. All active and maintenance [LTS](https://nodejs.org/en/about/releases/) node releases are supported.
+
 
 ## Installation
 
@@ -70,15 +71,15 @@ To capture actions into the chronicle, use one of the supported clients:
 **Axios**
 
 ```javascript
-    import chronicle, { Axios } from 'rest-chronicle';
+import chronicle, { Axios } from 'rest-chronicle';
 
-    const axios = new Axios(chronicle);
+const axios = new Axios(chronicle);
 
-    const response = await axios({
-        method : 'GET',
-        url    : `https://example.com/users`,
-        with   : { title: 'List of Users', group: 'Users' }
-    });
+const response = await axios({
+    method : 'GET',
+    url    : 'https://example.com/users',
+    with   : { title: 'List of Users', group: 'Users' }
+});
 ```
 
 **Express**
@@ -99,16 +100,16 @@ check [weather app](./examples/weather/app.js) for complete example
 **Supertest**
 
 ```javascript
-    import { supertest } from 'rest-chronicle';
-    import app from './app';
+import { supertest } from 'rest-chronicle';
+import app from './app';
 
-    const request = supertest(app);
+const request = supertest(app);
 
-    await request
-        .with({ title: 'List of Users', group: 'Users' })
-        .get('/users')
-        .expect('Content-Type', /json/)
-        .expect(200);
+await request
+    .with({ title: 'List of Users', group: 'Users' })
+    .get('/users')
+    .expect('Content-Type', /json/)
+    .expect(200);
 ```
 
 check [chat app](./examples/chat/test.js) for complete example
@@ -188,7 +189,7 @@ Make the changes to the code and tests. Then commit to your branch. Be sure to f
 [npm]: https://www.npmjs.com/package/rest-chronicle
 [github]: https://github.com/pustovitDmytro/rest-chronicle
 [coveralls]: https://coveralls.io/github/pustovitDmytro/rest-chronicle?branch=master
-[badge-deps]: https://img.shields.io/david/pustovitDmytro/rest-chronicle.svg
+[badge-deps]: https://img.shields.io/librariesio/release/npm/rest-chronicle.svg
 [badge-vuln]: https://img.shields.io/snyk/vulnerabilities/npm/rest-chronicle.svg?style=popout
 [badge-vers]: https://img.shields.io/npm/v/rest-chronicle.svg
 [badge-lic]: https://img.shields.io/github/license/pustovitDmytro/rest-chronicle.svg
@@ -225,8 +226,8 @@ Make the changes to the code and tests. Then commit to your branch. Be sure to f
 [npm-size-badge]: https://img.shields.io/bundlephobia/min/rest-chronicle
 [npm-size-url]: https://bundlephobia.com/result?p=rest-chronicle
 
-[appveyor-badge]: https://ci.appveyor.com/api/projects/status/fv2l6xw8nt4oc4f5/branch/master?svg=true
-[appveyor-url]: https://ci.appveyor.com/project/pustovitDmytro/rest-chronicle/branch/master
+[node-ver-test-badge]: https://github.com/pustovitDmytro/rest-chronicle/actions/workflows/npt.yml/badge.svg?branch=master
+[node-ver-test-url]: https://github.com/pustovitDmytro/rest-chronicle/actions?query=workflow%3A%22Node.js+versions%22
 
 [fossa-badge]: https://app.fossa.com/api/projects/custom%2B24828%2Frest-chronicle.svg?type=shield
 [fossa-url]: https://app.fossa.com/projects/custom%2B24828%2Frest-chronicle?ref=badge_shield
