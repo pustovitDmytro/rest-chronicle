@@ -1,5 +1,8 @@
 {
     "dir": "tmp/package-tests",
     "modules": [ "json-server", "ava", "uuid", "cls-hooked" ],
+    "copy": [
+        ["tests/files", "files"]
+    ],
     "copyDefaultFiles": true
 }

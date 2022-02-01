@@ -1,9 +1,8 @@
 import path from 'path';
 import jsonServer from 'json-server';
 import fse from 'fs-extra';
+import { filesDir } from '../constants';
 import * as fixtures from './fixtures';
-
-const filesDir = path.join(__dirname, './files');
 
 const { users, actions } = fixtures;
 const badCode = 404;
