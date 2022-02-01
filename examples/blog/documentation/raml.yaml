@@ -15,9 +15,6 @@ annotationTypes:
       Content-Type:
         example: application/json
         type: string
-      User-Agent:
-        example: axios/0.21.4
-        type: string
       Content-Length:
         example: 206
         type: number
