@@ -16,6 +16,12 @@ function contextBuilder(context) {
 test.before(async () => {
     chronicle.setContextBuilder(contextBuilder);
 
+    chronicle.setConfig({
+        headers : {
+            request : { exclude: [ 'User-Agent' ] }
+        }
+    });
+
     await new Promise(res => {
         const server = express.listen(0, () => {
             const { port } = server.address();

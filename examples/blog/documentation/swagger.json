@@ -34,14 +34,6 @@
                         "example": "application/json"
                     },
                     {
-                        "name": "User-Agent",
-                        "in": "header",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "axios/0.21.4"
-                    },
-                    {
                         "name": "Content-Length",
                         "in": "header",
                         "schema": {
@@ -114,14 +106,6 @@
                             "type": "string"
                         },
                         "example": "application/json, text/plain, */*"
-                    },
-                    {
-                        "name": "User-Agent",
-                        "in": "header",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "axios/0.21.4"
                     }
                 ],
                 "responses": {
@@ -177,14 +161,6 @@
                             "type": "string"
                         },
                         "example": "application/json, text/plain, */*"
-                    },
-                    {
-                        "name": "User-Agent",
-                        "in": "header",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "axios/0.21.4"
                     }
                 ],
                 "responses": {
@@ -239,14 +215,6 @@
                             "type": "string"
                         },
                         "example": "application/json, text/plain, */*"
-                    },
-                    {
-                        "name": "User-Agent",
-                        "in": "header",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "axios/0.21.4"
                     }
                 ],
                 "responses": {
@@ -278,14 +246,6 @@
                             "type": "string"
                         },
                         "example": "application/json, text/plain, */*"
-                    },
-                    {
-                        "name": "User-Agent",
-                        "in": "header",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "axios/0.21.4"
                     }
                 ],
                 "responses": {
