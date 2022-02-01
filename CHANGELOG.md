@@ -1,3 +1,70 @@
+# [2.1.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.0.0...v2.1.0) (2022-02-01)
+
+
+### Chore
+
+* (ci) fix gitleaks version ([badd1c1](https://github.com/pustovitDmytro/rest-chronicle/commit/badd1c1f473e4b3b3cac41996ce3b2212281b131))
+* adds  a security policy ([ed86aba](https://github.com/pustovitDmytro/rest-chronicle/commit/ed86aba2326eab4d7ef6045913a06b8e80b73dce))
+* adds circle-ci conditions ([5a40980](https://github.com/pustovitDmytro/rest-chronicle/commit/5a4098019c0450476f15cee293424d0ddcfb298c))
+* adds gitleaks to circle pipeline ([114946e](https://github.com/pustovitDmytro/rest-chronicle/commit/114946e5b0a0ec0437929c5963e7efe258391b9e))
+* adds sponsorships ([35ed8e0](https://github.com/pustovitDmytro/rest-chronicle/commit/35ed8e0ddac94bdc52545be1d533be48495c8d60))
+* adds telegra.ph release notes ([aa811a5](https://github.com/pustovitDmytro/rest-chronicle/commit/aa811a517e60cfdf194191a4f7629773e3b4ccc8))
+* adds whitesorce bolt bot ([0888eee](https://github.com/pustovitDmytro/rest-chronicle/commit/0888eee49d490c03a2d773287f1270e8a617d8ca))
+* calc fossa results in cirrus ([b2b48c1](https://github.com/pustovitDmytro/rest-chronicle/commit/b2b48c149377cdfc6395e35b44d523ad73c370f7))
+* change renovate schedule ([b983eab](https://github.com/pustovitDmytro/rest-chronicle/commit/b983eab7c9bf231bcd38b95d74adbd2e0b519d7c))
+* drop semantic-release preinstalled plugins ([69b1950](https://github.com/pustovitDmytro/rest-chronicle/commit/69b19507f23c5ca54a97d596ac3c35329d9945d8))
+* fixes audit ([14597ff](https://github.com/pustovitDmytro/rest-chronicle/commit/14597ffa2ac256fdd24954569623ae9cf96e3bce))
+* fixes audit [devDependencies] ([d08b1fc](https://github.com/pustovitDmytro/rest-chronicle/commit/d08b1fc075b7eef59c59f755e1ee96748824e415))
+* fixes later schedule ([a0cfb5c](https://github.com/pustovitDmytro/rest-chronicle/commit/a0cfb5cbb1ca216b4a58bb8c644dc20359ae21b3))
+* fixes some npm audit vulnerabilities ([9330c38](https://github.com/pustovitDmytro/rest-chronicle/commit/9330c3847084d753e1c1969bc96f109c67e7e847))
+* fixes some npm audit vulnerabilities ([f7a14d5](https://github.com/pustovitDmytro/rest-chronicle/commit/f7a14d5d00fb5aa6f2e5a02069958114562ba185))
+* fixes some npm audit vulnerabilities (#86) ([eb549de](https://github.com/pustovitDmytro/rest-chronicle/commit/eb549de6e36aba89fdf308f053f487c5bed0e1aa)), closes [#86](https://github.com/pustovitDmytro/rest-chronicle/issues/86)
+* integrate lalaps ([dd4f238](https://github.com/pustovitDmytro/rest-chronicle/commit/dd4f2389b10a309482770bd12e73191ef6b89f6f))
+* Lock file maintenance ([29fe760](https://github.com/pustovitDmytro/rest-chronicle/commit/29fe76014232a02ab882c7b0f64c87138cc1999a))
+* Lock file maintenance ([6026a85](https://github.com/pustovitDmytro/rest-chronicle/commit/6026a85860009e5a221a77461d51f7627d94fcad))
+* Lock file maintenance ([9892cc5](https://github.com/pustovitDmytro/rest-chronicle/commit/9892cc51c4e0d99e41ce06568482891d30c78e70))
+* Lock file maintenance ([98e62b3](https://github.com/pustovitDmytro/rest-chronicle/commit/98e62b366b572d5154a2b409bda203c4ffa7d62e))
+* Lock file maintenance ([7af4484](https://github.com/pustovitDmytro/rest-chronicle/commit/7af448441cafbebb04557cf657a21e7e9faab355))
+* Lock file maintenance ([fb60609](https://github.com/pustovitDmytro/rest-chronicle/commit/fb6060980a467b8c5f2095002c8d2a702a817a36))
+* Lock file maintenance ([1ffc991](https://github.com/pustovitDmytro/rest-chronicle/commit/1ffc991529c6f05ea965e9217c215fad4fab2e59))
+* Lock file maintenance ([139e469](https://github.com/pustovitDmytro/rest-chronicle/commit/139e469d9ab30b83ad610fa60c286cfa0a878d93))
+* Lock file maintenance ([47bfacf](https://github.com/pustovitDmytro/rest-chronicle/commit/47bfacf4e2ffe672c96345481ddfa6811d4d4d69))
+* Lock file maintenance ([19c2389](https://github.com/pustovitDmytro/rest-chronicle/commit/19c23891056afb813e4dde92e7f40f0905896bc9))
+* Lock file maintenance ([442ac13](https://github.com/pustovitDmytro/rest-chronicle/commit/442ac136d28ca2b95ba3c1caf2fe899d89145b2d))
+* Lock file maintenance ([2b00aec](https://github.com/pustovitDmytro/rest-chronicle/commit/2b00aec84097bd21c51a43ab785225798753dbae))
+* Lock file maintenance ([7c02bee](https://github.com/pustovitDmytro/rest-chronicle/commit/7c02bee070f048acf2bea176a464efbc8ca99172))
+* Lock file maintenance ([dea06c9](https://github.com/pustovitDmytro/rest-chronicle/commit/dea06c9d3e2dd4448e997ee081425b1a765fae87))
+* Lock file maintenance ([e0043d8](https://github.com/pustovitDmytro/rest-chronicle/commit/e0043d89de5576939e701f567ab1a871c2c8a057))
+* Lock file maintenance (#49) ([f32c92e](https://github.com/pustovitDmytro/rest-chronicle/commit/f32c92e3b1c3fd5d54cb381e9ee92768451439af)), closes [#49](https://github.com/pustovitDmytro/rest-chronicle/issues/49)
+* Lock file maintenance (#58) ([cd0aeb6](https://github.com/pustovitDmytro/rest-chronicle/commit/cd0aeb6c6eff091f49cdb06e6223d88b770225fc)), closes [#58](https://github.com/pustovitDmytro/rest-chronicle/issues/58)
+* Lock file maintenance (#59) ([ca09e5f](https://github.com/pustovitDmytro/rest-chronicle/commit/ca09e5fe6c382b8e7a0ed8abf2b9ff61990c559b)), closes [#59](https://github.com/pustovitDmytro/rest-chronicle/issues/59)
+* move tests/files for npt test ([68d94d2](https://github.com/pustovitDmytro/rest-chronicle/commit/68d94d2b0696507d0b2ee4ef53dd2449d4d942f6))
+* replace appveyor to actions ([13aff75](https://github.com/pustovitDmytro/rest-chronicle/commit/13aff75ca141f20997a700b138db61836cff06b5))
+* test-security in separete ci job ([a4bd846](https://github.com/pustovitDmytro/rest-chronicle/commit/a4bd846eefbe854e0b2a83adc80d2b4ab3aeedd5))
+* test-security in separete ci job ([9559dbc](https://github.com/pustovitDmytro/rest-chronicle/commit/9559dbc6afc7c3a3b269d18fea63018dbe8fb79c))
+* Update dependency nanoid to 3.1.31 [SECURITY] (#83) ([89d3014](https://github.com/pustovitDmytro/rest-chronicle/commit/89d30145ca8e48ab718b3a3d6ca376d6972e3ce1)), closes [#83](https://github.com/pustovitDmytro/rest-chronicle/issues/83)
+* Update dependency node-fetch to 2.6.7 [SECURITY] (#84) ([11e82bc](https://github.com/pustovitDmytro/rest-chronicle/commit/11e82bc5133b8b2d7bc18fa7730252c6068e134b)), closes [#84](https://github.com/pustovitDmytro/rest-chronicle/issues/84)
+* update deps badge ([0836169](https://github.com/pustovitDmytro/rest-chronicle/commit/0836169878ed6749127174f56cde02b91fdd69cb))
+* Update devDependencies (non-major) ([96bf47d](https://github.com/pustovitDmytro/rest-chronicle/commit/96bf47d6882a83997c0f7ff1e0fc67657b954d5b))
+* Update devDependencies (non-major) ([609151a](https://github.com/pustovitDmytro/rest-chronicle/commit/609151afd6bc58ff56003e33d85160cff9635b27))
+* Update devDependencies (non-major) ([5b1a6c3](https://github.com/pustovitDmytro/rest-chronicle/commit/5b1a6c36373cd90d68dbb19cea6b59b3985f1468))
+* Update devDependencies (non-major) ([51200bf](https://github.com/pustovitDmytro/rest-chronicle/commit/51200bf4f3ac07c957f6861fd819319a28710689))
+* Update devDependencies (non-major) ([33211c3](https://github.com/pustovitDmytro/rest-chronicle/commit/33211c31d168fc187eb028f92eaeeff48ccfd085))
+* Update devDependencies (non-major) (#48) ([b3f6184](https://github.com/pustovitDmytro/rest-chronicle/commit/b3f6184966d64e7a20a5176ddca6c63d1e275520)), closes [#48](https://github.com/pustovitDmytro/rest-chronicle/issues/48)
+* Update devDependencies (non-major) (#54) ([0cbbdda](https://github.com/pustovitDmytro/rest-chronicle/commit/0cbbdda9b5efc189744b4b41e9ab4c07cf5621f3)), closes [#54](https://github.com/pustovitDmytro/rest-chronicle/issues/54)
+* Update devDependencies (non-major) (#65) ([d60ef28](https://github.com/pustovitDmytro/rest-chronicle/commit/d60ef28cb4cbf187b61fd4c5b70b3bfb5338e6c0)), closes [#65](https://github.com/pustovitDmytro/rest-chronicle/issues/65)
+* Update devDependencies (non-major) to v13 ([eb4ada1](https://github.com/pustovitDmytro/rest-chronicle/commit/eb4ada1001a032cde930eefda03584af173c1111))
+* Update devDependencies (non-major) to v13 ([6894ad9](https://github.com/pustovitDmytro/rest-chronicle/commit/6894ad97aeac91f931506c360822f81c861e2e83))
+* upgrade semantic-release to v.19 [security] ([0888454](https://github.com/pustovitDmytro/rest-chronicle/commit/08884548499894d6a5298a1be3d107defce5c419))
+
+### Docs
+
+* update year in license ([e2dec02](https://github.com/pustovitDmytro/rest-chronicle/commit/e2dec024ae5885cd6c4a41d68b3a2ad910a2c7ea))
+
+### New
+
+* parse .txt files in express midleware ([ee3c584](https://github.com/pustovitDmytro/rest-chronicle/commit/ee3c58494b6a4036528f02d57ec893d2f9ef9d91))
+
 # [2.0.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v1.8.1...v2.0.0) (2021-07-24)
 
 
