@@ -20,5 +20,5 @@ export default class Lite extends Base {
         depth           : 8,
         breakLength     : Number.POSITIVE_INFINITY,
         compact         : false
-    }
+    };
 }

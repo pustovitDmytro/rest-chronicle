@@ -10,7 +10,7 @@ export default class SwaggerReporter extends Base {
         if (hash) this.getHash = hash;
     }
 
-    mergeArray = true
+    mergeArray = true;
 
     _renderHeaders(headers) {
         if (!headers) return [];

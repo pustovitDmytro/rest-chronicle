@@ -3,9 +3,7 @@ import { inspect } from 'util';
 import { v4 as uuid } from 'uuid';
 import fse from 'fs-extra';
 import { diffLines } from 'diff';
-import chalk from 'chalk';
 import { tmpFolder, entry } from './constants';
-
 
 export function getTmpFilePath() {
     return path.join(tmpFolder, uuid());
@@ -23,14 +21,15 @@ export function compareTexts(a, b, reason = 'text fragments should equal', { ign
 
     if (diff.some(p => p.removed || p.added)) {
         const res = diff.map(part => {
-            const color = part.added && 'green' || part.removed && 'red' || 'grey';
+            const type = part.added && 'added' || part.removed && 'removed' || 'stale';
+            // const color = part.added && 'green' || part.removed && 'red' || 'grey';
             const isDiffs = part.added || part.removed;
             const value = isDiffs && !part.value.trim()
                 ? inspect(part.value)
                 : part.value;
 
-            return chalk[color](value);
-        }).join('');
+            return inspect({ [type]: value });
+        }).join('\n');
 
         throw new Error(`${reason}: ${res}`);
     }
