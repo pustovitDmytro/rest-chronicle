@@ -32,11 +32,11 @@ class FunctionDecorator extends BaseFunctionDecorator {
 }
 
 class ClassMethodDecorator extends BaseClassMethodDecorator {
-    static FunctionDecorator = FunctionDecorator
+    static FunctionDecorator = FunctionDecorator;
 }
 
 class ClassDecorator extends BaseClassDecorator {
-    static ClassMethodDecorator = ClassMethodDecorator
+    static ClassMethodDecorator = ClassMethodDecorator;
 
     getClassMethodDecoratorConfig(params) {
         const { target } = params;

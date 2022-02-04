@@ -115,7 +115,7 @@ export default class Express {
                 config    : this._config
             }, ...expressArgs);
         };
-    }
+    };
 
     getContext(...args) {
         if (typeof args[0] === 'function') {

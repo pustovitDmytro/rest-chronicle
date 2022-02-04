@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-await-expression-member */
 import path from 'path';
 import { assert } from 'chai';
 import fs from 'fs-extra';

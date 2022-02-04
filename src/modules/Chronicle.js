@@ -24,7 +24,7 @@ export default class Chronicle {
         return namespace.get(this._cls.contextKey);
     }
 
-    contextBuilder = c => c
+    contextBuilder = c => c;
 
     setContextBuilder(fn) {
         this.contextBuilder = fn;

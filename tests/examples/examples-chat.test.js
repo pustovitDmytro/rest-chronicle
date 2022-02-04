@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-await-expression-member */
 import path from 'path';
 import Mocha from 'mocha';
 import { assert } from 'chai';

@@ -71,7 +71,7 @@ export default class Supertest {
         this._setContext(params);
 
         return this._decorate(supertest(this._app));
-    }
+    };
 
     params(params) {
         this._with.urlParams = params;
@@ -93,7 +93,7 @@ export default class Supertest {
                 }
             }
         ];
-    }
+    };
 
     _proxy = ({ result }) => {
         if (!this._isContextSet && this._chronicle.clsEnabled) {
@@ -103,7 +103,7 @@ export default class Supertest {
         }
 
         return this._decorate(result);
-    }
+    };
 
     'after_get'    = this._proxy;
 
