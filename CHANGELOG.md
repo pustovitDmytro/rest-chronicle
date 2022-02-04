@@ -1,3 +1,17 @@
+## [2.1.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.1.0...v2.1.1) (2022-02-04)
+
+
+### Chore
+
+* fixes some npm audit vulnerabilities (#90) ([acde82f](https://github.com/pustovitDmytro/rest-chronicle/commit/acde82f13c0a1d7a24c85999b5d43f5b8286ca26)), closes [#90](https://github.com/pustovitDmytro/rest-chronicle/issues/90)
+* fixes some npm audit vulnerabilities (#91) ([1f623d2](https://github.com/pustovitDmytro/rest-chronicle/commit/1f623d2225e1509ca017ddce1eec0d519a1a29d2)), closes [#91](https://github.com/pustovitDmytro/rest-chronicle/issues/91)
+* Update devDependencies (non-major) (#61) ([d66c55c](https://github.com/pustovitDmytro/rest-chronicle/commit/d66c55c31d61b641d9516f8c6c5122408c4b8f83)), closes [#61](https://github.com/pustovitDmytro/rest-chronicle/issues/61)
+* Update devDependencies (non-major) (major) (#68) ([a46a805](https://github.com/pustovitDmytro/rest-chronicle/commit/a46a8054edf0368ec71ea2fa763625cf43dcfd31)), closes [#68](https://github.com/pustovitDmytro/rest-chronicle/issues/68)
+
+### Upgrade
+
+* Update dependency myrmidon to v1.7.2 (#93) ([19f1652](https://github.com/pustovitDmytro/rest-chronicle/commit/19f1652f51c5e44d03be9beefabab6cfbf0700df)), closes [#93](https://github.com/pustovitDmytro/rest-chronicle/issues/93)
+
 # [2.1.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.0.0...v2.1.0) (2022-02-01)
 
 
