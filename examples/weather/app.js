@@ -45,6 +45,7 @@ function customTitle(req) {
             : 'Get list of forecasts'
     };
 }
+
 router.get('/forecasts', chr(customTitle), forecastsList);
 
 app.use('/api', router);

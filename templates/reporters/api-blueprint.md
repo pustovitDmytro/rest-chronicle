@@ -17,6 +17,13 @@ FORMAT: 1A
         {{@key}}: {{this}}
     {{/each}}
     {{/if}}
+    {{#if (notEmpty request.query)}}
+    
+    + Parameters
+    {{#each request.query}}
+        {{@key}}: {{this}}
+    {{/each}}
+    {{/if}}
     {{#if request.body}}
  
     + Body

@@ -22,9 +22,10 @@ export function cityCreate(req, res) {
 }
 
 export function forecastsList(req, res) {
-    res.send(forecasts.filter(i => req.query.cityId
-        ? i.city === +req.query.cityId
-        : true)
+    res.send(
+        forecasts.filter(i => req.query.cityId
+            ? i.city === +req.query.cityId
+            : true)
     );
 }
 

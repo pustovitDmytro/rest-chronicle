@@ -99,5 +99,20 @@
             "link": "http://pabeve.ao/mum",
             "country": "Turkmenistan"
         }
+    },
+    {
+        "context": {
+            "group": "Features",
+            "title": "query"
+        },
+        "url": "http://127.0.0.1:62887/users?status=ACTIVE",
+        "method": "GET",
+        "resBody": [
+            {
+                "id": 1,
+                "status": "ACTIVE",
+                "name": "Kathryn Grant"
+            }
+        ]
     }
 ]
