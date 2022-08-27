@@ -14,7 +14,6 @@ before(async function () {
     await factory.setTmpFolder();
 });
 
-
 test('Positive: api-blueprint template with one action', async function () {
     const action = factory.actions[0].data;
     const groups = { [action.context.group]: { [action.context.title]: [ action.id ] } };

@@ -54,34 +54,44 @@ export default class Axios {
     }
 
     static handleError(error, chronicle, useContext) {
-        const { config, request, response } = error;
-        const context = config.with || useContext;
+        try {
+            const { config, request, response } = error;
+            const context = config.with || useContext;
 
-        if (!context) throw error;
-        const action = chronicle.action(context);
+            if (!context) throw error;
+            const action = chronicle.action(context);
 
-        action.request = {
-            url     : new URL(config.url, config.baseURL),
-            headers : config.headers,
-            method  : config.method,
-            body    : config.data
-        };
+            action.request = {
+                url     : new URL(config.url, config.baseURL),
+                headers : config.headers,
+                method  : config.method,
+                body    : config.data
+            };
 
-        action.response = {
-            body    : response.data,
-            headers : response.header,
-            http    : {
-                version : request.res.httpVersion
-            },
-            status : {
-                code    : response.status,
-                message : response.statusText
-            },
-            type    : response.type,
-            charset : response.charset
-        };
+            if (response) {
+                action.response = {
+                    body    : response.data,
+                    headers : response.header,
+                    http    : {
+                        version : request.res.httpVersion
+                    },
+                    status : {
+                        code    : response.status,
+                        message : response.statusText
+                    },
+                    type    : response.type,
+                    charset : response.charset
+                };
+            }
 
-        throw error;
+            throw error;
+        } catch (err)  {
+            if (err !== error) {
+                console.error(err);
+            }
+
+            throw error;
+        }
     }
 
     static onResponse(response, chronicle, useContext) {
