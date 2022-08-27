@@ -184,6 +184,8 @@ export default class Action {
     }
 
     get resBody() {
+        if (Buffer.isBuffer(this._response.body)) return Buffer.from('BINARY DATA');
+
         return this._response.body;
     }
 

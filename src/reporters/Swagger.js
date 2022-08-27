@@ -1,3 +1,4 @@
+import { inspect } from 'util';
 import fs from 'fs-extra';
 import dP from 'dot-prop';
 import { DEFAULT_JSON_OFFSET } from '../constants';
@@ -31,6 +32,14 @@ export default class SwaggerReporter extends Base {
         };
 
         if (body === null) result.nullable = true;
+
+        if (Buffer.isBuffer(body)) {
+            return {
+                type    : 'string',
+                format  : 'binary',
+                example : inspect(body)
+            };
+        }
 
         if (body && result.type === 'object') {
             for (const [ key, value ] of Object.entries(body)) {
@@ -67,7 +76,7 @@ export default class SwaggerReporter extends Base {
 
     _generate(groups, map, actions) {
         const paths = {};
-        const origins = [ ...new Set(actions.map(a => a.request.origin)) ];
+        const origins = [ ...new Set(actions?.map(a => a.request.origin)) ];
 
         for (const [ path, methods ] of Object.entries(groups)) {
             for (const [ method, actionIds ] of Object.entries(methods)) {

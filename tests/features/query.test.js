@@ -49,7 +49,6 @@ test('Positive: save query in api-blueprint', async function () {
     const map = new Map([ [ action.id, action ] ]);
 
     await reporter._init();
-    console.log(reporter._generate(groups, map));
     assert.match(reporter._generate(groups, map), /\+ Request\s*\+ Parameters\s*status: ACTIVE/);
 });
 

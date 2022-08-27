@@ -5,7 +5,9 @@ import { DEFAULT_JSON_OFFSET } from './constants';
 
 
 handleBars.registerHelper('json', (data) => {
-    const text = JSON.stringify(data, null, DEFAULT_JSON_OFFSET);
+    const text = Buffer.isBuffer(data)
+        ? inspect(data)
+        : JSON.stringify(data, null, DEFAULT_JSON_OFFSET);
 
     return new handleBars.SafeString(text);
 });

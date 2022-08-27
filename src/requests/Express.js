@@ -56,6 +56,10 @@ function chronicleMiddleware(req, res, next) {
             parsedBody = JSON.parse(body);
         }
 
+        if (body && type === 'mimetype') {
+            parsedBody = Buffer.from(body);
+        }
+
         action.response = {
             body    : parsedBody,
             headers : res.getHeaders(),

@@ -44,22 +44,6 @@ test('Express middleware for get json array', async function () {
     });
 });
 
-test('Express middleware for get txt Buffer', async function () {
-    const response = await axios.post(`${mockAppUrl}/format/Buffer`);
-    const body = response.data;
-
-    assert.isString(body);
-    assert.equal(body, 'example of text file\nnew line');
-
-    const context = { title: '/format/Buffer', group: 'Format' };
-
-    factory.ensureAction(context, {
-        method : 'POST',
-        path   : '/format/Buffer',
-        body
-    });
-});
-
 after(async function () {
     await factory.cleanup();
 });
