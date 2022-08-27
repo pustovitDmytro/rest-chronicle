@@ -75,6 +75,11 @@ FORMAT: 1A
         
         AUTH: 5NM2p40Z8
         Content-Type: application/json
+
+    + Parameters
+        
+        sender: 2
+        limit: 5
  
     + Body
         

@@ -1,8 +1,8 @@
-module.exports = {
-    'files' : [
-        'examples/blog/*test.js'
+export default {
+    "files" : [
+        "examples/blog/*test.js"
     ],
-    'require' : [
-        '@babel/register'
+    "require" : [
+        "@babel/register"
     ]
-};
+}

@@ -20,6 +20,7 @@ FORMAT: 1A
     {{#if (notEmpty request.query)}}
     
     + Parameters
+
     {{#each request.query}}
         {{@key}}: {{this}}
     {{/each}}

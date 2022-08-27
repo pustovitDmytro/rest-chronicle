@@ -17,8 +17,8 @@ test('Split actions', function () {
         return action.group;
     });
 
-    assert.lengthOf(chronicle._actions, 4);
-    assert.lengthOf(splitted, 2);
+    assert.lengthOf(chronicle._actions, 5);
+    assert.lengthOf(splitted, 3);
     const userGroup = splitted.find(s => s.id === 'Users');
 
     assert.lengthOf(userGroup._actions, 3);
