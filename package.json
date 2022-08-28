@@ -101,7 +101,7 @@
   "dependencies": {
     "cls-hooked": "4.2.2",
     "dot-prop": "6.0.1",
-    "fs-extra": "10.0.0",
+    "fs-extra": "10.1.0",
     "handlebars": "4.7.7",
     "js-yaml": "4.1.0",
     "myrmidon": "1.7.2",
