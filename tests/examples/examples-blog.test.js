@@ -8,6 +8,7 @@ import  chronicle  from '../entry';
 
 const examplesDir = path.join(__dirname, '../../examples/');
 const docsDir = path.join(tmpFolder, 'blog-example');
+const exampleFolder = path.join(examplesDir, 'blog');
 
 suite('Blog Example #no-pack');
 
@@ -17,7 +18,7 @@ before(async function () {
 
 
 test('blog', async function () {
-    await execSync('npx ava', {
+    await execSync(`npx ava --config ${path.join(exampleFolder, '/ava.config.js ')}`, {
         env : {
             ...process.env,
             DOCS : docsDir
@@ -25,7 +26,6 @@ test('blog', async function () {
         stdio : 'inherit'
     });
 
-    const exampleFolder = path.join(examplesDir, 'blog');
     const gotSwaggerFilePath = path.join(docsDir, 'swagger.json');
     const expectedSwagerFilePath = path.join(exampleFolder, './documentation/swagger.json');
 
