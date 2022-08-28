@@ -1,3 +1,28 @@
+# [2.2.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.1.1...v2.2.0) (2022-08-28)
+
+
+### Chore
+
+* fixes coverage with babel ([ee67b3c](https://github.com/pustovitDmytro/rest-chronicle/commit/ee67b3c285b03ba3cd4ede62e67928529b07205a))
+* fixes some npm audit vulnerabilities (#129) ([879258d](https://github.com/pustovitDmytro/rest-chronicle/commit/879258d3552d3d22e6c6766153eeca7329c42ece)), closes [#129](https://github.com/pustovitDmytro/rest-chronicle/issues/129)
+* fixes tests ([2629f26](https://github.com/pustovitDmytro/rest-chronicle/commit/2629f26f5861a1cf6ca20be51731caa3f82d208b))
+* Lock file maintenance (#65) ([db94293](https://github.com/pustovitDmytro/rest-chronicle/commit/db942939255fcd3b3828cc0f9a7a6e2cbfedcd7c)), closes [#65](https://github.com/pustovitDmytro/rest-chronicle/issues/65)
+* Update dependency ansi-regex to 5.0.1 [SECURITY] (#81) ([58bb383](https://github.com/pustovitDmytro/rest-chronicle/commit/58bb3838d7af1d321ddc9f3d4ca4b3dad18c1619)), closes [#81](https://github.com/pustovitDmytro/rest-chronicle/issues/81)
+
+### Docs
+
+* help Ukraine 🇺🇦 ([0105e14](https://github.com/pustovitDmytro/rest-chronicle/commit/0105e149d2234522791963574cdb558597f41b8a))
+
+### Fix
+
+* fixes CVE-2021-44906 [security] ([764bc61](https://github.com/pustovitDmytro/rest-chronicle/commit/764bc6198736825cac3215c66bd2d2ff60f1278f))
+* handle ECONNREFUSED for axios ([f20884e](https://github.com/pustovitDmytro/rest-chronicle/commit/f20884eb5841fe697f5d9efaa0f677b64af266d6))
+* missing query in api-blueprint ([de6826b](https://github.com/pustovitDmytro/rest-chronicle/commit/de6826b72f0f53f52219188d40752353bea0b186))
+
+### New
+
+* buffer for blueprint and swagger. Fixes #30 ([6483141](https://github.com/pustovitDmytro/rest-chronicle/commit/64831418808014d16f4ed9f3e2c31d5321e435e3)), closes [#30](https://github.com/pustovitDmytro/rest-chronicle/issues/30)
+
 ## [2.1.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.1.0...v2.1.1) (2022-02-04)
 
 
