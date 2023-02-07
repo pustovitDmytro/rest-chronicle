@@ -34,7 +34,7 @@ aliases:
     command: npm run coveralls
   - &coverage
     name: Test Coverage
-    command: npm run test:coverage -- --reporter mocha-junit-reporter --reporter-options mochaFile=reports/test-results/mocha/test-results.xml
+    command: npm run test:coverage
   - &lint
     name: JavaScript Linter
     command: npm run test:lint -- --format junit --output-file ./reports/test-results/eslint/eslint.xml
