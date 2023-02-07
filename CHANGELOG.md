@@ -1,3 +1,27 @@
+## [2.2.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.2.0...v2.2.1) (2023-02-07)
+
+
+### Chore
+
+* anti-terrorism disclaimer ([96327fe](https://github.com/pustovitDmytro/rest-chronicle/commit/96327fef4c90f65fd297960d73872398334774c5))
+* drop extra coverage options ([04f7668](https://github.com/pustovitDmytro/rest-chronicle/commit/04f766805735c7d7ef1a6f5e5201fab4f56909a7))
+* fixes eslint-plugin-unicorn version ([dd45e9a](https://github.com/pustovitDmytro/rest-chronicle/commit/dd45e9a86498e621de2cd9bc49aa1f8430c8ed6c))
+* fixes npm audit ([0500470](https://github.com/pustovitDmytro/rest-chronicle/commit/05004700c0fd75120bebf51a70e25dfee1e3b840))
+* fixes some npm audit vulnerabilities ([b913fee](https://github.com/pustovitDmytro/rest-chronicle/commit/b913feef549bb124a121f8b0ff3b56148321140a))
+* increase ava timeout ([8c64b59](https://github.com/pustovitDmytro/rest-chronicle/commit/8c64b59c2a287ad60727ed594d1bf8397b0bfdde))
+* Lock file maintenance ([85b7c09](https://github.com/pustovitDmytro/rest-chronicle/commit/85b7c09390c7a91407dd35ae8d997982a15ecc1a))
+* Update dependency danger to v11 ([1779a27](https://github.com/pustovitDmytro/rest-chronicle/commit/1779a271eb3527ca1e6e5e5354cb3294ff6797e5))
+* Update devDependencies (non-major) ([01bd6c0](https://github.com/pustovitDmytro/rest-chronicle/commit/01bd6c09f1ba5886abdb991b436317f741eeb20b))
+* Update devDependencies (non-major) ([85a0161](https://github.com/pustovitDmytro/rest-chronicle/commit/85a0161b7426b877ec45f6956238f93810e5b3c9))
+* Update devDependencies (non-major) (#66) ([69aac8f](https://github.com/pustovitDmytro/rest-chronicle/commit/69aac8f4b52fcb9a626780be4c14d211f86b62b6)), closes [#66](https://github.com/pustovitDmytro/rest-chronicle/issues/66)
+* Update devDependencies (non-major) (#92) ([f492769](https://github.com/pustovitDmytro/rest-chronicle/commit/f492769892ff31c1dad30248c58ae7c5ae7aec85)), closes [#92](https://github.com/pustovitDmytro/rest-chronicle/issues/92)
+
+### Docs
+
+* drop lgtm ([b1841f2](https://github.com/pustovitDmytro/rest-chronicle/commit/b1841f24770563faafb609444868658fba298b81))
+* update logo ([bebc92b](https://github.com/pustovitDmytro/rest-chronicle/commit/bebc92b3e4cde203cbf57b381ff4a9a1c6dd1f04))
+* update year in license ([64521cb](https://github.com/pustovitDmytro/rest-chronicle/commit/64521cb04f41c46b7bdcbba18bec8d4673736a31))
+
 # [2.2.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.1.1...v2.2.0) (2022-08-28)
 
 
