@@ -18,9 +18,10 @@ export default class Supertest {
         PeerDependency.check(supertest);
         this._chronicle = chronicle;
         this._app = app;
+        this._supertest = supertest.agent(this._app);
 
         // eslint-disable-next-line no-constructor-return
-        return this._decorate(supertest(this._app));
+        return this._decorate(this._supertest);
     }
 
     _decorate(target) {
@@ -70,7 +71,7 @@ export default class Supertest {
     with = (params) => {
         this._setContext(params);
 
-        return this._decorate(supertest(this._app));
+        return this._decorate(this._supertest);
     };
 
     params(params) {
