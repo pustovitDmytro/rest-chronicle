@@ -1,6 +1,9 @@
 {
     "dir": "tmp/package-tests",
-    "modules": [ "json-server", "ava", "uuid", "cls-hooked" ],
+    "modules": [ "json-server", "ava", "uuid", "cls-hooked", "axios" ],
+    "modules_matrix": {
+        "axios": ["^0.21.1", "^1.6.1"]
+    },
     "copy": [
         ["tests/files", "files"]
     ],

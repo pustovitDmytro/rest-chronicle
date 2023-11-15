@@ -18,7 +18,7 @@ test.before(async () => {
 
     chronicle.setConfig({
         headers : {
-            request : { exclude: [ 'User-Agent' ] }
+            request : { include: ['Content-Type'] },
         }
     });
 

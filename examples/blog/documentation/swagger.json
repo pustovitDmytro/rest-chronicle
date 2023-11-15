@@ -6,7 +6,7 @@
     },
     "servers": [
         {
-            "url": "http://localhost:34285"
+            "url": "http://localhost:39941"
         }
     ],
     "paths": {
@@ -18,28 +18,12 @@
                 "description": "Positive: create blog post",
                 "parameters": [
                     {
-                        "name": "Accept",
-                        "in": "header",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "application/json, text/plain, */*"
-                    },
-                    {
                         "name": "Content-Type",
                         "in": "header",
                         "schema": {
                             "type": "string"
                         },
                         "example": "application/json"
-                    },
-                    {
-                        "name": "Content-Length",
-                        "in": "header",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": 206
                     }
                 ],
                 "responses": {
@@ -100,12 +84,11 @@
                 "description": "Positive: show first post",
                 "parameters": [
                     {
-                        "name": "Accept",
+                        "name": "Content-Type",
                         "in": "header",
                         "schema": {
-                            "type": "string"
-                        },
-                        "example": "application/json, text/plain, */*"
+                            "type": "undefined"
+                        }
                     }
                 ],
                 "responses": {
@@ -155,12 +138,11 @@
                 "description": "Positive: show single post by id",
                 "parameters": [
                     {
-                        "name": "Accept",
+                        "name": "Content-Type",
                         "in": "header",
                         "schema": {
-                            "type": "string"
-                        },
-                        "example": "application/json, text/plain, */*"
+                            "type": "undefined"
+                        }
                     }
                 ],
                 "responses": {
@@ -209,12 +191,11 @@
                 "description": "Negative: post not found",
                 "parameters": [
                     {
-                        "name": "Accept",
+                        "name": "Content-Type",
                         "in": "header",
                         "schema": {
-                            "type": "string"
-                        },
-                        "example": "application/json, text/plain, */*"
+                            "type": "undefined"
+                        }
                     }
                 ],
                 "responses": {
@@ -240,12 +221,11 @@
                 "description": "Negative: bad id",
                 "parameters": [
                     {
-                        "name": "Accept",
+                        "name": "Content-Type",
                         "in": "header",
                         "schema": {
-                            "type": "string"
-                        },
-                        "example": "application/json, text/plain, */*"
+                            "type": "undefined"
+                        }
                     }
                 ],
                 "responses": {
