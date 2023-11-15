@@ -1,3 +1,18 @@
+# [2.3.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.2.1...v2.3.0) (2023-11-15)
+
+
+### Chore
+
+* Update dependency minimatch to 3.0.5 [SECURITY] (#142) ([d02baf0](https://github.com/pustovitDmytro/rest-chronicle/commit/d02baf0a32ad9ff35132dcf8f47ea5db17245bdd)), closes [#142](https://github.com/pustovitDmytro/rest-chronicle/issues/142)
+
+### Fix
+
+* fixes supertest context ([4f46ece](https://github.com/pustovitDmytro/rest-chronicle/commit/4f46ece8aefd5353cc412259f24dc77c06cb0c20))
+
+### Update
+
+* allow axios ^1.6.1 ([5011d8e](https://github.com/pustovitDmytro/rest-chronicle/commit/5011d8ee31894dc9b665aa85ba98f53e791fbc5b))
+
 ## [2.2.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.2.0...v2.2.1) (2023-02-07)
 
 
