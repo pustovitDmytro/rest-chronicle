@@ -101,7 +101,7 @@
   },
   "dependencies": {
     "cls-hooked": "4.2.2",
-    "dot-prop": "6.0.1",
+    "dot-prop": "8.0.2",
     "fs-extra": "10.0.0",
     "handlebars": "4.7.7",
     "js-yaml": "4.1.0",
