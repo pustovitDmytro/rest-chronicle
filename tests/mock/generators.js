@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
-import Chance from 'chance';
+import fatum from 'fatum';
 
-const chance = new Chance();
 const METHODS = [ 'GET', 'PATCH', 'POST', 'PUT', 'OPTIONS', 'HEAD', 'DELETE' ];
 const GROUPS = [ 'users', 'posts', 'externals', 'messages' ];
 const TITLES = {
@@ -12,11 +11,10 @@ const TITLES = {
 };
 
 export function actionGenerate() {
-    const method = chance.pickone(METHODS);
-    const url = chance.url();
-    const group = chance.pickone(GROUPS);
-    const title = chance.pickone(TITLES[group]);
-    // chance.
+    const method = fatum.pick(METHODS);
+    const url = fatum.domain();
+    const group = fatum.pick(GROUPS);
+    const title = fatum.pick(TITLES[group]);
 }
 
 export function generateActions(count = 100, options = {}) {

@@ -1,5 +1,6 @@
 import { decorate, PeerDependency } from '../utils';
 import chr from '../chronicle';
+import { isDecorated } from '../constants';
 
 const supertest = PeerDependency.load('supertest');
 
@@ -25,6 +26,8 @@ export default class Supertest {
     }
 
     _decorate(target) {
+        if (target[isDecorated]) return target;
+
         for (const key of [ '_with' ]) {
             target[key] = this[key]; // eslint-disable-line no-param-reassign
         }
@@ -75,8 +78,11 @@ export default class Supertest {
     };
 
     params(params) {
-        this._with.urlParams = params;
-        this._with.rawUrl = this.url;
+        if (this._with) {
+            this._with.urlParams = params;
+            this._with.rawUrl = this.url;
+        }
+
         this.url = fillParams(this.url, params);
 
         return this;

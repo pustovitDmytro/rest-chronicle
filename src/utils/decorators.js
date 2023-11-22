@@ -4,6 +4,7 @@ import {
     ClassMethodDecorator as BaseClassMethodDecorator,
     ClassDecorator as BaseClassDecorator
 } from 'myrmidon';
+import { isDecorated } from '../constants';
 
 class FunctionDecorator extends BaseFunctionDecorator {
     onParams(opts) {
@@ -100,6 +101,9 @@ class ClassDecorator extends BaseClassDecorator {
 
 export function decorate(target, methods) {
     const decorator = new ClassDecorator({ config: { methods } });
+
+    // eslint-disable-next-line no-param-reassign
+    target[isDecorated] = true;
 
     return decorator.decorate(target);
 }
