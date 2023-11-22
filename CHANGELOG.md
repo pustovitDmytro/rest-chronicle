@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.3.0...v2.3.1) (2023-11-22)
+
+
+### Fix
+
+* supertest prevent memory leak ([ca4f0a4](https://github.com/pustovitDmytro/rest-chronicle/commit/ca4f0a4eededc1828150733e68988edfb6cc1f05))
+
 # [2.3.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.2.1...v2.3.0) (2023-11-15)
 
 
