@@ -1,13 +1,17 @@
 import { URL } from 'url';
 import { v4 as uuid } from 'uuid';
-import { isEmpty } from 'myrmidon';
+import { isEmpty, toArray } from 'myrmidon';
 import { HTTP_STATUS_CODES, DEFAULT_STATUS_CODE } from '../constants';
 
 function getQuery(searchParams) {
     const query = {};
 
     for (const [ name, value ] of searchParams.entries()) {
-        query[name] = value;
+        if (query[name]) {
+            query[name] = [ ...toArray(query[name]), value ];
+        } else {
+            query[name] = value;
+        }
     }
 
     return query;

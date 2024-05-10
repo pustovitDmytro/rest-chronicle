@@ -16,7 +16,8 @@
     "http"
   ],
   "scripts": {
-    "prepare": "babel src --out-dir ./lib --copy-files && husky install",
+    "build:src": "babel src --out-dir ./lib --copy-files",
+    "prepare": "npm run build:src && husky install",
     "coveralls": "cat ./reports/coverage/lcov.info | coveralls",
     "test:security": "npm audit --production && npm run test:lock",
     "test:lint": "eslint src bin tests --no-error-on-unmatched-pattern",
