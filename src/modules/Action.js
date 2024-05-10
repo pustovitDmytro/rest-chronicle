@@ -83,9 +83,14 @@ export default class Action {
         });
     }
 
-    set response({ headers, body, ...values }) {
-        this.set(values);
+    set response({ headers, body, http, status, charset, type }) {
         this.set({
+            http,
+            status,
+            info : {
+                charset,
+                type
+            },
             resHeaders : headers,
             resBody    : body
         });
@@ -203,12 +208,10 @@ export default class Action {
     }
 
     get resContentInfo() {
-        // TODO: parse from headers
-        const { info } = this._response;
-
         return {
-            type    : info?.type || 'application/json',
-            charset : info?.charset || 'utf-8'
+            type    : this.info?.type || 'application/json',
+            // eslint-disable-next-line unicorn/text-encoding-identifier-case
+            charset : this.info?.charset || 'utf-8'
         };
     }
 

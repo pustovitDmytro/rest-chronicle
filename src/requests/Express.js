@@ -13,6 +13,15 @@ function arrayKeyFilter(keys) {
     };
 }
 
+function parseContentTypeHeader(header) {
+    const [ type, charset ] = header.split('charset=');
+
+    return {
+        type : type.split(';')[0],
+        charset
+    };
+}
+
 /* eslint-disable no-param-reassign */
 // eslint-disable-next-line sonarjs/cognitive-complexity
 function chronicleMiddleware(req, res, next) {
@@ -50,13 +59,13 @@ function chronicleMiddleware(req, res, next) {
         const body = Buffer.concat(chunks).toString('utf8');
 
         let parsedBody = body;
-        const type = res.getHeader('Content-Type');
+        const responseInfo = parseContentTypeHeader(res.getHeader('Content-Type'));
 
-        if (body && type.includes('application/json')) {
+        if (body && responseInfo.type === 'application/json') {
             parsedBody = JSON.parse(body);
         }
 
-        if (body && type === 'mimetype') {
+        if (body && responseInfo.type === 'mimetype') {
             parsedBody = Buffer.from(body);
         }
 
@@ -69,7 +78,8 @@ function chronicleMiddleware(req, res, next) {
             status : {
                 code    : res.statusCode,
                 message : res.statusMessage
-            }
+            },
+            ...responseInfo
         };
         const save = this.config?.save;
 
