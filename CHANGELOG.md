@@ -1,3 +1,14 @@
+# [2.4.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.3.1...v2.4.0) (2024-05-10)
+
+
+### Fix
+
+* fixes charset and type detection ([340fcd0](https://github.com/pustovitDmytro/rest-chronicle/commit/340fcd0ad5f9918b136c547b2c25156fc644ef63))
+
+### New
+
+* arrays in query ([6887c8e](https://github.com/pustovitDmytro/rest-chronicle/commit/6887c8e26a57deaabfe5d7dfd327f3e03e33de0b))
+
 ## [2.3.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.3.0...v2.3.1) (2023-11-22)
 
 
