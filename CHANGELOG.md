@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.4.0...v2.4.1) (2025-01-20)
+
+
+### Fix
+
+* fixes request body for swagger ([ad7337a](https://github.com/pustovitDmytro/rest-chronicle/commit/ad7337ad314f3a5d176dce1b3d048a80968d5517))
+
 # [2.4.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.3.1...v2.4.0) (2024-05-10)
 
 
