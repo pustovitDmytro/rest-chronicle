@@ -165,6 +165,13 @@ export default class Action {
         return this._request._method || 'GET';
     }
 
+    get reqContentInfo() {
+        return {
+            type    : 'application/json',
+            charset : 'utf-8'
+        };
+    }
+
     get reqHeaders() {
         return Action.sanitizeHeaders(this._request.headers, this._chronicle.config.headers?.request);
     }
@@ -179,6 +186,7 @@ export default class Action {
         if (!url) return null;
         const request = {
             ...url,
+            info    : this.reqContentInfo,
             method  : this.method,
             headers : this.reqHeaders
         };
@@ -214,7 +222,6 @@ export default class Action {
     get resContentInfo() {
         return {
             type    : this.info?.type || 'application/json',
-            // eslint-disable-next-line unicorn/text-encoding-identifier-case
             charset : this.info?.charset || 'utf-8'
         };
     }

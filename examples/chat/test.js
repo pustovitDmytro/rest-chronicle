@@ -42,7 +42,6 @@ test('Positive: get list of messages', async function () {
         .with(this)
         .get('/messages?sender=2&limit=5')
         .set({ 'AUTH': '5NM2p40Z8' })
-        .send({ name: 'McCoy' })
         .expect('Content-Type', /json/)
         .expect(200);
 });

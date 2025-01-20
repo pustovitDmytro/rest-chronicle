@@ -26,6 +26,16 @@
                         "example": "application/json"
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string",
+                                "example": "{\"data\":{\"title\":\"quite cotton although shadow\",\"body\":\"mood income built field throw badly finest seat accurate ago seldom allow invented exactly past garage baseball\",\"thumbnail\":\"http://lakkik.ng/kupa\"}}"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "201": {
                         "description": "Positive: create blog post",

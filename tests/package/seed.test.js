@@ -23,7 +23,11 @@ test('POST request', async function () {
             query    : {},
             method   : 'POST',
             headers  : { Authorization: '25NPmT' },
-            body     : {
+            'info'   : {
+                'charset' : 'utf-8',
+                'type'    : 'application/json'
+            },
+            body : {
                 'first_name' : 'Pascal',
                 'last_name'  : 'Ancell',
                 'email'      : 'pancell1@gravatar.com',

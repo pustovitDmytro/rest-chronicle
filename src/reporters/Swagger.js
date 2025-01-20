@@ -61,6 +61,13 @@ export default class SwaggerReporter extends Base {
             parameters  : [
                 ...this._renderHeaders(request.headers)
             ],
+            requestBody : request.body ? {
+                content : {
+                    [request.info.type] : {
+                        schema : this._renderBody(request.body)
+                    }
+                }
+            } : undefined,
             responses : {
                 [response.status.code] : {
                     description : title,

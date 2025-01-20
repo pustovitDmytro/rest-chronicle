@@ -18,7 +18,7 @@ before(async function () {
 
 
 test('blog', async function () {
-    this.timeout(60*1000)
+    this.timeout(60 * 1000);
     await execSync(`npx ava --config ${path.join(exampleFolder, '/ava.config.js ')}`, {
         env : {
             ...process.env,

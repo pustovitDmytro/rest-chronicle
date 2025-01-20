@@ -78,6 +78,24 @@
                         "example": "application/json"
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "McCoy"
+                                },
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "McCoy"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Positive: change user name",
@@ -125,14 +143,6 @@
                             "type": "string"
                         },
                         "example": "5NM2p40Z8"
-                    },
-                    {
-                        "name": "Content-Type",
-                        "in": "header",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "application/json"
                     }
                 ],
                 "responses": {

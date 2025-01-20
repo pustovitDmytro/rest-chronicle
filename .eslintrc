@@ -4,7 +4,8 @@
     ],
     "rules": {
         "more/no-hardcoded-password": 0,
-        "unicorn/catch-error-name": 0
+        "unicorn/catch-error-name": 0,
+        "unicorn/text-encoding-identifier-case": 0
     },
     "overrides": [{
         "files": "tests/examples/*test.js",

@@ -74,18 +74,11 @@ FORMAT: 1A
     + Headers
         
         AUTH: 5NM2p40Z8
-        Content-Type: application/json
 
     + Parameters
         
         sender: 2
         limit: 5
- 
-    + Body
-        
-        {
-            "name": "McCoy"
-        }
 
 + Response 200 (application/json)
         

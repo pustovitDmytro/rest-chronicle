@@ -32,7 +32,12 @@ test('Manually setting required attributes', function () {
         path     : '/api/users',
         query    : { status: 'ACTIVE' },
         method   : 'GET',
-        headers  : null
+        headers  : null,
+        'info'   : {
+            'charset' : 'utf-8',
+            'type'    : 'application/json'
+        }
+
     });
 
     assert.deepOwnInclude(response, {
