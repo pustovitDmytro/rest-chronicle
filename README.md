@@ -130,6 +130,62 @@ await request
 
 check [chat app](./examples/chat/test.js) for complete example
 
+**Fetch**
+
+The `Fetch` client captures HTTP requests made via `fetch` (native or `node-fetch`) into the chronicle.
+
+```js
+import chronicle, { Fetch } from 'rest-chronicle';
+
+const fetch = new Fetch(chronicle);
+
+const response = await fetch('https://example.com/users', {
+    method : 'GET',
+    with   : { title: 'List of Users', group: 'Users' }
+});
+```
+
+ **Context** (`with`)
+
+Context can be passed inline or via chaining.
+
+```js
+await fetch('https://example.com/users', {
+    with : { title: 'List of Users', group: 'Users' }
+});
+```
+
+```js
+await fetch
+    .with({ title: 'Create User', group: 'Users' })(
+        'https://example.com/users',
+        { method: 'POST' }
+    );
+```
+
+
+**URL params**
+
+Supports `:param` replacement via `urlParams`.
+
+```js
+await fetch('https://example.com/users/:id', {
+    with : {
+        title     : 'Get User',
+        group     : 'Users',
+        urlParams : { id: 42 }
+    }
+});
+```
+
+**CLS support**
+
+If CLS is enabled, the current context is resolved automatically when `with` is not provided.
+
+```js
+await fetch('https://example.com/health');
+```
+
 ### Reporters
 
 The package provides several reporters under the hood. General reporters API allows saving captured actions in a specific format.
