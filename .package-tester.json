@@ -4,6 +4,7 @@
     "modules_matrix": {
         "axios": ["^0.21.1", "^1.6.1"]
     },
+    "supportedNodeVersion": ">=12 <=20",
     "copy": [
         ["tests/files", "files"]
     ],
