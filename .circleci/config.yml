@@ -1,7 +1,8 @@
 defaults: &defaults
   resource_class: small
   docker:
-    - image: circleci/node:14
+    - image: cimg/node:20.11
+    
 cache-defaults: &cache-defaults
   keys:
     - -{{ checksum "package-lock.json" }}
