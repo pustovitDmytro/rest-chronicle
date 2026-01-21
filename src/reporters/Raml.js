@@ -32,7 +32,7 @@ export default class RamlReporter extends Base {
         for (const a of actions) {
             const { path, method } = a.request;
 
-            const resources = path.split('/').filter(i => i).map(i => `/${i}`);
+            const resources = path.split('/').filter(Boolean).map(i => `/${i}`);
 
             const groupValues = [ ...resources, method.toLowerCase() ];
 

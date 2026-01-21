@@ -6,13 +6,13 @@
     },
     "servers": [
         {
-            "url": "http://127.0.0.1:54269"
+            "url": "http://127.0.0.1:55235"
         },
         {
-            "url": "http://127.0.0.1:54271"
+            "url": "http://127.0.0.1:55237"
         },
         {
-            "url": "http://127.0.0.1:54273"
+            "url": "http://127.0.0.1:55239"
         }
     ],
     "paths": {
@@ -30,15 +30,12 @@
                             "application/json": {
                                 "schema": {
                                     "type": "object",
-                                    "example": {
-                                        "id": 1,
-                                        "name": "Leigh",
-                                        "email": "helvy0@feedburner.com"
-                                    },
                                     "properties": {
                                         "id": {
                                             "type": "number",
-                                            "example": 1
+                                            "example": 1,
+                                            "minimum": 0,
+                                            "maximum": 1
                                         },
                                         "name": {
                                             "type": "string",
@@ -48,6 +45,11 @@
                                             "type": "string",
                                             "example": "helvy0@feedburner.com"
                                         }
+                                    },
+                                    "example": {
+                                        "id": 1,
+                                        "name": "Leigh",
+                                        "email": "helvy0@feedburner.com"
                                     }
                                 }
                             }
@@ -68,14 +70,6 @@
                             "type": "string"
                         },
                         "example": "5NM2p40Z8"
-                    },
-                    {
-                        "name": "Content-Type",
-                        "in": "header",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "application/json"
                     }
                 ],
                 "requestBody": {
@@ -83,14 +77,14 @@
                         "application/json": {
                             "schema": {
                                 "type": "object",
-                                "example": {
-                                    "name": "McCoy"
-                                },
                                 "properties": {
                                     "name": {
                                         "type": "string",
                                         "example": "McCoy"
                                     }
+                                },
+                                "example": {
+                                    "name": "McCoy"
                                 }
                             }
                         }
@@ -103,11 +97,6 @@
                             "application/json": {
                                 "schema": {
                                     "type": "object",
-                                    "example": {
-                                        "id": 2,
-                                        "name": "McCoy",
-                                        "email": "pancell1@gravatar.com"
-                                    },
                                     "properties": {
                                         "id": {
                                             "type": "number",
@@ -121,6 +110,11 @@
                                             "type": "string",
                                             "example": "pancell1@gravatar.com"
                                         }
+                                    },
+                                    "example": {
+                                        "id": 2,
+                                        "name": "McCoy",
+                                        "email": "pancell1@gravatar.com"
                                     }
                                 }
                             }
@@ -151,32 +145,30 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "text": {
+                                                "type": "string",
+                                                "example": "butter property president flow nodded degree where keep"
+                                            },
+                                            "sender": {
+                                                "type": "number",
+                                                "example": 2
+                                            }
+                                        },
+                                        "example": {
+                                            "text": "butter property president flow nodded degree where keep",
+                                            "sender": 2
+                                        }
+                                    },
                                     "example": [
                                         {
                                             "text": "butter property president flow nodded degree where keep",
                                             "sender": 2
                                         }
-                                    ],
-                                    "properties": {
-                                        "0": {
-                                            "type": "object",
-                                            "example": {
-                                                "text": "butter property president flow nodded degree where keep",
-                                                "sender": 2
-                                            },
-                                            "properties": {
-                                                "text": {
-                                                    "type": "string",
-                                                    "example": "butter property president flow nodded degree where keep"
-                                                },
-                                                "sender": {
-                                                    "type": "number",
-                                                    "example": 2
-                                                }
-                                            }
-                                        }
-                                    }
+                                    ]
                                 }
                             }
                         }

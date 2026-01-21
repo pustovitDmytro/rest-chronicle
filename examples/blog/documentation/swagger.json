@@ -6,7 +6,7 @@
     },
     "servers": [
         {
-            "url": "http://localhost:39941"
+            "url": "http://localhost:55229"
         }
     ],
     "paths": {
@@ -16,22 +16,43 @@
                     "Posts"
                 ],
                 "description": "Positive: create blog post",
-                "parameters": [
-                    {
-                        "name": "Content-Type",
-                        "in": "header",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "application/json"
-                    }
-                ],
+                "parameters": [],
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "type": "string",
-                                "example": "{\"data\":{\"title\":\"quite cotton although shadow\",\"body\":\"mood income built field throw badly finest seat accurate ago seldom allow invented exactly past garage baseball\",\"thumbnail\":\"http://lakkik.ng/kupa\"}}"
+                                "type": "object",
+                                "properties": {
+                                    "data": {
+                                        "type": "object",
+                                        "properties": {
+                                            "title": {
+                                                "type": "string",
+                                                "example": "quite cotton although shadow"
+                                            },
+                                            "body": {
+                                                "type": "string",
+                                                "example": "mood income built field throw badly finest seat accurate ago seldom allow invented exactly past garage baseball"
+                                            },
+                                            "thumbnail": {
+                                                "type": "string",
+                                                "example": "http://lakkik.ng/kupa"
+                                            }
+                                        },
+                                        "example": {
+                                            "title": "quite cotton although shadow",
+                                            "body": "mood income built field throw badly finest seat accurate ago seldom allow invented exactly past garage baseball",
+                                            "thumbnail": "http://lakkik.ng/kupa"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "data": {
+                                        "title": "quite cotton although shadow",
+                                        "body": "mood income built field throw badly finest seat accurate ago seldom allow invented exactly past garage baseball",
+                                        "thumbnail": "http://lakkik.ng/kupa"
+                                    }
+                                }
                             }
                         }
                     }
@@ -43,22 +64,9 @@
                             "application/json": {
                                 "schema": {
                                     "type": "object",
-                                    "example": {
-                                        "data": {
-                                            "title": "quite cotton although shadow",
-                                            "body": "mood income built field throw badly finest seat accurate ago seldom allow invented exactly past garage baseball",
-                                            "thumbnail": "http://lakkik.ng/kupa"
-                                        },
-                                        "id": 4
-                                    },
                                     "properties": {
                                         "data": {
                                             "type": "object",
-                                            "example": {
-                                                "title": "quite cotton although shadow",
-                                                "body": "mood income built field throw badly finest seat accurate ago seldom allow invented exactly past garage baseball",
-                                                "thumbnail": "http://lakkik.ng/kupa"
-                                            },
                                             "properties": {
                                                 "title": {
                                                     "type": "string",
@@ -72,12 +80,25 @@
                                                     "type": "string",
                                                     "example": "http://lakkik.ng/kupa"
                                                 }
+                                            },
+                                            "example": {
+                                                "title": "quite cotton although shadow",
+                                                "body": "mood income built field throw badly finest seat accurate ago seldom allow invented exactly past garage baseball",
+                                                "thumbnail": "http://lakkik.ng/kupa"
                                             }
                                         },
                                         "id": {
                                             "type": "number",
                                             "example": 4
                                         }
+                                    },
+                                    "example": {
+                                        "data": {
+                                            "title": "quite cotton although shadow",
+                                            "body": "mood income built field throw badly finest seat accurate ago seldom allow invented exactly past garage baseball",
+                                            "thumbnail": "http://lakkik.ng/kupa"
+                                        },
+                                        "id": 4
                                     }
                                 }
                             }
@@ -92,15 +113,7 @@
                     "Posts"
                 ],
                 "description": "Positive: show first post",
-                "parameters": [
-                    {
-                        "name": "Content-Type",
-                        "in": "header",
-                        "schema": {
-                            "type": "undefined"
-                        }
-                    }
-                ],
+                "parameters": [],
                 "responses": {
                     "200": {
                         "description": "Positive: show first post",
@@ -108,16 +121,12 @@
                             "application/json": {
                                 "schema": {
                                     "type": "object",
-                                    "example": {
-                                        "id": 1,
-                                        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                                        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
-                                        "thumbnail": null
-                                    },
                                     "properties": {
                                         "id": {
                                             "type": "number",
-                                            "example": 1
+                                            "example": 1,
+                                            "minimum": 0,
+                                            "maximum": 1
                                         },
                                         "title": {
                                             "type": "string",
@@ -128,10 +137,16 @@
                                             "example": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
                                         },
                                         "thumbnail": {
-                                            "type": "object",
-                                            "example": null,
-                                            "nullable": true
+                                            "type": "null",
+                                            "nullable": true,
+                                            "example": null
                                         }
+                                    },
+                                    "example": {
+                                        "id": 1,
+                                        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                                        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
+                                        "thumbnail": null
                                     }
                                 }
                             }
@@ -146,15 +161,7 @@
                     "Posts"
                 ],
                 "description": "Positive: show single post by id",
-                "parameters": [
-                    {
-                        "name": "Content-Type",
-                        "in": "header",
-                        "schema": {
-                            "type": "undefined"
-                        }
-                    }
-                ],
+                "parameters": [],
                 "responses": {
                     "200": {
                         "description": "Positive: show single post by id",
@@ -162,12 +169,6 @@
                             "application/json": {
                                 "schema": {
                                     "type": "object",
-                                    "example": {
-                                        "id": 2,
-                                        "title": "qui est esse",
-                                        "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla",
-                                        "thumbnail": "https://via.placeholder.com/150/24f355"
-                                    },
                                     "properties": {
                                         "id": {
                                             "type": "number",
@@ -185,6 +186,12 @@
                                             "type": "string",
                                             "example": "https://via.placeholder.com/150/24f355"
                                         }
+                                    },
+                                    "example": {
+                                        "id": 2,
+                                        "title": "qui est esse",
+                                        "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla",
+                                        "thumbnail": "https://via.placeholder.com/150/24f355"
                                     }
                                 }
                             }
@@ -199,15 +206,7 @@
                     "Posts"
                 ],
                 "description": "Negative: post not found",
-                "parameters": [
-                    {
-                        "name": "Content-Type",
-                        "in": "header",
-                        "schema": {
-                            "type": "undefined"
-                        }
-                    }
-                ],
+                "parameters": [],
                 "responses": {
                     "404": {
                         "description": "Negative: post not found",
@@ -215,6 +214,7 @@
                             "application/json": {
                                 "schema": {
                                     "type": "object",
+                                    "properties": {},
                                     "example": {}
                                 }
                             }
@@ -229,15 +229,7 @@
                     "Posts"
                 ],
                 "description": "Negative: bad id",
-                "parameters": [
-                    {
-                        "name": "Content-Type",
-                        "in": "header",
-                        "schema": {
-                            "type": "undefined"
-                        }
-                    }
-                ],
+                "parameters": [],
                 "responses": {
                     "404": {
                         "description": "Negative: bad id",
@@ -245,6 +237,7 @@
                             "application/json": {
                                 "schema": {
                                     "type": "object",
+                                    "properties": {},
                                     "example": {}
                                 }
                             }

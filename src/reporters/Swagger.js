@@ -78,17 +78,14 @@ export default class SwaggerReporter extends Base {
 
         if (type === 'object') {
             const properties = {};
-            const required = [];
 
             for (const [ key, value ] of Object.entries(body)) {
                 properties[key] = this._renderBody(value);
-                required.push(key);
             }
 
             return {
                 type    : 'object',
                 properties,
-                ...(required.length > 0 ? { required } : {}),
                 example : body
             };
         }
@@ -120,8 +117,7 @@ export default class SwaggerReporter extends Base {
                 ...this._renderHeaders(request.headers)
             ],
             requestBody : request.body ? {
-                required : true,
-                content  : {
+                content : {
                     [request.info.type] : {
                         schema : this._renderBody(request.body)
                     }

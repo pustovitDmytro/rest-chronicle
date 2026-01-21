@@ -27,7 +27,7 @@ test('Negative: axios ECONNREFUSED', async function () {
         });
         assert.fail('should fail');
     } catch (error)  {
-        assert.include(error.error.toString(), 'Error: connect ECONNREFUSED');
+        assert.include(error.error.code, 'ECONNREFUSED');
         const action = factory.findAction(context);
 
         assert.exists(action);

@@ -4,6 +4,6 @@ const M = require(entry);
 
 export default M.default;
 
-const { Chronicle, Action, Express, Axios, supertest, axios, reporters, middlewares } = M;
+const { Chronicle, Action, Express, Axios, supertest, axios, reporters, middlewares, Fetch } = M;
 
-export { Chronicle, Action, Express, Axios, supertest, axios, reporters, middlewares };
+export { Chronicle, Action, Express, Axios, supertest, axios, reporters, middlewares, Fetch };
