@@ -5,6 +5,19 @@ import { DEFAULT_JSON_OFFSET } from '../constants';
 import { detectType } from './utils';
 import Base from './Base';
 
+function isJSON(value) {
+    if (typeof value !== 'string') return false;
+    if (!value.trim().startsWith('{') && !value.trim().startsWith('[')) return false;
+
+    try {
+        JSON.parse(value);
+
+        return true;
+    } catch {
+        return false;
+    }
+}
+
 export default class SwaggerReporter extends Base {
     constructor(file, { hash } = {}) {
         super(file);
@@ -17,21 +30,29 @@ export default class SwaggerReporter extends Base {
         if (!headers) return [];
 
         return Object.entries(headers)
+            .filter(([ name ]) => name.toLowerCase() !== 'content-type')
             .map(([ name, value ]) => ({
                 name,
-                in       : 'header',
-                'schema' : { type: detectType(value) },
-                example  : value
+                in      : 'header',
+                schema  : { type: detectType(value) },
+                example : value
             }));
     }
 
     _renderBody(body) {
-        const result = {
-            type    : detectType(body),
-            example : body
-        };
+        if (isJSON(body)) {
+            return this._renderBody(JSON.parse(body));
+        }
 
-        if (body === null) result.nullable = true;
+
+        if (body === null) {
+            return {
+                type     : 'null',
+                nullable : true,
+                example  : null
+            };
+        }
+
 
         if (Buffer.isBuffer(body)) {
             return {
@@ -41,28 +62,66 @@ export default class SwaggerReporter extends Base {
             };
         }
 
-        if (body && result.type === 'object') {
-            for (const [ key, value ] of Object.entries(body)) {
-                dP.set(result, `properties.${key}`, this._renderBody(value));
-            }
+
+        if (Array.isArray(body)) {
+            return {
+                type  : 'array',
+                items : body.length > 0
+                    ? this._renderBody(body[0])
+                    : {},
+                example : body
+            };
         }
 
-        return result;
+        const type = detectType(body);
+
+
+        if (type === 'object') {
+            const properties = {};
+            const required = [];
+
+            for (const [ key, value ] of Object.entries(body)) {
+                properties[key] = this._renderBody(value);
+                required.push(key);
+            }
+
+            return {
+                type    : 'object',
+                properties,
+                ...(required.length > 0 ? { required } : {}),
+                example : body
+            };
+        }
+
+
+        const schema = {
+            type,
+            example : body
+        };
+
+
+        if (type === 'number' && body >= 0 && body <= 1) {
+            schema.minimum = 0;
+            schema.maximum = 1;
+        }
+
+        return schema;
     }
 
     _renderAction({
-        context:{ group, title },
+        context : { group, title },
         request,
         response
     }) {
         return {
-            tags        : [ group ],
+            tags        : [ group || 'default' ],
             description : title,
             parameters  : [
                 ...this._renderHeaders(request.headers)
             ],
             requestBody : request.body ? {
-                content : {
+                required : true,
+                content  : {
                     [request.info.type] : {
                         schema : this._renderBody(request.body)
                     }
@@ -95,7 +154,11 @@ export default class SwaggerReporter extends Base {
                         ? `#${this.getHash(action)}`
                         : '';
 
-                    dP.set(paths, `${path}${hash}.${methodName}`, this._renderAction(action));
+                    dP.set(
+                        paths,
+                        `${path}${hash}.${methodName}`,
+                        this._renderAction(action)
+                    );
                 }
             }
         }
@@ -114,7 +177,10 @@ export default class SwaggerReporter extends Base {
     }
 
     async write(actions) {
-        const { groups, map } = this._build(actions, { groupBy: [ 'request.path', 'request.method' ] });
+        const { groups, map } = this._build(actions, {
+            groupBy : [ 'request.path', 'request.method' ]
+        });
+
         const content = this._generate(groups, map, actions);
 
         await fs.writeFile(this.file, content);
