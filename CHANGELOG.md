@@ -1,3 +1,16 @@
+# [2.5.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.4.1...v2.5.0) (2026-01-21)
+
+
+### Chore
+
+* adds fetch tests ([cfe9c27](https://github.com/pustovitDmytro/rest-chronicle/commit/cfe9c27881406ad7ba7ba74769d92460d71d75af))
+* fixes node version in tests ([6a60162](https://github.com/pustovitDmytro/rest-chronicle/commit/6a60162813e2f1762ea29b37d3a47f3f94273f3c))
+* update node version for circle ([d60595e](https://github.com/pustovitDmytro/rest-chronicle/commit/d60595ed371d1a4d3d76393be63896b11ebda7c2))
+
+### New
+
+* adds fetch request ([29b23ae](https://github.com/pustovitDmytro/rest-chronicle/commit/29b23ae655b43086610c37bb8e8d9e119bc78079))
+
 ## [2.4.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.4.0...v2.4.1) (2025-01-20)
 
 
