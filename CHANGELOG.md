@@ -1,3 +1,14 @@
+## [2.5.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.5.0...v2.5.1) (2026-01-28)
+
+
+### Chore
+
+* ensure order for example ([b478a61](https://github.com/pustovitDmytro/rest-chronicle/commit/b478a6197d16401fc771d0257f9fd8305b6ed4ea))
+
+### Docs
+
+* adds docs to fetch ([870a178](https://github.com/pustovitDmytro/rest-chronicle/commit/870a1788e3e40b69543e5c28c938ef7e56e83bcb))
+
 # [2.5.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.4.1...v2.5.0) (2026-01-21)
 
 
