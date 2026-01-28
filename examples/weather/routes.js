@@ -6,7 +6,7 @@ function getById(array, id) {
 }
 
 export function citiesList(req, res) {
-    res.send(cities);
+    res.send(cities.sort((a, b) => a.id - b.id));
 }
 
 export function cityShow(req, res) {
