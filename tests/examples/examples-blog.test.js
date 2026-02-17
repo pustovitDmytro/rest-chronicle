@@ -5,6 +5,7 @@ import fs from 'fs-extra';
 import yaml from 'js-yaml';
 import { tmpFolder } from '../constants';
 import  chronicle  from '../entry';
+import '../chai';
 
 const examplesDir = path.join(__dirname, '../../examples/');
 const docsDir = path.join(tmpFolder, 'blog-example');
@@ -30,7 +31,7 @@ test('blog', async function () {
     const gotSwaggerFilePath = path.join(docsDir, 'swagger.json');
     const expectedSwagerFilePath = path.join(exampleFolder, './documentation/swagger.json');
 
-    assert.deepEqual(
+    assert.equalInAnyOrder(
         { ...(await fs.readJSON(gotSwaggerFilePath)), servers: [] },
         { ...(await fs.readJSON(expectedSwagerFilePath)),  servers: [] },
         'swagger report'

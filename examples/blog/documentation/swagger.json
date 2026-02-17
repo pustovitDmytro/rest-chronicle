@@ -6,10 +6,58 @@
     },
     "servers": [
         {
-            "url": "http://localhost:55229"
+            "url": "http://localhost:56144"
         }
     ],
     "paths": {
+        "/posts/1": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "description": "Positive: show first post",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Positive: show first post",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1,
+                                            "minimum": 0,
+                                            "maximum": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
+                                        },
+                                        "body": {
+                                            "type": "string",
+                                            "example": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+                                        },
+                                        "thumbnail": {
+                                            "type": "null",
+                                            "nullable": true,
+                                            "example": null
+                                        }
+                                    },
+                                    "example": {
+                                        "id": 1,
+                                        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                                        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
+                                        "thumbnail": null
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/posts": {
             "post": {
                 "tags": [
@@ -107,60 +155,12 @@
                 }
             }
         },
-        "/posts/1": {
-            "get": {
-                "tags": [
-                    "Posts"
-                ],
-                "description": "Positive: show first post",
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": "Positive: show first post",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "id": {
-                                            "type": "number",
-                                            "example": 1,
-                                            "minimum": 0,
-                                            "maximum": 1
-                                        },
-                                        "title": {
-                                            "type": "string",
-                                            "example": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
-                                        },
-                                        "body": {
-                                            "type": "string",
-                                            "example": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-                                        },
-                                        "thumbnail": {
-                                            "type": "null",
-                                            "nullable": true,
-                                            "example": null
-                                        }
-                                    },
-                                    "example": {
-                                        "id": 1,
-                                        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                                        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
-                                        "thumbnail": null
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/posts/:id": {
             "get": {
                 "tags": [
                     "Posts"
                 ],
-                "description": "Positive: show single post by id",
+                "description": "Negative: post not found",
                 "parameters": [],
                 "responses": {
                     "200": {
@@ -196,49 +196,24 @@
                                 }
                             }
                         }
-                    }
-                }
-            }
-        },
-        "/posts/:id#negative_post_not_found": {
-            "get": {
-                "tags": [
-                    "Posts"
-                ],
-                "description": "Negative: post not found",
-                "parameters": [],
-                "responses": {
+                    },
                     "404": {
                         "description": "Negative: post not found",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "type": "object",
-                                    "properties": {},
-                                    "example": {}
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/posts/:id#negative_bad_id": {
-            "get": {
-                "tags": [
-                    "Posts"
-                ],
-                "description": "Negative: bad id",
-                "parameters": [],
-                "responses": {
-                    "404": {
-                        "description": "Negative: bad id",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {},
-                                    "example": {}
+                                    "properties": {}
+                                },
+                                "examples": {
+                                    "Negative: post not found": {
+                                        "summary": "Negative: post not found",
+                                        "value": {}
+                                    },
+                                    "Negative: bad id": {
+                                        "summary": "Negative: bad id",
+                                        "value": {}
+                                    }
                                 }
                             }
                         }

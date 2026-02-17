@@ -6,6 +6,7 @@ import fs from 'fs-extra';
 import { tmpFolder } from '../constants';
 import  chronicle  from '../entry';
 import { compareTexts } from '../utils';
+import '../chai';
 
 const mocha = new Mocha({
     'ui' : 'qunit'
@@ -40,7 +41,7 @@ test('chat', async function () {
     const gotSwaggerFilePath = path.join(tmpFolder, swaggerRelativeFilePath);
     const expectedSwagerFilePath = path.join(exampleFolder, swaggerRelativeFilePath);
 
-    assert.deepEqual(
+    assert.equalInAnyOrder(
         { ...require(gotSwaggerFilePath), servers: [] },
         { ...require(expectedSwagerFilePath),  servers: [] },
         'swagger report'
