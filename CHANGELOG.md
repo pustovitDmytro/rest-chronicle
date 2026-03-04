@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.6.0...v2.7.0) (2026-03-04)
+
+
+### New
+
+* handle multiparts for fetch and swagger ([31b6743](https://github.com/pustovitDmytro/rest-chronicle/commit/31b6743abc8d3163c367e03f96becc58d517dae3))
+
 # [2.6.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.5.1...v2.6.0) (2026-03-04)
 
 
