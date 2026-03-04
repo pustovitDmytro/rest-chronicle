@@ -26,6 +26,7 @@ export default class Action {
         this.set(values);
         this._id = id || _id || uuid();
         this._chronicle._actions.push(this);
+        this._createdAt = new Date();
     }
 
     copy(chronicle) {
@@ -250,10 +251,13 @@ export default class Action {
         if (!request || !response || !context) return null;
 
         return {
-            id : this._id,
+            id   : this._id,
             context,
             request,
-            response
+            response,
+            meta : {
+                createdAt : this._createdAt
+            }
         };
     }
 

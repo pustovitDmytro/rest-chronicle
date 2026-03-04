@@ -52,6 +52,6 @@ test('POST request', async function () {
         }
     };
 
-    assert.deepEqual(action.data, expected);
+    assert.deepOwnInclude(action.data, expected);
 });
 

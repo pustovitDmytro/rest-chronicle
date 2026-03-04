@@ -2,7 +2,7 @@
 import { inspect } from 'util';
 import fs from 'fs-extra';
 import dP from 'dot-prop';
-import { toArray } from 'myrmidon';
+import { toArray, uniqueIdenticFilter } from 'myrmidon';
 import { DEFAULT_JSON_OFFSET } from '../constants';
 import { detectType } from './utils';
 import Base from './Base';
@@ -18,6 +18,14 @@ function isJSON(value) {
     } catch {
         return false;
     }
+}
+
+function actionsSorter(a, b) {
+    if (a.response.status.code !== b.response.status.code) {
+        return a.response.status.code - b.response.status.code;
+    }
+
+    return a.meta.createdAt - b.meta.createdAt;
 }
 
 export default class SwaggerReporter extends Base {
@@ -132,13 +140,15 @@ export default class SwaggerReporter extends Base {
 
     // eslint-disable-next-line sonarjs/cognitive-complexity
     _renderAction(actionInput) {
-        const actions = toArray(actionInput);
+        const actions = toArray(actionInput).sort(actionsSorter);
+
+        console.log(actions.map(a => a.context.title).join('. '));
 
         if (!actions || actions.length === 0) return {};
 
         const isSingle = actions.length === 1;
-        const baseAction = actions[0];
-        const { group, title } = baseAction.context;
+        // const baseAction = getBaseAction(actions);
+        // const { group, title } = baseAction.context;
 
         // 1. Merge Parameters
         const paramsMap = new Map();
@@ -240,7 +250,7 @@ export default class SwaggerReporter extends Base {
                     value   : generatedSchema.example
                 };
             });
-
+            console.log(code, groupActions[0].context.title);
             responses[code] = {
                 description : groupActions[0].context.title,
                 content     : {}
@@ -263,8 +273,9 @@ export default class SwaggerReporter extends Base {
         }
 
         return {
-            tags        : [ group || 'default' ],
-            description : title,
+            // eslint-disable-next-line unicorn/no-array-callback-reference
+            tags        : actions.map(a => a.context.group).filter(uniqueIdenticFilter),
+            description : actions.map(a => a.context.title).join('. '),
             parameters  : [ ...paramsMap.values() ],
             requestBody,
             responses
