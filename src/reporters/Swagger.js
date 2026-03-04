@@ -80,6 +80,13 @@ export default class SwaggerReporter extends Base {
             };
         }
 
+        if (body && (body.constructor?.name === 'File' || body.constructor?.name === 'Blob')) {
+            return {
+                type   : 'string',
+                format : 'binary'
+            };
+        }
+
         const type = detectType(body);
 
         if (type === 'object') {
@@ -141,8 +148,6 @@ export default class SwaggerReporter extends Base {
     // eslint-disable-next-line sonarjs/cognitive-complexity
     _renderAction(actionInput) {
         const actions = toArray(actionInput).sort(actionsSorter);
-
-        console.log(actions.map(a => a.context.title).join('. '));
 
         if (!actions || actions.length === 0) return {};
 
@@ -250,7 +255,6 @@ export default class SwaggerReporter extends Base {
                     value   : generatedSchema.example
                 };
             });
-            console.log(code, groupActions[0].context.title);
             responses[code] = {
                 description : groupActions[0].context.title,
                 content     : {}

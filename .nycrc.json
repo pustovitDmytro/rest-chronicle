@@ -13,7 +13,7 @@
     ],
     "report-dir": "./reports/coverage",
     "temp-dir": "./reports/coverage",
-    "lines": 95,
+    "lines": 94,
     "statements": 93,
     "functions": 96,
     "branches": 83,

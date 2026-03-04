@@ -92,6 +92,13 @@ export default class Fetch {
     async _processResponse(response, url, requestInit, context) {
         const action = this._chronicle.action(context);
 
+        // Identify if the request is multipart
+        let requestType = requestInit.headers?.['content-type'] || requestInit.headers?.['Content-Type'];
+
+        if (!requestType && requestInit.body && typeof requestInit.body.append === 'function') {
+            requestType = 'multipart/form-data';
+        }
+
         let body;
 
         try {
@@ -108,7 +115,8 @@ export default class Fetch {
             url,
             headers : requestInit.headers,
             method  : requestInit.method,
-            body    : requestInit.body
+            body    : requestInit.body,
+            type    : requestType
         };
 
         action.response = {

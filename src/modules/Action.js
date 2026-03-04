@@ -63,6 +63,31 @@ export default class Action {
         return isEmpty(sanitized) ? null : sanitized;
     }
 
+    static sanitizePath(path, config) {
+        if (!config || !path) return path;
+
+        if (typeof config === 'function') {
+            return config(path);
+        }
+
+        let sanitizedPath = path;
+
+        for (const [ pattern, replacement ] of Object.entries(config)) {
+            const regexMatch = pattern.match(/^\/(.*)\/([gimsuy]*)$/);
+
+            if (regexMatch) {
+                const [ , expression, flags ] = regexMatch;
+                const regex = new RegExp(expression, flags);
+
+                sanitizedPath = sanitizedPath.replace(regex, replacement);
+            } else {
+                sanitizedPath = sanitizedPath.replace(pattern, replacement);
+            }
+        }
+
+        return sanitizedPath;
+    }
+
     set(values = {}) {
         const filtered = Object.entries(values)
             .filter(([ , value ]) => value !== undefined);
@@ -80,12 +105,36 @@ export default class Action {
         if (rawUrl) this._context.rawUrl = rawUrl;
     }
 
-    set request({ headers, body, ...values }) {
+    set request({ headers, body, type, ...values }) {
+        this._request.type = type;
         this.set(values);
         this.set({
             reqHeaders : headers,
             reqBody    : body
         });
+    }
+
+    set reqBody(body) {
+        if (body && typeof body.entries === 'function') {
+            const flattened = {};
+
+            for (const [ key, value ] of body.entries()) {
+                flattened[key] = value;
+            }
+
+            this._request.body = flattened;
+
+            return;
+        }
+
+        this._request.body = body;
+    }
+
+    get reqContentInfo() {
+        return {
+            type    : this._request.type || 'application/json',
+            charset : 'utf-8'
+        };
     }
 
     set response({ headers, body, http, status, charset, type }) {
@@ -114,10 +163,6 @@ export default class Action {
 
     set reqHeaders(headers) {
         this._request.headers = headers;
-    }
-
-    set reqBody(body) {
-        this._request.body = body;
     }
 
     set resHeaders(values) {
@@ -151,26 +196,24 @@ export default class Action {
     get url() {
         if (!this._request.url) return null;
 
+        const path = Action.sanitizePath(
+            this._request.url.pathname,
+            this._chronicle.config.sanitizeURLPath
+        );
+
         return {
             href     : this._request.url.href,
             origin   : this._request.url.origin,
             protocol : this._request.url.protocol,
             hostname : this._request.url.hostname,
             port     : this._request.url.port,
-            path     : this._request.url.pathname,
+            path,
             query    : getQuery(this._request.url.searchParams)
         };
     }
 
     get method() {
         return this._request._method || 'GET';
-    }
-
-    get reqContentInfo() {
-        return {
-            type    : 'application/json',
-            charset : 'utf-8'
-        };
     }
 
     get reqHeaders() {
