@@ -1,3 +1,18 @@
+# [2.6.0](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.5.1...v2.6.0) (2026-03-04)
+
+
+### Chore
+
+* regenerate lock file ([2b5eac2](https://github.com/pustovitDmytro/rest-chronicle/commit/2b5eac202afa64010b331ed07db35cb228a8300f))
+
+### Fix
+
+* ensure swagger actions sorted as received ([3309df8](https://github.com/pustovitDmytro/rest-chronicle/commit/3309df85c6681dea704a3f582dfd2add004c68a3))
+
+### New
+
+* make swagger handle several same code requests as examplea ([e34b7ed](https://github.com/pustovitDmytro/rest-chronicle/commit/e34b7ed30fa451b8b5f1d8981a60d09fd3a35d89))
+
 ## [2.5.1](https://github.com/pustovitDmytro/rest-chronicle/compare/v2.5.0...v2.5.1) (2026-01-28)
 
 
