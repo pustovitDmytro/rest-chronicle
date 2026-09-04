@@ -108,7 +108,7 @@
     "handlebars": "4.7.9",
     "js-yaml": "4.1.0",
     "myrmidon": "1.7.2",
-    "uuid": "8.3.2"
+    "uuid": "11.1.1"
   },
   "peerDependencies": {
     "axios": "^0.21.1 || ^1.6.1",
